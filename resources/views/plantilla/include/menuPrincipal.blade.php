@@ -58,7 +58,7 @@
               <ul class="treeview-menu">
                 <li><a href="{{ url('admin/inventario/configuracion/Color') }}"><i class="fa fa-circle-o"></i> Colores</a></li>
                 <li><a href="{{ url('admin/inventario/configuracion/unidad') }}"><i class="fa fa-circle-o"></i> Unidades de Medida</a></li>
-                <li><a href="{{ url('inventario/configuracion/marca') }}"><i class="fa fa-circle-o"></i> Marcas</a></li>
+                <li><a href="{{ url('admin/inventario/configuracion/marca') }}"><i class="fa fa-circle-o"></i> Marcas</a></li>
               </ul>
             </li>
           </ul>

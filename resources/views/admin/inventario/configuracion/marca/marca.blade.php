@@ -1,43 +1,53 @@
 @extends('plantilla.principal')
 
 @section('css')
-	@include('inventario.configuracion.marca.estilos')
+	@include('admin.inventario.configuracion.marca.estilos')
 @endsection
 
 @section('encabezadoContenido')
-	<h1>Marcas</h1>
+	<div class="box-header">
+		<h2 class="box-title" style="font-size: 30px">Marcas</h2>
+
+		<div class="box-tools">
+			<button id="btnNuevo" class="btn btn-success pull-right" type="button" data-toggle="modal" data-target="#modalNuevo">
+				<i class="glyphicon glyphicon-plus"></i>
+				Nuevo
+			</button>	
+		</div>
+
+	</div>
 @endsection
 
 @section('contenido')
-	@include('inventario.configuracion.marca.include.mostrar')
-	@include('inventario.configuracion.marca.include.eliminar')
+	@include('admin.inventario.configuracion.marca.include.mostrar')
+	@include('admin.inventario.configuracion.marca.include.eliminar')
+	@include('admin.inventario.configuracion.marca.include.ingresar')
 	
 	<div class="row">
 
-	<div id="mensaje"></div>
+		<div id="mensaje"></div>
 
-	<div class="col-lg-5 col-md-5 col-sm-8 col-xs-12">
-		@include('inventario.configuracion.marca.include.ingresar')
-	
-		<div class="box box-primary">
-			<div class="box-header with-border">
-				<div class="box-tools">
-					<div class="input-group input-group-sm" style="150px">
-						<input type="text" id="buscar" name="buscar" class="form-control pull-right" placeholder="Buscar">
+		<div class="col-md-5 col-sm-8 col-xs-12">
+			
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<div class="box-tools">
+						<div class="input-group input-group-sm" style="150px">
+							<input type="text" id="buscar" name="buscar" class="form-control pull-right" placeholder="Buscar">
+						</div>
 					</div>
-				</div>
-				<br>
-			</div>				
+					<br>
+				</div>				
 
-			<div id="marcas">
-				@include('inventario.configuracion.marca.include.marcas')
+				<div id="marcas">
+					@include('admin.inventario.configuracion.marca.include.marcas')
+				</div>
 			</div>
 		</div>
-	</div>
 
 	</div>
 @endsection
 
 @push('js')
-	@include('inventario.configuracion.marca.funciones')
+	@include('admin.inventario.configuracion.marca.funciones')
 @endpush

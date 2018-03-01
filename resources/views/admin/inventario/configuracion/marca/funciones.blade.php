@@ -11,20 +11,16 @@
 	function generarTabla(page, filtro) {
 		$.ajax({
 			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-			url: '{{ url('inventario/configuracion/marca') }}',
+			url: '{{ url('admin/inventario/configuracion/marca') }}',
 			type: 'GET',
 			data: {'page':page, 'filtro':filtro},
 			dataType: 'json',
 			beforeSend: function () {
-				$('#marca').prop('disabled', true);
-		 		$('#registrarIngreso').prop('disabled', true);
                 $('.box').append('<div class="overlay">'+
               						'<i class="fa fa-refresh fa-spin"></i>'+
             					 '</div>');
             },
 			success: function (data) {
-				$('#marca').prop('disabled', false);
-		 		$('#registrarIngreso').prop('disabled', false);
 				$('#marcas').html(data);
 				$('.overlay').detach();
 			}
@@ -39,31 +35,26 @@
 		
 		$.ajax({
 			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-			url: '{{ url('inventario/configuracion/marca') }}',
+			url: '{{ url('admin/inventario/configuracion/marca') }}',
 		 	type: 'POST',
 		 	data: datos,
 		 	dataType: 'json',
 		 	beforeSend: function () {
-		 		$('#marca').prop('disabled', true);
-		 		$('#registrarIngreso').prop('disabled', true);
-		 		$('#registrarIngreso').html('<i class="fa fa-refresh fa-spin"></i>');
 		 		$('.box').append('<div class="overlay">'+
               						'<i class="fa fa-refresh fa-spin"></i>'+
             					 '</div>');
+		 		$('#btnNuevo').html('<i class="fa fa-refresh fa-spin"></i>');
+		 		$('#modalNuevo').modal('hide');
 		 	},
 		 	success: function (data) {
 		 		$('#marca').val('');
-		 		$('#marca').prop('disabled', false);
-		 		$('#registrarIngreso').prop('disabled', false);
-		 		$('#registrarIngreso').html('Ingresar');
+		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
 		 		$('.overlay').detach();
 		 		generarTabla(page);
 		 		mensaje('ok', data);
 		 	},
 		 	error: function (data) {
-		 		$('#marca').prop('disabled', false);
-		 		$('#registrarIngreso').prop('disabled', false);
-		 		$('#registrarIngreso').html('Ingresar');
+		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
 		 		$('.overlay').detach();
 		 		mensaje('error', data);
 		 	}
@@ -74,19 +65,17 @@
 	function mostrar(id) {
 		$.ajax({
 			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-		 	url: '{{url('inventario/configuracion/marca')}}/'+id+'/edit',
+		 	url: '{{url('admin/inventario/configuracion/marca')}}/'+id+'/edit',
 		 	type: 'GET',
 		 	dataType: 'json',
 		 	beforeSend: function () {
-		 		$('#marca').prop('disabled', true);
-		 		$('#registrarIngreso').prop('disabled', true);
+		 		$('#btnNuevo').html('<i class="fa fa-refresh fa-spin"></i>');
 		 		$('.box').append('<div class="overlay">'+
               						'<i class="fa fa-refresh fa-spin"></i>'+
             					 '</div>');
 		 	},
 		 	success: function (data) {
-		 		$('#marca').prop('disabled', false);
-		 		$('#registrarIngreso').prop('disabled', false);
+		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
 		 		$('.overlay').detach();
 		 		$('#mostarMarca').modal('show');
 		 		$('#actualizarMarca').val(data.marca);
@@ -99,19 +88,17 @@
 	function eliminar(id) {
 		$.ajax({
 			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-		 	url: '{{url('inventario/configuracion/marca')}}/'+id+'/edit',
+		 	url: '{{url('admin/inventario/configuracion/marca')}}/'+id+'/edit',
 		 	type: 'GET',
 		 	dataType: 'json',
 		 	beforeSend: function () {
-		 		$('#marca').prop('disabled', true);
-		 		$('#registrarIngreso').prop('disabled', true);
+		 		$('#btnNuevo').html('<i class="fa fa-refresh fa-spin"></i>');
 		 		$('.box').append('<div class="overlay">'+
               						'<i class="fa fa-refresh fa-spin"></i>'+
             					 '</div>');
 		 	},
 		 	success: function (data) {
-		 		$('#marca').prop('disabled', false);
-		 		$('#registrarIngreso').prop('disabled', false);
+		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
 		 		$('.overlay').detach();
 		 		$('#eliminarMarca').modal('show');
 		 		$('#eliminarId').val(data.id);
@@ -124,32 +111,30 @@
 		e.preventDefault();
 		var datos = $(this).serialize();
 		var page = $('.pagination .active span').html();
+		var id = $('#actualizarId').val();
 
 		$.ajax({
 			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-			url: '{{url('inventario/configuracion/marca')}}/'+$('#actualizarId').val(),
+			url: '{{url('admin/inventario/configuracion/marca')}}/' + id,
 			type: 'PUT',
 			data: datos,
 			dataType: 'json',
 			beforeSend: function () {
 				$('#mostarMarca').modal('hide');
-				$('#marca').prop('disabled', true);
-		 		$('#registrarIngreso').prop('disabled', true);
+				$('#btnNuevo').html('<i class="fa fa-refresh fa-spin"></i>');
 		 		$('.box').append('<div class="overlay">'+
               						'<i class="fa fa-refresh fa-spin"></i>'+
             					 '</div>');
 			},
 			success: function (data) {
-				$('#marca').prop('disabled', false);
-		 		$('#registrarIngreso').prop('disabled', false);
 		 		$('.overlay').detach();
+		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
 				mensaje('ok',data);
 				generarTabla(page);
 			},
 			error: function (data) {
-				$('#marca').prop('disabled', false);
-		 		$('#registrarIngreso').prop('disabled', false);
 		 		$('.overlay').detach();
+		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
 				mensaje('error', data);
 			}
 		});
@@ -159,31 +144,29 @@
 	$('#eliminar').submit(function (e) {
 		e.preventDefault();
 		var page = $('.pagination .active span').html();
+		var id = $('#eliminarId').val();
 
 		$.ajax({
 			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-			url: '{{url('inventario/configuracion/marca')}}/'+$('#eliminarId').val(),
+			url: '{{url('admin/inventario/configuracion/marca')}}/' + id,
 			type: 'DELETE',
 			dataType: 'json',
 			beforeSend: function () {
 				$('#eliminarMarca').modal('hide');
-				$('#marca').prop('disabled', true);
-		 		$('#registrarIngreso').prop('disabled', true);
+				$('#btnNuevo').html('<i class="fa fa-refresh fa-spin"></i>');
 		 		$('.box').append('<div class="overlay">'+
               						'<i class="fa fa-refresh fa-spin"></i>'+
             					 '</div>');
 			},
 			success: function (data) {
-				$('#marca').prop('disabled', false);
-		 		$('#registrarIngreso').prop('disabled', false);
 		 		$('.overlay').detach();
+		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
 				mensaje('ok', data);
 				generarTabla(page);
 			},
 			error: function (data) {
-				$('#marca').prop('disabled', false);
-		 		$('#registrarIngreso').prop('disabled', false);
 		 		$('.overlay').detach();
+		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
 				mensaje('error', data);
 			}
 		});
@@ -210,7 +193,7 @@
 			tipo = 'alert alert-danger alert-dismissible';
 			icono = 'icon fa fa-ban';
 			titulo = 'Alerta!';
-			var arrayMensajes = data.responseJSON;
+			var arrayMensajes = data.responseJSON.errors;
 			mensajes = '<ul>';
 			$.each(arrayMensajes, function (i, reg) {
 				mensajes +=	'<li>'+reg+'</li>';
