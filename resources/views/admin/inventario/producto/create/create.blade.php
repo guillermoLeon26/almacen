@@ -57,5 +57,7 @@
 @push('js')
   @include('admin.inventario.producto.create.js.js')
   @include('librerias.js.mensajes')
-  @include('admin.inventario.producto.create.js.jsModalDatos')
+  @include('admin.inventario.producto.create.js.jsTabDatos')
+  @include('admin.inventario.producto.create.js.jsTabColores')
+  @include('admin.inventario.producto.create.js.jsTabDimensiones')
 @endpush

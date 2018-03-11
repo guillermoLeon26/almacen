@@ -12,6 +12,7 @@ use App\Models\Color;
 use App\Http\Requests\CategoriaRequest;
 use App\Http\Requests\MarcaRequest;
 use App\Http\Requests\UnidadRequest;
+use App\Http\Requests\ColorRequest;
 
 class ProductosController extends Controller
 {
@@ -127,6 +128,15 @@ class ProductosController extends Controller
 
     return response()
       ->json(view('admin.inventario.producto.create.include.cbUnidad', ['unidades' => $unidades])
+      ->render());
+  }
+
+  public function cbBoxColor(ColorRequest $request){
+    Color::create($request->all());
+    $colores = Color::all();
+
+    return response()
+      ->json(view('admin.inventario.producto.create.include.cbColor', ['colores' => $colores])
       ->render());
   }
 }
