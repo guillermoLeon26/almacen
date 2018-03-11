@@ -17,23 +17,14 @@
           
           <ul class="treeview-menu">
             
-            <li class="treeview">
-              <a href="#">
-                <i class="glyphicon glyphicon-apple"></i> <span>Productos</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-                      
-              <ul class="treeview-menu">
-                <li><a href="{{ url('inventario/producto/create') }}"><i class="glyphicon glyphicon-plus"></i> Crear</a></li>
-                <li><a href="{{ url('inventario/producto') }}"><i class="fa fa-book"></i> Catálogo</a></li>
-              </ul>
-            </li>
+            <li>
+              <a href="{{ url('admin/inventario/productos') }}">
+              <i class="glyphicon glyphicon-apple"></i>Productos</a>
+            </li>            
 
             <li><a href="{{ url('inventario/ingreso') }}"><i class="fa fa-archive"></i> Ingreso</a></li>
 
-             <li class="treeview">
+            <li class="treeview">
               <a href="#">
                 <i class="fa fa-truck"></i> <span>Envios</span>
                 <span class="pull-right-container">

@@ -24,11 +24,18 @@ Route::group(['prefix' => 'admin'], function (){
 
 //Rutas de Inventario
 Route::group(['middleware' => 'auth', 'prefix' => 'admin/inventario'], function (){
+  //-----------------------------PRODUCTOS------------------------------------
+  Route::resource('productos', 'Inventario\ProductosController');
+  Route::group(['prefix' => 'productos'], function (){
+    Route::post('cbBoxCategoria', 'Inventario\ProductosController@cbBoxCategoria');
+    Route::post('cbBoxMarca', 'Inventario\ProductosController@cbBoxMarca');
+    Route::post('cbBoxUnidad', 'Inventario\ProductosController@cbBoxUnidad');
+  });
+  //----------------------------------------------------------------------------
+  Route::resource('categoria', 'Inventario\CategoriaController');
   Route::group(['prefix' => 'configuracion'], function (){
     Route::resource('Color', 'Inventario\ColorController', ['except'=>['create', 'show']]);
     Route::resource('unidad', 'Inventario\UnidadesController', ['except'=>['create', 'show']]);
     Route::resource('marca', 'Inventario\MarcaController', ['except'=>['create', 'show']]);
   });
 });
-
-

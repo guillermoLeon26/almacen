@@ -47,9 +47,9 @@
 
             },
 		 	success: function (data) {
+		 		$('.overlay').detach();
 		 		generarTabla(page);
 		 		mensaje('ok', data);
-		 		$('.overlay').detach();
 		 	},
 		 	error: function (data) {
 		 		console.log(data.responseJSON);
