@@ -20,11 +20,11 @@
     <div class="col-xs-12 col-sm-9" id="mensaje"></div>
     
     <div class="col-sm-9 col-xs-12">
-      <form id="formCrearProducto">
+      
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs pull-right">
             <li class="pull-left header">
-              <button type="submit" id="btnGuardar" class="btn btn-success">
+              <button id="btnGuardar" class="btn btn-success" onclick="guardar()">
                 <span class="fa fa-save" aria-hidden="true"></span>
                  Guardar
               </button>
@@ -45,7 +45,7 @@
             </div>
           </div>
         </div>
-      </form>
+      
     </div>
   </div>
   @include('admin.inventario.producto.create.include.modalIngresarColor')
@@ -60,4 +60,5 @@
   @include('admin.inventario.producto.create.js.jsTabDatos')
   @include('admin.inventario.producto.create.js.jsTabColores')
   @include('admin.inventario.producto.create.js.jsTabDimensiones')
+  @include('admin.inventario.producto.create.js.jsPrincipal')
 @endpush

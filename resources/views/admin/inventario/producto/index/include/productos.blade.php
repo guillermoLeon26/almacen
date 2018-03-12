@@ -21,10 +21,10 @@
             <td>{{$producto->codigo}}</td>
             <td>{{$producto->marca}}</td>
             <td>
-              <button class="btn btn-info" onclick="">
+              <a href="{{url('admin/inventario/productos')}}/{{$producto->id}}/edit" class="btn btn-info">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-              </button>
-              <button class="btn btn-danger" onclick="">
+              </a>
+              <button class="btn btn-danger" onclick="eliminar({{$producto->id}})">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
               </button>
             </td>

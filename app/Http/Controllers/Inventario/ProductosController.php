@@ -13,6 +13,7 @@ use App\Http\Requests\CategoriaRequest;
 use App\Http\Requests\MarcaRequest;
 use App\Http\Requests\UnidadRequest;
 use App\Http\Requests\ColorRequest;
+use Illuminate\Support\Facades\DB;
 
 class ProductosController extends Controller
 {
@@ -21,8 +22,17 @@ class ProductosController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index(){
-    $productos = Producto::paginate(5);
+  public function index(Request $request){
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+
+    $productos = Producto::buscar($filtro)->paginate(5);
+
+    if ($request->ajax()) {
+      return response()
+        ->json(view('admin.inventario.producto.index.include.productos', ['productos' => $productos])
+          ->render());
+    }
 
     return view('admin.inventario.producto.index.index', ['productos' => $productos]);
   }
@@ -53,9 +63,19 @@ class ProductosController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-      //
+  public function store(Request $request){
+    DB::beginTransaction();
+
+    try {
+      Producto::guardar($request->all());
+      DB::commit();
+
+      return response()->json([]);
+    } catch (\Exception $e) {
+      DB::rollBack();
+      return response()->json([], 500);
+    }
+    
   }
 
   /**

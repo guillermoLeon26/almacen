@@ -12,7 +12,7 @@
 	function generarTabla(page, filtro) {
 		$.ajax({
 			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-			url: '{{ url('inventario/producto') }}',
+			url: '{{ url('admin/inventario/productos') }}',
 			type: 'GET',
 			data: {'page':page, 'filtro':filtro},
 			dataType: 'json',

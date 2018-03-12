@@ -38,7 +38,7 @@
       <div class="form-group" style="padding-top: 6px;">
         <label class="col-sm-2 control-label" for="marca">Descripción</label>
         <div class="col-sm-10">
-          <textarea class="form-control" name="descripcion" rows="3" style="margin-top: 6px;"></textarea>
+          <textarea class="form-control" id="descripcion" rows="3" style="margin-top: 6px;"></textarea>
         </div>
       </div>
     </form>

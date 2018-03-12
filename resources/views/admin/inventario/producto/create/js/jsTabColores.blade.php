@@ -33,8 +33,6 @@ $('#formIngresoColor').submit(function (e) {
 });
 //-----------------------------------------------------------------------------------
 //-------------------------AGREAGAR COLOR A LA TABLA COLORES-----------------
-var contColor = 0;
-
 $('#btnAgregarColorTabla').click(function () {
   if (esValidoIngresarColor()) {
     ingresarColorTabla();  
