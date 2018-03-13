@@ -65,7 +65,7 @@ class ProductosController extends Controller
    */
   public function store(Request $request){
     DB::beginTransaction();
-
+    
     try {
       Producto::guardar($request->all());
       DB::commit();

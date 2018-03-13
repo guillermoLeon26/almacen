@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Categoria;
 use App\Models\DescripcionProducto;
-use Illuminate\Support\Facades\DB;
+use App\Models\ColorProducto;
 
 class Producto extends Model
 {
@@ -18,11 +18,15 @@ class Producto extends Model
   }
 
   public function colores(){
-    return $this->belongsToMany('App\Models\Color', 'articulos');
+    return $this->hasMany('App\Models\ColorProducto');
   }
 
   public function imagenes(){
     return $this->hasMany('App\Models\Imagen');
+  }
+
+  public function descripciones(){
+    return $this->hasMany('App\Models\DescripcionProducto');
   }
 
   //------------------------------------ALCANCES----------------------------------
@@ -44,47 +48,40 @@ class Producto extends Model
     $producto->categoria = $producto->srtCategoria($datos['categorias']);
     $producto->save();
     $producto->categorias()->attach($datos['categorias']);
-    $idsDimensiones = $producto->guardarDimensiones($datos);
-    DB::table('articulos')->insert($producto->arrArticulos($producto->id, $datos, $idsDimensiones));
+    $producto->colores()->saveMany($producto->arrColores($datos));
+    $producto->descripciones()->saveMany($producto->arrDimensiones($datos));
   }
 
   /*******************************************************************************
-    * Funcion para generar un arrego de articulos
-    * @in $producto[array], $datos[array], $idsDimensiones[array]
+    * Funcion para generar un arrego de Colores
+    * @in $datos[array]
     * @out array
     *********************************************************************************/
-  public function arrArticulos($productoId, $datos, $idsDimensiones){
+  public function arrColores($datos){
     $colores = $datos['colores'];
     $arr = [];
 
     foreach ($colores as $color) {
-      foreach ($idsDimensiones as $dimension) {
-        array_push($arr, [
-          'colores_id'                =>  $color,
-          'productos_descripcion_id'  =>  $dimension,
-          'productos_id'              =>  $productoId,
-        ]);
-      }
+      array_push($arr, new ColorProducto(['color' => $color]));
     }
 
     return $arr;
   }
 
   /*******************************************************************************
-    * Funcion que guarda todos las dimensiones y retorna un array de ids de dimensiones
+    * Funcion para generar un arrego de Dimensiones
     * @in array
-    * @out array de ids
+    * @out array
     *********************************************************************************/
-  public function guardarDimensiones($datos){
+  public function arrDimensiones($datos){
     $dimensiones = $datos['dimensiones'];
-    $ids = [];
+    $arr = [];
     
-    foreach ($dimensiones as $id => $dimension) {
-      $descripcion = DescripcionProducto::create(['n_orden' => $id+1, 'dimension' => $dimension]);
-      array_push($ids, $descripcion->id);
+    foreach ($dimensiones as $n => $dimension) {
+      array_push($arr, new DescripcionProducto(['n_orden' => $n+1, 'dimension' => $dimension]));
     }
 
-    return $ids;
+    return $arr;
   }
 
   /*******************************************************************************

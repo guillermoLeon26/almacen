@@ -49,7 +49,7 @@ function ingresarColorTabla() {
   var color = $("#comboBoxColor option:selected").html();
   var fila = '<tr id="fila'+idColor+'">'+
               '<td>'+
-                '<input type="hidden" class="colores" value="'+idColor+'">'+
+                '<input type="hidden" class="colores" value="'+color+'">'+
                 color+
               '</td>'+
               '<td>'+
@@ -68,10 +68,10 @@ function eliminarFilaColor(index) {
 
 function esValidoIngresarColor() {
   var clrs = colores();
-  var idColor = $('#comboBoxColor').val();
+  var color = $("#comboBoxColor option:selected").html();
 
   for (var i = 0; i < clrs.length; i++) {
-    if (clrs[i] == idColor) { return false; }
+    if (color.localeCompare(clrs[i]) == 0) { return false; }
   }
   return true;
 }
