@@ -13,6 +13,7 @@ use App\Http\Requests\CategoriaRequest;
 use App\Http\Requests\MarcaRequest;
 use App\Http\Requests\UnidadRequest;
 use App\Http\Requests\ColorRequest;
+use App\Http\Requests\ProductoRequest;
 use Illuminate\Support\Facades\DB;
 
 class ProductosController extends Controller
@@ -63,7 +64,8 @@ class ProductosController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request){
+  public function store(ProductoRequest $request){
+    dd($request->all());
     DB::beginTransaction();
     
     try {
@@ -95,9 +97,21 @@ class ProductosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
-  {
-      //
+  public function edit(Producto $producto){
+    //dd(count($producto->descripciones));
+    $categorias = Categoria::all();
+    $marcas = Marca::all();
+    $unidades = Unidad::all();
+    $colores = Color::all();
+
+    return view('admin.inventario.producto.edit.edit',
+      [
+        'categorias'  =>  $categorias,
+        'marcas'      =>  $marcas,
+        'unidades'    =>  $unidades,
+        'colores'     =>  $colores,
+        'producto'    =>  $producto
+      ]);
   }
 
   /**
