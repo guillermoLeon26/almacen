@@ -43,6 +43,11 @@
               <input type="hidden" class="dimensiones" value="{{$descripcion->dimension}}">
               {{$descripcion->dimension}}
             </td>
+            <td>
+              <button onclick="eliminarFilaDimension({{$i}})" type="button" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
+            </td>
           </tr>
           @php
           $i++;
