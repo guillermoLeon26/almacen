@@ -24,7 +24,11 @@
       </thead>
 
       <tbody id="trTablaDimension">
-        @for ($i = 0; $i < count($producto->descripciones); $i++)
+        @php
+          $i=0;
+        @endphp
+
+        @foreach($producto->listaDescripciones() as $descripcion)
           <tr id="filaDimension{{$i}}">
             <td>
               <button onclick="moverArribaFilaDimension({{$i}})" type="button" class="btn btn-warning">
@@ -36,10 +40,16 @@
               </button>
             </td>
             <td>
-              <input type="hidden" class="dimensiones" value="{{$producto->descripciones[$i]->dimension}}">
-              {{$producto->descripciones[$i]->dimension}}
+              <input type="hidden" class="dimensiones" value="{{$descripcion->dimension}}">
+              {{$descripcion->dimension}}
             </td>
           </tr>
+          @php
+          $i++;
+        @endphp
+        @endforeach
+        @for ($i = 0; $i < count($producto->listaDescripciones()); $i++)
+          
         @endfor
       </tbody>
     </table>

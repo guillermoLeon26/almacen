@@ -31,13 +31,18 @@
       </thead>
 
       <tbody id="trTablaColores">
-        @foreach($producto->colores as $color)
+        @foreach($producto->colores()->distinct()->get() as $color)
           <tr id="fila{{$color->id}}">
             <td></td>
             <td></td>
             <td>
-              <input type="hidden" class="colores" value="{{$color->color}}">
+              <input type="hidden" class="colores" value="{{$color->id}}">
               {{$color->color}}
+            </td>
+            <td>
+              <button onclick="eliminarFilaColor('+idColor+')" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
             </td>
           </tr>
         @endforeach

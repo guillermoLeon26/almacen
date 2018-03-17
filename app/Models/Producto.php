@@ -19,7 +19,7 @@ class Producto extends Model
   }
 
   public function colores(){
-    return $this->belongsToMany('App\Models\Color');
+    return $this->belongsToMany('App\Models\Color', 'articulos');
   }
 
   public function imagenes(){
@@ -27,7 +27,7 @@ class Producto extends Model
   }
 
   public function descripciones(){
-    return $this->belongsToMany('App\Models\DescripcionProducto');
+    return $this->belongsToMany('App\Models\DescripcionProducto', 'articulos','producto_id','productos_descripcion_id');
   }
 
   //------------------------------------ALCANCES----------------------------------
@@ -38,6 +38,14 @@ class Producto extends Model
   }
 
   //--------------------------------------METODOS-----------------------------------
+  /*******************************************************************************
+    * Lista de descripciones 
+    * @in 
+    * @out Collection[descripcipon]
+    *********************************************************************************/
+  public function listaDescripciones(){
+    return $this->descripciones()->distinct()->get();
+  }
   //-------------------------------FUNCIONES GUARDAR PRODUCTO-----------------------
   /*******************************************************************************
     * Funcion para guardar el producto

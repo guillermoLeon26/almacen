@@ -98,7 +98,6 @@ class ProductosController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function edit(Producto $producto){
-    //dd(count($producto->descripciones));
     $categorias = Categoria::all();
     $marcas = Marca::all();
     $unidades = Unidad::all();

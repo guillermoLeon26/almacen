@@ -1,6 +1,6 @@
 <script>
 //--------------AGREAGAR DIMENSION A LA TABLA DIMENSIONES------------
-var contDimension = {{ count($producto->descripciones) }};  
+var contDimension = {{ count($producto->listaDescripciones()) }};  
 
 $('#btnAgregarDimensionTabla').click(function () {
   if (esValidoIngresarDimension()) {
