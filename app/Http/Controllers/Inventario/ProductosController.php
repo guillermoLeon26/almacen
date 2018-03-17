@@ -65,7 +65,6 @@ class ProductosController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function store(ProductoRequest $request){
-    dd($request->all());
     DB::beginTransaction();
     
     try {
@@ -75,6 +74,7 @@ class ProductosController extends Controller
       return response()->json([]);
     } catch (\Exception $e) {
       DB::rollBack();
+      
       return response()->json([], 500);
     }
     

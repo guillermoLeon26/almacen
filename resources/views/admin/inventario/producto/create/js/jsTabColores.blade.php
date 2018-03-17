@@ -49,7 +49,7 @@ function ingresarColorTabla() {
   var color = $("#comboBoxColor option:selected").html();
   var fila = '<tr id="fila'+idColor+'">'+
               '<td>'+
-                '<input type="hidden" class="colores" value="'+color+'">'+
+                '<input type="hidden" class="colores" value="'+idColor+'">'+
                 color+
               '</td>'+
               '<td>'+
