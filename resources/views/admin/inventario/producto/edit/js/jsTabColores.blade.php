@@ -51,7 +51,7 @@ function ingresarColorTabla() {
               '<td></td>'+
               '<td></td>'+
               '<td>'+
-                '<input type="hidden" class="colores" value="'+color+'">'+
+                '<input type="hidden" class="colores" value="'+idColor+'">'+
                 color+
               '</td>'+
               '<td>'+
@@ -70,7 +70,7 @@ function eliminarFilaColor(index) {
 
 function esValidoIngresarColor() {
   var clrs = colores();
-  var color = $("#comboBoxColor option:selected").html();
+  var color = $('#comboBoxColor').val();
 
   for (var i = 0; i < clrs.length; i++) {
     if (color.localeCompare(clrs[i]) == 0) { return false; }

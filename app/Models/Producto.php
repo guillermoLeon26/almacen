@@ -44,10 +44,12 @@ class Producto extends Model
     * @out Collection[descripcipon]
     *********************************************************************************/
   public function listaDescripciones(){
-    return $this->descripciones()->distinct()->get();
+    return $this->descripciones()->distinct()->get()->sortBy('n_orden');
   }
-  //-------------------------------FUNCIONES GUARDAR PRODUCTO-----------------------
-  /*******************************************************************************
+  //***********************************************************************************
+  //-------------------------------FUNCIONES GUARDAR PRODUCTO--------------------------
+  //***********************************************************************************
+  /**********************************************************************************
     * Funcion para guardar el producto
     * @in producto, categorias, colores, dimensiones
     * @out
@@ -113,5 +115,23 @@ class Producto extends Model
 
     return $cat;
   }
-  //-----------------------------------------------------------------------------------
+  
+  //***********************************************************************************
+  //-------------------------------FUNCIONES ACTUALIZAR PRODUCTO-----------------------
+  //***********************************************************************************
+  public function actualizar($datos){
+    $this->fill($datos['producto']);
+    $this->categoria = $this->srtCategoria($datos['categorias']);
+    $this->save();
+    $this->categorias()->sync($datos['categorias']);
+    $this->colores()->sync($datos['colores']);
+  }
+  /*******************************************************************************
+    * Genera un string de las categorias del producto
+    * @in Array ids
+    * @out String
+  *********************************************************************************/
+  protected function syncDescripciones(){
+    # code...
+  }
 }

@@ -1,6 +1,6 @@
 <script>
 //--------------AGREAGAR DIMENSION A LA TABLA DIMENSIONES------------
-var contDimension = {{ count($producto->listaDescripciones()) }};  
+var contDimension = {{ $producto->listaDescripciones()->max('n_orden') + 1 }};  
 
 $('#btnAgregarDimensionTabla').click(function () {
   if (esValidoIngresarDimension()) {
@@ -20,13 +20,17 @@ function ingresarDimensionTabla() {
                 '<button onclick="moverArribaFilaDimension('+contDimension+')" type="button" class="btn btn-warning">'+
                   '<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>'+
                 '</button>'+
-
+                ' '+
                 '<button onclick="moverAbajoFilaDimension('+contDimension+')" type="button" class="btn btn-warning">'+
                   '<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>'+
                 '</button>'+
               '</td>'+
               '<td>'+
-                '<input type="hidden" class="dimensiones" value="'+dimension+'">'+
+                '<input type="hidden" class="dimensiones" value="'+contDimension+'">'+
+                '<input type="hidden" class="dimensionesNuevas" value="'+dimension+'">'+
+                '<input type="hidden" name="id" class="descripcion'+contDimension+'" value="0">'+
+                '<input type="hidden" name="dimension" class="descripcion'+contDimension+'" value="'+dimension+'">'+
+                '<input type="hidden" name="n_orden" class="descripcion'+contDimension+'" value="'+contDimension+'">'+
                 dimension+
               '</td>'+
               '<td>'+
@@ -52,7 +56,7 @@ function esValidoIngresarDimension() {
   //if (dimension.localeCompare('') == 0) { return false; }
 
   for (var i = 0; i < dim.length; i++) {
-    if (dimension.localeCompare(dim[i]) == 0) { return false; }
+    if (dimension.localeCompare(dim[i].dimension) == 0) { return false; }
   }
 
   return true;
@@ -87,9 +91,44 @@ function moverArribaFilaDimension(index) {
 
 function dimensiones() {
   var dimensiones = [];
+  var dimension = {};
 
   $('.dimensiones').each(function (i, node) {
-    dimensiones.push(node.value);
+    $('.descripcion'+node.value).each(function (i, node) {
+      dimension[node.name] = node.value;
+    });
+    dimensiones.push(dimension);
+    dimension = {};
+  });
+
+  return dimensiones;
+}
+
+function dimensionesActuales() {
+  var dimensiones = [];
+  var dimension = {};
+
+  $('.dimensionesActuales').each(function (i, node) {
+    $('.descripcion'+node.value).each(function (i, node) {
+      dimension[node.name] = node.value;
+    });
+    dimensiones.push(dimension);
+    dimension = {};
+  });
+
+  return dimensiones;
+}
+
+function dimensionesNuevas() {
+  var dimensiones = [];
+  var dimension = {};
+
+  $('.dimensionesNuevas').each(function (i, node) {
+    $('.descripcion'+node.value).each(function (i, node) {
+      dimension[node.name] = node.value;
+    });
+    dimensiones.push(dimension);
+    dimension = {};
   });
 
   return dimensiones;

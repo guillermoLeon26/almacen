@@ -3,9 +3,10 @@
 function guardar() {
   $.ajax({
     headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('admin/inventario/productos') }}',
+    url: '{{ url('admin/inventario/productos') }}/{{$producto->id}}',
     type: 'POST',
     data: {
+      _method: 'PUT',
       categorias: categorias(),
       producto: producto(),
       colores: colores(),

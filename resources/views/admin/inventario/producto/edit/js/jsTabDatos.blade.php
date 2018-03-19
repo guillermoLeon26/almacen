@@ -20,6 +20,7 @@ $('#formIngresoCategoria').submit(function (e) {
     success: function (data) {
       $('#selCategoria').html(data);
       $('#categorias').select2();
+      $('#categorias').val({{$producto->categorias->pluck('id')->toJson()}}).trigger('change');
       $('.overlay').detach();
       $('#btnGuardar').prop('disabled', false);
       toastr.success('Se ingresó la categoria correctamente.');

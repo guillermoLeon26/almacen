@@ -24,38 +24,32 @@
       </thead>
 
       <tbody id="trTablaDimension">
-        @php
-          $i=0;
-        @endphp
-
         @foreach($producto->listaDescripciones() as $descripcion)
-          <tr id="filaDimension{{$i}}">
+          <tr id="filaDimension{{$descripcion->n_orden}}">
             <td>
-              <button onclick="moverArribaFilaDimension({{$i}})" type="button" class="btn btn-warning">
+              <button onclick="moverArribaFilaDimension({{$descripcion->n_orden}})" type="button" class="btn btn-warning">
                 <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
               </button>
 
-              <button onclick="moverAbajoFilaDimension({{$i}})" type="button" class="btn btn-warning">
+              <button onclick="moverAbajoFilaDimension({{$descripcion->n_orden}})" type="button" class="btn btn-warning">
                 <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
               </button>
             </td>
             <td>
-              <input type="hidden" class="dimensiones" value="{{$descripcion->dimension}}">
+              <input type="hidden" class="dimensiones" value="{{$descripcion->id}}">
+              <input type="hidden" class="dimensionesActuales" value="{{$descripcion->id}}">
+              <input type="hidden" name="id" class="descripcion{{$descripcion->id}}" value="{{$descripcion->id}}">
+              <input type="hidden" name="dimension" class="descripcion{{$descripcion->id}}" value="{{$descripcion->dimension}}">
+              <input type="hidden" name="n_orden" class="descripcion{{$descripcion->id}}" value="{{$descripcion->n_orden}}">
               {{$descripcion->dimension}}
             </td>
             <td>
-              <button onclick="eliminarFilaDimension({{$i}})" type="button" class="btn btn-danger">
+              <button onclick="eliminarFilaDimension({{$descripcion->n_orden}})" type="button" class="btn btn-danger">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
               </button>
             </td>
           </tr>
-          @php
-          $i++;
-        @endphp
         @endforeach
-        @for ($i = 0; $i < count($producto->listaDescripciones()); $i++)
-          
-        @endfor
       </tbody>
     </table>
   </div>

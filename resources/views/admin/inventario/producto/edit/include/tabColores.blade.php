@@ -40,7 +40,7 @@
               {{$color->color}}
             </td>
             <td>
-              <button onclick="eliminarFilaColor('+idColor+')" class="btn btn-danger">
+              <button onclick="eliminarFilaColor({{$color->id}})" class="btn btn-danger">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
               </button>
             </td>
