@@ -127,11 +127,12 @@ class Producto extends Model
     $this->colores()->sync($datos['colores']);
   }
   /*******************************************************************************
-    * Genera un string de las categorias del producto
-    * @in Array ids
-    * @out String
+    * Guarda las descripciones del producto
+    * @in Array[]
+    * @out
   *********************************************************************************/
-  protected function syncDescripciones(){
-    # code...
+  protected function syncDescripciones($datos){
+    $this->descripciones()->sync($datos['dimensiones_actuales']);
+    $idsDimensiones = $producto->arrDimensiones($datos);
   }
 }

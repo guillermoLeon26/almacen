@@ -121,7 +121,7 @@ class ProductosController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function update(Request $request, Producto $producto){
-    dd($producto);
+    dd($request->all());
   }
 
   /**

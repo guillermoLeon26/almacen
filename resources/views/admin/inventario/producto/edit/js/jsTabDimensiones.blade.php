@@ -27,8 +27,7 @@ function ingresarDimensionTabla() {
               '</td>'+
               '<td>'+
                 '<input type="hidden" class="dimensiones" value="'+contDimension+'">'+
-                '<input type="hidden" class="dimensionesNuevas" value="'+dimension+'">'+
-                '<input type="hidden" name="id" class="descripcion'+contDimension+'" value="0">'+
+                '<input type="hidden" class="dimensionesNuevas" value="'+contDimension+'">'+
                 '<input type="hidden" name="dimension" class="descripcion'+contDimension+'" value="'+dimension+'">'+
                 '<input type="hidden" name="n_orden" class="descripcion'+contDimension+'" value="'+contDimension+'">'+
                 dimension+
@@ -53,8 +52,6 @@ function esValidoIngresarDimension() {
   var dim = dimensiones();
   var dimension = $('#txtDimension').val();
 
-  //if (dimension.localeCompare('') == 0) { return false; }
-
   for (var i = 0; i < dim.length; i++) {
     if (dimension.localeCompare(dim[i].dimension) == 0) { return false; }
   }
@@ -63,13 +60,18 @@ function esValidoIngresarDimension() {
 }
 
 function moverAbajoFilaDimension(index) {
-
   if ($('#filaDimension'+index).next().is('tr')) {
+    var n_ordenActual = $('#filaDimension'+index+' [name="n_orden"]').val();
+    var n_ordenSiguiente = $('#filaDimension'+index).next().find('[name="n_orden"]').val();
+
+    $('#filaDimension'+index+' [name="n_orden"]').val(n_ordenSiguiente);
+    $('#filaDimension'+index).next().find('[name="n_orden"]').val(n_ordenActual);
+    
+    var filaSiguiente = $('#filaDimension'+index).next();
+
     var filaActual = '<tr id="filaDimension'+index+'">'+
                        $('#filaDimension'+index).html()+
                      '</tr>';
-
-    var filaSiguiente = $('#filaDimension'+index).next();
 
     $('#filaDimension'+index).remove();
     filaSiguiente.after(filaActual);
@@ -77,8 +79,13 @@ function moverAbajoFilaDimension(index) {
 }
 
 function moverArribaFilaDimension(index) {
-
   if ($('#filaDimension'+index).prev().is('tr')) {
+    var n_ordenActual = $('#filaDimension'+index+' [name="n_orden"]').val();
+    var n_ordenAnterior = $('#filaDimension'+index).prev().find('[name="n_orden"]').val();
+
+    $('#filaDimension'+index+' [name="n_orden"]').val(n_ordenAnterior);
+    $('#filaDimension'+index).prev().find('[name="n_orden"]').val(n_ordenActual);
+
     var filaActual = '<tr id="filaDimension'+index+'">'+
               $('#filaDimension'+index).html()+
              '</tr>';

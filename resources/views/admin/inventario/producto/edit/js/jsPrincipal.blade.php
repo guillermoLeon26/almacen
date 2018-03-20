@@ -10,7 +10,8 @@ function guardar() {
       categorias: categorias(),
       producto: producto(),
       colores: colores(),
-      dimensiones: dimensiones()
+      dimensiones_actuales: dimensionesActuales(),
+      dimensiones_nuevas: dimensionesNuevas()
     },
     dataType: 'json',
     beforeSend: function () {
