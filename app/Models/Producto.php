@@ -7,6 +7,7 @@ use App\Models\Categoria;
 use App\Models\DescripcionProducto;
 use App\Models\Color;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class Producto extends Model
 {
@@ -94,8 +95,8 @@ class Producto extends Model
     $arr = [];
     
     foreach ($dimensiones as $n => $dimension) {
-      $dimension = DescripcionProducto::create(['n_orden' => $n+1, 'dimension' => $dimension]);
-      array_push($arr, $dimension->id);
+      $descripcion = DescripcionProducto::create(['n_orden' => $n+1, 'dimension' => $dimension]);
+      array_push($arr, $descripcion->id);
     }
 
     return $arr;
@@ -124,15 +125,79 @@ class Producto extends Model
     $this->categoria = $this->srtCategoria($datos['categorias']);
     $this->save();
     $this->categorias()->sync($datos['categorias']);
-    $this->colores()->sync($datos['colores']);
+    $this->colores()->detach($this->idsColoresBorrar($datos));//ver si se puede
+    $arrIdsDescripciones = $this->idsDescripcionesBorrar($datos);//ver si se puede
+    $this->descripciones()->detach($arrIdsDescripciones);//ver si se puede
+    DescripcionProducto::destroy($arrIdsDescripciones);//ver si se puede
+    $this->actualizarDescripciones($datos);
+    $idsDimensiones = $this->arrDimensionesNuevas($datos);
+    $articulos = $producto->arrArticulos($datos['colores'], $idsDimensiones, $this->id);
+    DB::table('articulos')->insert($articulos);
   }
+  
   /*******************************************************************************
-    * Guarda las descripciones del producto
+    * Arreglo de ids de Colores que se van a borrar
     * @in Array[]
-    * @out
+    * @out Array
   *********************************************************************************/
-  protected function syncDescripciones($datos){
-    $this->descripciones()->sync($datos['dimensiones_actuales']);
-    $idsDimensiones = $producto->arrDimensiones($datos);
+  public function idsColoresBorrar($datos){
+    $arrColores = $this->colores()->distinct()->get()->pluck('id')->all();
+    $arrColoresActuales = $datos['colores'];
+    $colores = array();
+
+    foreach ($arrColores as $idColor) {
+      if (!in_array($idColor, $arrColoresActuales)) array_push($colores, $idColor);
+    }
+    
+    return $colores;
+  }
+
+  /*******************************************************************************
+    * Arreglo de ids de Descripciones que se van a borrar
+    * @in Array[]
+    * @out Array
+  *********************************************************************************/
+  public function idsDescripcionesBorrar($datos){
+    $idsDescripciones = $this->descripciones()->distinct()->get()->pluck('id')->all();
+    $idsDescripcionesActuales = collect($datos['dimensiones_actuales'])->pluck('id')->all();
+    $dimeniones = array();
+
+    foreach ($idsDescripciones as $idDescripcion) {
+      if (!in_array($idDescripcion, $idsDescripcionesActuales)) array_push($dimeniones, $idDescripcion);
+    }
+
+    return $dimeniones;
+  }
+
+  /*******************************************************************************
+    * Actualiza el n_orden de las descripciones del producto
+    * @in Array[]
+    * @out 
+  *********************************************************************************/
+  public function actualizarDescripciones($datos){
+    $dimesionesActuales = $datos['dimensiones_actuales'];
+
+    foreach ($dimesionesActuales as $dimension) {
+      $descripcion = DescripcionProducto::find($dimension['id']);
+      $descripcion->n_orden = $dimension['n_orden'];
+      $descripcion->save();
+    }
+  }
+
+  /*******************************************************************************
+    * Funcion que guarda las dimensiones nuevas y arroja los ids guardados
+    * @in Array[]
+    * @out 
+  *********************************************************************************/
+  public function arrDimensionesNuevas($datos){
+    $dimensiones = $datos['dimensiones_nuevas'];
+    $arr = [];
+    
+    foreach ($dimensiones as $dimension) {      
+      $descripcion = DescripcionProducto::create(['n_orden' => $dimension['n_orden'], 'dimension' => $dimension['dimension']]);
+      array_push($arr, $descripcion->id);
+    }
+
+    return $arr;
   }
 }
