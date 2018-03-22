@@ -130,9 +130,11 @@ class Producto extends Model
     $this->descripciones()->detach($arrIdsDescripciones);//ver si se puede
     DescripcionProducto::destroy($arrIdsDescripciones);//ver si se puede
     $this->actualizarDescripciones($datos);
-    $idsDimensiones = $this->arrDimensionesNuevas($datos);
-    $articulos = $producto->arrArticulos($datos['colores'], $idsDimensiones, $this->id);
-    DB::table('articulos')->insert($articulos);
+    if (isset($datos['dimensiones_nuevas'])) {
+      $idsDimensiones = $this->arrDimensionesNuevas($datos);
+      $articulos = $this->arrArticulos($datos['colores'], $idsDimensiones, $this->id);
+      DB::table('articulos')->insert($articulos);
+    }
   }
   
   /*******************************************************************************

@@ -14,6 +14,7 @@ use App\Http\Requests\MarcaRequest;
 use App\Http\Requests\UnidadRequest;
 use App\Http\Requests\ColorRequest;
 use App\Http\Requests\ProductoRequest;
+use App\Http\Requests\ActualizarProductoRequest;
 use Illuminate\Support\Facades\DB;
 
 class ProductosController extends Controller
@@ -77,7 +78,6 @@ class ProductosController extends Controller
       
       return response()->json([], 500);
     }
-    
   }
 
   /**
@@ -86,9 +86,8 @@ class ProductosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
-  {
-      //
+  public function show($id){
+    //
   }
 
   /**
@@ -120,8 +119,20 @@ class ProductosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, Producto $producto){
-    $producto->actualizar($request->all());
+  public function update(ActualizarProductoRequest $request, Producto $producto){
+    DB::beginTransaction();
+    
+    try {
+      $producto->actualizar($request->all());
+      DB::commit();
+
+      return response()->json([]);
+    } catch (\Exception $e) {
+      DB::rollBack();
+      dd($e);
+      
+      return response()->json([], 500);
+    }
   }
 
   /**
@@ -130,9 +141,8 @@ class ProductosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
-      //
+  public function destroy($id){
+    //
   }
 
   public function cbBoxCategoria(CategoriaRequest $request){

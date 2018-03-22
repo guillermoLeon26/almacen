@@ -7,6 +7,7 @@ function guardar() {
     type: 'POST',
     data: {
       _method: 'PUT',
+      producto_id: {{ $producto->id }},
       categorias: categorias(),
       producto: producto(),
       colores: colores(),
