@@ -125,11 +125,19 @@ class Producto extends Model
     $this->categoria = $this->srtCategoria($datos['categorias']);
     $this->save();
     $this->categorias()->sync($datos['categorias']);
-    $this->colores()->detach($this->idsColoresBorrar($datos));//ver si se puede
-    $arrIdsDescripciones = $this->idsDescripcionesBorrar($datos);//ver si se puede
-    $this->descripciones()->detach($arrIdsDescripciones);//ver si se puede
-    DescripcionProducto::destroy($arrIdsDescripciones);//ver si se puede
+    
+    $arrIdsColoresBorrar = $this->idsColoresBorrar($datos);
+    if (count($arrIdsColoresBorrar) > 0) 
+      $this->colores()->detach($arrIdsColoresBorrar); 
+
+    $arrIdsDescripciones = $this->idsDescripcionesBorrar($datos);
+    if (count($arrIdsDescripciones) > 0) {
+      $this->descripciones()->detach($arrIdsDescripciones);
+      DescripcionProducto::destroy($arrIdsDescripciones);
+    }
+
     $this->actualizarDescripciones($datos);
+    
     if (isset($datos['dimensiones_nuevas'])) {
       $idsDimensiones = $this->arrDimensionesNuevas($datos);
       $articulos = $this->arrArticulos($datos['colores'], $idsDimensiones, $this->id);
