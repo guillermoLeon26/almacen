@@ -52,6 +52,7 @@ function ingresarColorTabla() {
               '<td></td>'+
               '<td>'+
                 '<input type="hidden" class="colores" value="'+idColor+'">'+
+                '<input type="hidden" class="coloresNuevos" value="'+idColor+'">'+
                 color+
               '</td>'+
               '<td>'+
@@ -87,6 +88,15 @@ function colores() {
 
   return colores;
 }
-//----------------------------------------------------------------
+
+function coloresNuevos() {
+  var colores = [];
+
+  $('.coloresNuevos').each(function (i, node) {
+    colores.push(node.value);
+  });
+
+  return colores;
+}
 
 </script>

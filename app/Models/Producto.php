@@ -143,6 +143,12 @@ class Producto extends Model
       $articulos = $this->arrArticulos($datos['colores'], $idsDimensiones, $this->id);
       DB::table('articulos')->insert($articulos);
     }
+
+    if (isset($datos['colores_nuevos'])) {
+      $idsDimensiones = collect($datos['dimensiones_actuales'])->pluck('id')->all();
+      $articulos = $this->arrArticulos($datos['colores_nuevos'], $idsDimensiones, $this->id);
+      DB::table('articulos')->insert($articulos);
+    }
   }
   
   /*******************************************************************************
@@ -155,9 +161,8 @@ class Producto extends Model
     $arrColoresActuales = $datos['colores'];
     $colores = array();
 
-    foreach ($arrColores as $idColor) {
+    foreach ($arrColores as $idColor) 
       if (!in_array($idColor, $arrColoresActuales)) array_push($colores, $idColor);
-    }
     
     return $colores;
   }
@@ -172,10 +177,9 @@ class Producto extends Model
     $idsDescripcionesActuales = collect($datos['dimensiones_actuales'])->pluck('id')->all();
     $dimeniones = array();
 
-    foreach ($idsDescripciones as $idDescripcion) {
+    foreach ($idsDescripciones as $idDescripcion)
       if (!in_array($idDescripcion, $idsDescripcionesActuales)) array_push($dimeniones, $idDescripcion);
-    }
-
+    
     return $dimeniones;
   }
 

@@ -11,6 +11,7 @@ function guardar() {
       categorias: categorias(),
       producto: producto(),
       colores: colores(),
+      colores_nuevos: coloresNuevos(),
       dimensiones_actuales: dimensionesActuales(),
       dimensiones_nuevas: dimensionesNuevas()
     },
@@ -23,7 +24,6 @@ function guardar() {
     },
     success: function (data) {
       $('.overlay').detach();
-      $('#btnGuardar').prop('disabled', false);
       toastr.success('Se ingresó el producto correctamente.');
       window.location.href = "{{ url('admin/inventario/productos') }}";
     },
