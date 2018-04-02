@@ -41,8 +41,10 @@
     </div>
   </div>
 
+  @include('admin.inventario.producto.index.include.eliminar')
 @endsection
 
 @push('js')
   @include('admin.inventario.producto.index.js.js')
+  @include('admin.inventario.producto.index.js.jsEliminar')
 @endpush

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\SePuedeActualizarColor;
+use App\Rules\SePuedeActualizarDimension;
 
 class ActualizarProductoRequest extends FormRequest
 {
@@ -23,7 +24,29 @@ class ActualizarProductoRequest extends FormRequest
    */
   public function rules(){
     return [
-      'colores' =>  [new SePuedeActualizarColor($this->producto_id)]
+      'producto_id'             =>  'required|numeric',
+      'categorias'              =>  'required|array',
+      'categorias.*'            =>  'numeric',
+      'producto'                =>  'required|array|max:5',
+      'producto.codigo'         =>  'required|max:45',
+      'producto.marca'          =>  'required|max:45',
+      'producto.unidades'       =>  'required|max:45',
+      'producto.simbolo'        =>  'required|max:45',
+      'producto.descripcion'    =>  'required',
+      'colores'                 =>  [
+                                      'required',
+                                      'array',
+                                      new SePuedeActualizarColor($this->producto_id)
+                                    ],
+      'colores.*'               =>  'numeric',
+      'colores_nuevos'          =>  'array',
+      'colores_nuevos.*'        =>  'numeric',
+      'dimensiones_actuales'    =>  [
+                                      'required',
+                                      'array',
+                                      new SePuedeActualizarDimension($this->producto_id)
+                                    ],
+      'dimensiones_nuevas'      =>  'array',
     ];
   }
 }

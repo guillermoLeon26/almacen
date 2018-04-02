@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use App\Models\Producto;
 
 class SePuedeActualizarColor implements Rule
 {
@@ -25,13 +26,15 @@ class SePuedeActualizarColor implements Rule
    * @return bool
    */
   public function passes($attribute, $value){
+    $colores = Producto::findOrfail($this->producto_id)->colores()->distinct()->get()->pluck('id')->all();
+    $coloresEliminar = array_diff($colores, $value);
     $articulos = DB::table('articulos')->where('producto_id', '=', $this->producto_id)
-                                       ->whereIn('color_id', $value)
+                                       ->whereIn('color_id', $coloresEliminar)
                                        ->get()
                                        ->pluck('id')
                                        ->all();
-    
-    return DB::table('bodega_artidulo')->whereIn('id', $articulos)->get()->isEmpty();
+
+    return DB::table('bodega_artidulo')->whereIn('articulos_id', $articulos)->get()->isEmpty();
   }
 
   /**

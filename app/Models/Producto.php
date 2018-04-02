@@ -15,6 +15,10 @@ class Producto extends Model
   protected $fillable = ['codigo', 'marca', 'descripcion', 'unidades', 'simbolo'];
 
   //------------------------------------RELACIONES----------------------------------
+  public function articulos(){
+    return $this->hasMany('App\Models\Articulo');
+  }
+
   public function categorias(){
     return $this->belongsToMany('App\Models\Categoria', 'producto_categoria');
   }
@@ -120,6 +124,11 @@ class Producto extends Model
   //***********************************************************************************
   //-------------------------------FUNCIONES ACTUALIZAR PRODUCTO-----------------------
   //***********************************************************************************
+  /*********************************************************************************
+    * Funcion para actualizar el producto
+    * @in producto, categorias, colores, dimensiones
+    * @out
+    *********************************************************************************/
   public function actualizar($datos){
     $this->fill($datos['producto']);
     $this->categoria = $this->srtCategoria($datos['categorias']);
@@ -213,5 +222,21 @@ class Producto extends Model
     }
 
     return $arr;
+  }
+  //***********************************************************************************
+  //----------------------------FUNCIONES PARA ELIMINAR PRODUCTO-----------------------
+  //***********************************************************************************
+  /*********************************************************************************
+    * Funcion para eliminar el producto
+    * @in producto, categorias, colores, dimensiones
+    * @out
+  *********************************************************************************/
+  public function eliminar(){
+    $dimensiones = $this->descripciones()->distinct()->get()->pluck('id')->all();
+    $this->descripciones()->detach($dimensiones);
+    DescripcionProducto::destroy($dimensiones);
+    $this->categorias()->detach();
+    $this->imagenes()->delete();
+    $this->delete();
   }
 }

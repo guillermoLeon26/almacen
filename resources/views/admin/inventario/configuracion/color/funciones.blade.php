@@ -141,6 +141,7 @@
 			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
 			url: '{{url('admin/inventario/configuracion/Color')}}/' + id,
 			type: 'DELETE',
+			data: {color_id: id},
 			dataType: 'json',
 			beforeSend: function () {
 				$('#eliminarColor').modal('hide');

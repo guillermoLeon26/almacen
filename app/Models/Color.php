@@ -10,8 +10,7 @@ class Color extends Model
   public $timestamps = false;
   protected $fillable = ['color'];
 
-  public function scopeBuscar($query, $buscar)
-  {
+  public function scopeBuscar($query, $buscar){
     return $query->where('color', 'like', '%'.$buscar.'%');
   }
 }

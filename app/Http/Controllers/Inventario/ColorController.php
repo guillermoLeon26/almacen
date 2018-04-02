@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ColorRequest;
 use App\Models\Color;
+use App\Rules\SePuedeEliminarColor;
 
 class ColorController extends Controller
 {
@@ -97,8 +98,9 @@ class ColorController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy(Request $request, $id)
   {
+    $request->validate(['color_id' => ['required', new SePuedeEliminarColor]]);
     Color::destroy($id);
 
     return response()->json(['mensaje'=>'Se eliminó correctamente el color']);
