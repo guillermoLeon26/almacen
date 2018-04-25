@@ -38,6 +38,11 @@ class ImagenController extends Controller
   public function store(Request $request)
   {
     Imagen::guardar($request);
+    $producto = Producto::findOrFail($request->producto_id);
+
+    return response()
+      ->json(view('admin.inventario.producto.imagenes.include.imagenes', ['producto' => $producto])
+        ->render());
   }
 
   /**
@@ -47,9 +52,9 @@ class ImagenController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function show($id){
-    $producto = Producto::findOrFail($id);
+    $imagenes = Producto::findOrFail($id)->imagenes->paginate(5);
     
-    return view('admin.inventario.producto.imagenes.show', ['producto' => $producto]);
+    return view('admin.inventario.producto.imagenes.show', ['imagenes' => $imagenes]);
   }
 
   /**

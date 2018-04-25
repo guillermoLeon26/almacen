@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Color;
 use Image;
 
 class Imagen extends Model
@@ -33,8 +34,7 @@ class Imagen extends Model
     $imagen = new Imagen($request->all());
     $imagen->n_orden = $imagen->numeroDeOrden();
     $imagen->imagen = (String) $image->encode('data-url');
-    //$imagen->save();
-    dd($imagen);
+    $imagen->save();
   }
 
   /**
@@ -46,5 +46,14 @@ class Imagen extends Model
     $imagenes = $this->producto->imagenes;
 
     return ($imagenes->count() == 0)?1:array_get($imagenes->last(), 'n_orden')+1;
+  }
+
+  /**
+   * Devuelve el color de la imagen del produto.
+   *
+   * @return string
+   */
+  public function color(){
+    return Color::findOrFail($this->colores_id)->color;
   }
 }

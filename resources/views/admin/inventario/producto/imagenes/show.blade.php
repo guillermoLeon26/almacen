@@ -25,21 +25,8 @@
           <button class="btn btn-success" onclick="ingresarImagenProducto()">Ingresar</button>
         </div>
 
-        <div class="box-body table-responsive no-padding">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Mover</th>
-                <th>Imagen</th>
-                <th>Color</th>
-                <th>Eliminar</th>
-              </tr> 
-            </thead>
-
-            <tbody id="tbodyTablaImagenes">
-              @include('admin.inventario.producto.imagenes.include.imagenes')
-            </tbody>
-          </table>          
+        <div id="tbodyTablaImagenes">
+          @include('admin.inventario.producto.imagenes.include.imagenes')
         </div>
       </div>
     </div>

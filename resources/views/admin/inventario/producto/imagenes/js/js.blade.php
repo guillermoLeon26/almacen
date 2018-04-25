@@ -30,58 +30,24 @@ $('#formImgresarImagen').submit(function (e) {
     contentType: false,
     processData: false,
     beforeSend: function () {
-      $('#formImgresarImagen .form-control').prop('disabled', true);
-      $('#imagenIngresar').fileinput('disable');
-      $('#btnIngresaImagen').prop('disabled', true);
-      $('#btnIngresaImagen').html('<i class="fa fa-refresh fa-spin"></i>');
-      $('#modalIngresarImagen .cerrar').removeAttr('data-dismiss');
+      $('.box').append('<div class="overlay">'+
+                        '<i class="fa fa-refresh fa-spin"></i>'+
+                      '</div>');
 
       $('#modalIngresarImagen').modal('hide');
     },
     success: function(data){
-      $('#formImgresarImagen .form-control').prop('disabled', false);
-      $('#imagenIngresar').fileinput('enable');
-      $('#imagenIngresar').fileinput('clear');
-      $('#btnIngresaImagen').prop('disabled', false);
-      $('#btnIngresaImagen').html('Ingresar');
-      $('#modalIngresarImagen .cerrar').attr('data-dismiss','modal');
-      $('#modalIngresarImagen').modal('hide');
+      $('.overlay').detach();     
 
-      actualizarTablaImagenes($('#idProducto').val());
+      $('#tbodyTablaImagenes').html(data);
     },
     error: function (data) {
-      $('#formImgresarImagen .form-control').prop('disabled', false);
-      $('#btnIngresaImagen').prop('disabled', false);
-      $('#imagenIngresar').fileinput('enable');
-      $('#btnIngresaImagen').html('Ingresar');
-      $('#modalIngresarImagen .cerrar').attr('data-dismiss','modal');
+      $('.overlay').detach();
 
-      mensaje('error', data, '#mensajeModalColor');
+      mensaje('error', data, '#mensaje');
     }
   });
 });
-
-function actualizarTablaImagenes(idProducto) {
-  $.ajax({
-    headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('inventario/producto/imagen') }}/' + idProducto,
-    type: 'GET',
-    dataType: 'json',
-    beforeSend: function () {
-      $('.box').append('<div class="overlay">'+
-                        '<i class="fa fa-refresh fa-spin"></i>'+
-                     '</div>');
-    },
-    success: function (data) {
-      $('.overlay').detach();
-      $('#tbodyTablaImagenes').html(data);
-    },
-    error: function () {
-      $('.overlay').detach();
-      mensaje2('error', 'Ocurrio un error con la conexión', '#mensaje');
-    }
-  });
-}
 
 function eliminarImagen(idImagen, idProducto) {
   $.ajax({
