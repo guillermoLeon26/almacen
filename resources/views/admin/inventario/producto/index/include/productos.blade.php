@@ -21,6 +21,7 @@
             <td>{{$producto->codigo}}</td>
             <td>{{$producto->marca}}</td>
             <td>
+              @include('admin.inventario.producto.index.include.btnImagen', ['id' => $producto->id])
               <a href="{{url('admin/inventario/productos')}}/{{$producto->id}}/edit" class="btn btn-info">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
               </a>

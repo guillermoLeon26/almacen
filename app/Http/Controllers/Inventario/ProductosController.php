@@ -9,6 +9,7 @@ use App\Models\Categoria;
 use App\Models\Marca;
 use App\Models\Unidad;
 use App\Models\Color;
+use App\Models\Imagen;
 use App\Http\Requests\CategoriaRequest;
 use App\Http\Requests\MarcaRequest;
 use App\Http\Requests\UnidadRequest;
@@ -32,9 +33,7 @@ class ProductosController extends Controller
     $productos = Producto::buscar($filtro)->paginate(5);
 
     if ($request->ajax()) {
-      return response()
-        ->json(view('admin.inventario.producto.index.include.productos', ['productos' => $productos])
-          ->render());
+      return response()->json(view('admin.inventario.producto.index.include.productos', ['productos' => $productos])->render());
     }
 
     return view('admin.inventario.producto.index.index', ['productos' => $productos]);

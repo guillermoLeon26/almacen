@@ -34,6 +34,7 @@ class ProductoRequest extends FormRequest
         'producto.descripcion'  =>  'required',
         'colores'               =>  'required|array',
         'dimensiones'           =>  'required|array',
+        'dimensiones.*'         =>  'distinct'
       ];
     }
 }

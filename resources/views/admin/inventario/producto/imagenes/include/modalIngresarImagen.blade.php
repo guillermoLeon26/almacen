@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalIngresarImagen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="modalIngresarImagen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog " role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -16,10 +16,10 @@
           
             <div class="form-group">
               <label class="control-label">Color</label>
-              <input type="hidden" id="idProducto" name="product_id" value="{{ $producto->id }}">
-              <select id="comboBoxColor" name="color" class="form-control select2" style="width: 100%;">
-                @foreach($producto->colores as $color)
-                  <option value="{{ $color }}">{{ $color }}</option>
+              <input type="hidden" id="idProducto" name="producto_id" value="{{ $producto->id }}">
+              <select id="comboBoxColor" name="colores_id" class="form-control select2" style="width: 100%;">
+                @foreach($producto->listaColores() as $color)
+                  <option value="{{ $color->id }}">{{ $color->color }}</option>
                 @endforeach
               </select>
             </div>
