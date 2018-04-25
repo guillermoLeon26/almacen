@@ -24,13 +24,15 @@ $('#formEliminar').submit(function (e) {
                        '</div>');
     },
     success: function () {
-      toastr.success('Se eliminó el color correctamente.');
-
+      toastr.success('Se eliminó el producto correctamente.');
+      
       var filtro = $('#buscar').val();
-      var page = $(this).attr('href').split('page=')[1];
+
+      var page = ($('.pagination a').is('href'))?$('.pagination a').attr('href').split('page=')[1]:1;
 
       $('.overlay').detach();
-      generarTabla(1, filtro);
+      console.log('2');
+      generarTabla(page, filtro);
     },
     error: function (data) {
       $('.overlay').detach();

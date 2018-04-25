@@ -51,6 +51,15 @@ class Producto extends Model
   public function listaDescripciones(){
     return $this->descripciones()->distinct()->get()->sortBy('n_orden');
   }
+
+  /*******************************************************************************
+    * Lista de descripciones 
+    * @in 
+    * @out Collection[descripcipon]
+    *********************************************************************************/
+  public function listaColores(){
+    return $this->colores()->distinct()->get();
+  }
   //***********************************************************************************
   //-------------------------------FUNCIONES GUARDAR PRODUCTO--------------------------
   //***********************************************************************************

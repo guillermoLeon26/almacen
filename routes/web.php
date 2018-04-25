@@ -27,6 +27,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/inventario'], function 
   //-----------------------------PRODUCTOS------------------------------------
   Route::resource('productos', 'Inventario\ProductosController');
   Route::group(['prefix' => 'productos'], function (){
+    //Route::get('imagenes/{producto}', 'Inventario\ProductosController@imagenes');
+    Route::resource('imagenes', 'Inventario\ImagenController');
     Route::post('cbBoxCategoria', 'Inventario\ProductosController@cbBoxCategoria');
     Route::post('cbBoxMarca', 'Inventario\ProductosController@cbBoxMarca');
     Route::post('cbBoxUnidad', 'Inventario\ProductosController@cbBoxUnidad');
