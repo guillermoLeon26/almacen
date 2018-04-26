@@ -18,6 +18,34 @@ function ingresarImagenProducto() {
   $('#modalIngresarImagen').modal('show');
 }
 
+//----------------------GENERAR TABLA-------------------------
+  $(document).on('click', '.pagination a', function (e) {
+    e.preventDefault();
+    var page = $(this).attr('href').split('page=')[1];
+    
+    generarTabla(page);
+  });
+
+  function generarTabla(page) {
+    $.ajax({
+      headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
+      url: '{{ url('admin/inventario/productos/imagenes') }}/{{ $producto->id }}',
+      type: 'GET',
+      data: {'page':page},
+      dataType: 'json',
+      beforeSend: function () {
+        $('.box').append('<div class="overlay">'+
+                            '<i class="fa fa-refresh fa-spin"></i>'+
+                         '</div>');
+      },
+      success: function (data) {
+        $('#tbodyTablaImagenes').html(data);
+        $('.overlay').detach();
+      }
+    });
+  }
+//--------------------------------------------------------------
+
 $('#formImgresarImagen').submit(function (e) {
   e.preventDefault();
 
@@ -37,9 +65,11 @@ $('#formImgresarImagen').submit(function (e) {
       $('#modalIngresarImagen').modal('hide');
     },
     success: function(data){
-      $('.overlay').detach();     
+      $('.overlay').detach();
+      var page = $('.pagination .active span').html(); 
+      toastr.success('Se ingresó la imagen correctamente.');
 
-      $('#tbodyTablaImagenes').html(data);
+      generarTabla(page);
     },
     error: function (data) {
       $('.overlay').detach();

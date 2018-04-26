@@ -5,15 +5,23 @@
 		[
 			[
 				"ima",
-				"imagenes"
+				"imagen"
+			],
+			[
+				"pa",
+				"page"
+			],
+			[
+				"gene",
+				"generarTabla"
+			],
+			[
+				"pro",
+				"producto"
 			],
 			[
 				"tb",
 				"tbodyTablaImagenes"
-			],
-			[
-				"pro",
-				"producto_id"
 			],
 			[
 				"M",
@@ -222,10 +230,6 @@
 			[
 				"RE",
 				"Request"
-			],
-			[
-				"pa",
-				"padding-top"
 			],
 			[
 				"padding-",
@@ -510,10 +514,6 @@
 			[
 				"regis",
 				"registrar"
-			],
-			[
-				"e",
-				"encrypted"
 			]
 		]
 	},
@@ -540,42 +540,16 @@
 			"file": "app/Http/Controllers/Inventario/ImagenController.php",
 			"settings":
 			{
-				"buffer_size": 1840,
+				"buffer_size": 1964,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/Inventario/ProductosController.php",
-			"settings":
-			{
-				"buffer_size": 4978,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/admin/inventario/producto/imagenes/show.blade.php",
-			"settings":
-			{
-				"buffer_size": 1028,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/admin/inventario/producto/imagenes/include/imagenes.blade.php",
-			"settings":
-			{
-				"buffer_size": 1431,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "resources/views/admin/inventario/producto/imagenes/js/js.blade.php",
 			"settings":
 			{
-				"buffer_size": 4892,
+				"buffer_size": 5867,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -631,10 +605,19 @@
 		"/D/XAMPP/htdocs/almacen/resources/views",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto"
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes"
 	],
 	"file_history":
 	[
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/js/js.blade.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/include/imagenes.blade.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/include/marcas.blade.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/js/js.blade.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/funciones.blade.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/show.blade.php",
+		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ProductosController.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/include/modalIngresarImagen.blade.php",
 		"/D/XAMPP/htdocs/geogis/sublime.sublime-project",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/include/btnImagen.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/include/productos.blade.php",
@@ -642,7 +625,6 @@
 		"/D/XAMPP/htdocs/almacen/app/Models/Producto.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/color/color.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/color/include/colores.blade.php",
-		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ProductosController.php",
 		"/D/NODE/OTROS/prueba-eletron/package.json",
 		"/D/NODE/OTROS/prueba-eletron/main.js",
 		"/D/NODE/OTROS/prueba-eletron/node_modules/.bin/electron-builder",
@@ -665,16 +647,11 @@
 		"/D/XAMPP/htdocs/contabilidad/app/Product.php",
 		"/D/XAMPP/htdocs/contabilidad/composer.json",
 		"/D/XAMPP/htdocs/almacen/app/Models/Imagen.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/show.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/js/js.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/include/imagenes.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/include/modalIngresarImagen.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/edit/edit.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/css/css.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ImagenController.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Requests/ProductoRequest.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/include/eliminar.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/js/js.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/js/jsEliminar.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/MarcaController.php",
 		"/D/XAMPP/htdocs/almacen/app/Models/Color.php",
@@ -751,7 +728,6 @@
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/CategoriaController.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/js/js.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/librerias/js/mensajes.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/funciones.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/plantilla/include/menuPrincipal.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/marca.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Requests/MarcaRequest.php",
@@ -761,8 +737,7 @@
 		"/D/XAMPP/htdocs/almacen/app/Models/Unidad.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/UnidadesController.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Requests/UnidadRequest.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/unidad/funciones.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/unidad/unidad.blade.php"
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/unidad/funciones.blade.php"
 	],
 	"find":
 	{
@@ -860,7 +835,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -923,10 +898,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 114.0,
+						"translation.y": 95.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -935,15 +910,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1840,
+						"buffer_size": 1964,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1052,
-								1052
+								696,
+								696
 							]
 						],
 						"settings":
@@ -956,126 +931,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 684.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/Http/Controllers/Inventario/ProductosController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4978,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 152.0,
+						"translation.y": 570.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "resources/views/admin/inventario/producto/imagenes/show.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1028,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								825,
-								825
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 114.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "resources/views/admin/inventario/producto/imagenes/include/imagenes.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1431,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1274,
-								1274
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 228.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
+					"buffer": 3,
 					"file": "resources/views/admin/inventario/producto/imagenes/js/js.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4892,
+						"buffer_size": 5867,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1237,
-								1237
+								2061,
+								2061
 							]
 						],
 						"settings":
@@ -1088,10 +964,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 399.0,
+						"translation.y": 969.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
