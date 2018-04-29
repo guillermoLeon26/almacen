@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Producto;
 use App\Models\Imagen;
+use Illuminate\Support\Facades\DB;
 
 class ImagenController extends Controller
 {
@@ -35,8 +36,7 @@ class ImagenController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
+  public function store(Request $request){
     Imagen::guardar($request);
 
     return response()->json([]);
@@ -50,7 +50,7 @@ class ImagenController extends Controller
    */
   public function show($id, Request $request){
     $producto = Producto::findOrFail($id);
-    $imagenes = $producto->imagenes()->paginate(5);
+    $imagenes = $producto->imagenes()->orderBy('n_orden')->paginate(5);
     $page = $request->page;
 
     if ($request->ajax()) {
@@ -82,9 +82,18 @@ class ImagenController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
-  {
-      //
+  public function update(Request $request, $id){
+    DB::beginTransaction();
+    try {
+      Imagen::findOrFail($id)->actualizarNumeroDeOrden($request->mover); 
+      DB::commit();
+
+      return response()->json([]);
+    } catch (\Exception $e) {
+      DB::rollBack();
+      
+      return response()->json([], 500);
+    }
   }
 
   /**

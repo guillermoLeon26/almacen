@@ -66,7 +66,7 @@ $('#formImgresarImagen').submit(function (e) {
     },
     success: function(data){
       $('.overlay').detach();
-      var page = $('.pagination .active span').html(); 
+      var page = $('.pagination .active span').html();
       toastr.success('Se ingresó la imagen correctamente.');
 
       generarTabla(page);
@@ -103,9 +103,12 @@ function eliminarImagen(idImagen, idProducto) {
 function bajarNumeroOrden(idImagen) {
   $.ajax({
     headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('inventario/producto/imagen') }}/' + idImagen,
-    type: 'PUT',
-    data: {'mover':'abajo'},
+    url: '{{ url('admin/inventario/productos/imagenes') }}/' + idImagen,
+    type: 'POST',
+    data: {
+      '_method':'PUT',
+      'mover':'abajo'
+    },
     dataType: 'json',
     beforeSend: function () {
       $('.box').append('<div class="overlay">'+
@@ -113,7 +116,11 @@ function bajarNumeroOrden(idImagen) {
                      '</div>');
     },
     success: function (data) {
-      actualizarTablaImagenes($('#idProducto').val());
+      $('.overlay').detach();
+      var page = $('.pagination .active span').html();
+      
+      toastr.success('Se actualizó el orden de la imagen correctamente.');
+      generarTabla(page);
     },
     error: function (data) {
       $('.overlay').detach();
@@ -125,17 +132,24 @@ function bajarNumeroOrden(idImagen) {
 function subirNumeroOrden(idImagen) {
   $.ajax({
     headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('inventario/producto/imagen') }}/' + idImagen,
-    type: 'PUT',
-    data: {'mover':'arriba'},
+    url: '{{ url('admin/inventario/productos/imagenes') }}/' + idImagen,
+    type: 'POST',
+    data: {
+      '_method':'PUT',
+      'mover':'arriba'
+    },
     dataType: 'json',
     beforeSend: function () {
       $('.box').append('<div class="overlay">'+
                         '<i class="fa fa-refresh fa-spin"></i>'+
                      '</div>');
     },
-    success: function (data) {
-      actualizarTablaImagenes($('#idProducto').val());
+    success: function () {
+      $('.overlay').detach();
+      var page = $('.pagination .active span').html();
+      
+      toastr.success('Se actualizó el orden de la imagen correctamente.');
+      generarTabla(page);
     },
     error: function (data) {
       $('.overlay').detach();

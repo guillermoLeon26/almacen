@@ -56,4 +56,57 @@ class Imagen extends Model
   public function color(){
     return Color::findOrFail($this->colores_id)->color;
   }
+
+  /**
+   * Actualiza el numero de orden de la imagen.
+   *
+   * @param string $mover (subir o bajar)
+   * @return
+   */
+  public function actualizarNumeroDeOrden($mover){
+    if ($mover === 'arriba') 
+      $this->moverArriba();
+    else 
+      $this->moverAbajo();
+  }
+
+  public function moverArriba(){
+    $imagenes = $this->producto->imagenes()->orderBy('n_orden')->get();
+    $imagenUltima = $imagenes->last();
+    $n_ordenImagenActual = $this->n_orden;
+
+    if ($this->id !== $imagenUltima->id) {
+      $ubicacionImagenActual = $imagenes->search(function ($imagen, $key){
+                                return $imagen->id == $this->id;
+                               });
+      $imagenSiguiente = $imagenes[$ubicacionImagenActual+1];
+      $n_ordenImagenSiguiente = $imagenSiguiente->n_orden;
+
+      $imagenSiguiente->n_orden = $n_ordenImagenActual;
+      $this->n_orden = $n_ordenImagenSiguiente;
+
+      $imagenSiguiente->save();
+      $this->save();
+    }
+  }
+
+  public function moverAbajo(){
+    $imagenes = $this->producto->imagenes()->orderBy('n_orden')->get();
+    $imagenPrimera = $imagenes->first();
+    $n_ordenImagenActual = $this->n_orden;
+
+    if ($this->id !== $imagenPrimera->id) {
+      $ubicacionImagenActual = $imagenes->search(function ($imagen, $key){
+                                return $imagen->id == $this->id;
+                               });
+      $imagenAnterior = $imagenes[$ubicacionImagenActual-1];
+      $n_ordenImagenAnterior = $imagenAnterior->n_orden;
+
+      $imagenAnterior->n_orden = $n_ordenImagenActual;
+      $this->n_orden = $n_ordenImagenAnterior;
+
+      $imagenAnterior->save();
+      $this->save();
+    }
+  }
 }
