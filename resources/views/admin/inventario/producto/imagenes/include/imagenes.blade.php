@@ -31,7 +31,7 @@
           </td>
 
           <td>
-            <button type="button" class="btn btn-danger" onclick="eliminarImagen({{ $imagen->id }}, {{ $imagen->producto->id }})">
+            <button type="button" class="btn btn-danger" onclick="eliminar({{ $imagen->id }})">
               <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
           </td>

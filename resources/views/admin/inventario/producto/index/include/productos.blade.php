@@ -14,7 +14,7 @@
           <tr>
             <td>
               @if($producto->imagenes->isNotEmpty())
-                <img class="img-responsive img-thumbnail" src="{{$producto->imagenes->first()->imagen}}" alt="{{$producto->imagenes->first()->nombre}}" height="100px" width="100px">
+                <img class="img-responsive img-thumbnail" src="{{$producto->imagenes()->orderBy('n_orden')->first()->imagen}}" alt="{{$producto->imagenes()->orderBy('n_orden')->first()->nombre}}" height="100px" width="100px">
               @endif
             </td>
             <td>{{$producto->categoria}}</td>

@@ -33,6 +33,7 @@
   </div>
 
   @include('admin.inventario.producto.imagenes.include.modalIngresarImagen')
+  @include('admin.inventario.producto.imagenes.include.modalEliminar')
   
 @endsection
 

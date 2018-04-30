@@ -102,8 +102,9 @@ class ImagenController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
-      //
+  public function destroy($id){
+    Imagen::destroy($id);
+    
+    return response()->json([]);
   }
 }

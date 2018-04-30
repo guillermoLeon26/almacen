@@ -79,26 +79,39 @@ $('#formImgresarImagen').submit(function (e) {
   });
 });
 
-function eliminarImagen(idImagen, idProducto) {
+function eliminar(id) {
+  $('#eliminarId').val(id);
+  $('#modalEliminar').modal('show');
+}
+
+$('#formEliminar').submit(function (e) {
+  e.preventDefault();
+  var id = $('#eliminarId').val();
+
   $.ajax({
     headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('inventario/producto/imagen') }}/' + idImagen,
+    url: '{{ url('admin/inventario/productos/imagenes') }}/' + id,
     type: 'DELETE',
     dataType: 'json',
     beforeSend: function () {
+      $('#modalEliminar').modal('hide');
       $('.box').append('<div class="overlay">'+
                         '<i class="fa fa-refresh fa-spin"></i>'+
-                     '</div>');
+                       '</div>');
     },
     success: function () {
-      actualizarTablaImagenes(idProducto);
+      $('.overlay').detach();
+      var page = $('.pagination .active span').html();
+      
+      toastr.success('Se eliminó la imagen correctamente.');
+      generarTabla(page);
     },
     error: function (data) {
       $('.overlay').detach();
       mensaje2('error', 'Ocurrio un error con la conexión', '#mensaje');
     }
   });
-}
+});
 
 function bajarNumeroOrden(idImagen) {
   $.ajax({
