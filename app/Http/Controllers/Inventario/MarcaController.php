@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MarcaRequest;
 use App\Models\Marca;
+use App\Rules\SePedeEliminarMarca;
 
 class MarcaController extends Controller
 {
@@ -81,10 +82,7 @@ class MarcaController extends Controller
    */
   public function update(MarcaRequest $request, Marca $marca)
   {
-    $marca->fill($request->all());
-    $marca->save();
-
-    return response()->json(['mensaje' => 'Se actualizó con éxito la marca.']);
+    
   }
 
   /**
@@ -93,8 +91,9 @@ class MarcaController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy(Request $request, $id)
   {
+    $request->validate(['marca_id' => ['required', new SePedeEliminarMarca]]);
     Marca::destroy($id);
 
     return response()->json(['mensaje' => 'Se eliminó con éxito la marca.']);
