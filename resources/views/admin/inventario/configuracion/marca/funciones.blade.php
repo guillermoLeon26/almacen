@@ -61,29 +61,6 @@
 		});
 	});
 //----------------------------------------------------------
-//----------------MOSTRAR MODAL ACTUALIZAR------------------
-	function mostrar(id) {
-		$.ajax({
-			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-		 	url: '{{url('admin/inventario/configuracion/marca')}}/'+id+'/edit',
-		 	type: 'GET',
-		 	dataType: 'json',
-		 	beforeSend: function () {
-		 		$('#btnNuevo').html('<i class="fa fa-refresh fa-spin"></i>');
-		 		$('.box').append('<div class="overlay">'+
-              						'<i class="fa fa-refresh fa-spin"></i>'+
-            					 '</div>');
-		 	},
-		 	success: function (data) {
-		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
-		 		$('.overlay').detach();
-		 		$('#mostarMarca').modal('show');
-		 		$('#actualizarMarca').val(data.marca);
-		 		$('#actualizarId').val(data.id);
-		 	}
-		});
-	}
-//----------------------------------------------------------
 //---------------MOSTRAR MODAL ELIMINAR---------------------
 	function eliminar(id) {
 		$.ajax({
@@ -106,40 +83,6 @@
 		});	
 	}
 //----------------------------------------------------------
-//-----------------ACTUALIZAR DATOS-------------------------
-	$('#actualizar').submit(function (e) {
-		e.preventDefault();
-		var datos = $(this).serialize();
-		var page = $('.pagination .active span').html();
-		var id = $('#actualizarId').val();
-
-		$.ajax({
-			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-			url: '{{url('admin/inventario/configuracion/marca')}}/' + id,
-			type: 'PUT',
-			data: datos,
-			dataType: 'json',
-			beforeSend: function () {
-				$('#mostarMarca').modal('hide');
-				$('#btnNuevo').html('<i class="fa fa-refresh fa-spin"></i>');
-		 		$('.box').append('<div class="overlay">'+
-              						'<i class="fa fa-refresh fa-spin"></i>'+
-            					 '</div>');
-			},
-			success: function (data) {
-		 		$('.overlay').detach();
-		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
-				mensaje('ok',data);
-				generarTabla(page);
-			},
-			error: function (data) {
-		 		$('.overlay').detach();
-		 		$('#btnNuevo').html('<i class="glyphicon glyphicon-plus"></i>Nuevo');
-				mensaje('error', data);
-			}
-		});
-	});
-//---------------------------------------------------------
 //-------------------ELIMINAR DATOS------------------------
 	$('#eliminar').submit(function (e) {
 		e.preventDefault();
@@ -150,6 +93,7 @@
 			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
 			url: '{{url('admin/inventario/configuracion/marca')}}/' + id,
 			type: 'DELETE',
+			data: {marca_id: id},
 			dataType: 'json',
 			beforeSend: function () {
 				$('#eliminarMarca').modal('hide');

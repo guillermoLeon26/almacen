@@ -59,27 +59,7 @@
 		});
 	});
 //----------------------------------------------------------
-//----------------MOSTRAR MODAL ACTUALIZAR------------------
-	function mostrar(id) {
-		$.ajax({
-			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-		 	url: '{{url('admin/inventario/configuracion/Color')}}/'+id+'/edit',
-		 	type: 'GET',
-		 	dataType: 'json',
-		 	beforeSend: function () {
-                $('.box').append('<div class="overlay">'+
-              						'<i class="fa fa-refresh fa-spin"></i>'+
-            					 '</div>');
-            },
-		 	success: function (data) {
-		 		$('#mostarColor').modal('show');
-		 		$('.overlay').detach();
-		 		$('#actualizarColor').val(data.color);
-		 		$('#actualizarId').val(data.id);
-		 	}
-		});
-	}
-//----------------------------------------------------------
+
 //---------------MOSTRAR MODAL ELIMINAR---------------------
 	function eliminar(id) {
 		$.ajax({
@@ -100,37 +80,7 @@
 		});	
 	}
 //----------------------------------------------------------
-//-----------------ACTUALIZAR DATOS-------------------------
-	$('#actualizar').submit(function (e) {
-		e.preventDefault();
-		var datos = $(this).serialize();
-		var page = $('.pagination .active span').html();
-		var id = $('#actualizarId').val();
 
-		$.ajax({
-			headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-			url: '{{url('admin/inventario/configuracion/Color')}}/' + id,
-			type: 'POST',
-			data: datos,
-			dataType: 'json',
-			beforeSend: function () {
-				$('#mostarColor').modal('hide');
-                $('.box').append('<div class="overlay">'+
-              						'<i class="fa fa-refresh fa-spin"></i>'+
-            					 '</div>');
-            },
-			success: function (data) {
-		 		$('.overlay').detach();
-				mensaje('ok',data);
-				generarTabla(page);
-			},
-			error: function (data) {
-		 		$('.overlay').detach();
-				mensaje('error', data);
-			}
-		});
-	});
-//---------------------------------------------------------
 //-------------------ELIMINAR DATOS------------------------
 	$('#eliminar').submit(function (e) {
 		e.preventDefault();

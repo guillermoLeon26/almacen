@@ -20,7 +20,6 @@
 
 @section('contenido')
 	@include('admin.inventario.configuracion.color.include.ingresar')
-	@include('admin.inventario.configuracion.color.include.mostrar')
 	@include('admin.inventario.configuracion.color.include.eliminar')
 
 	<div class="row">

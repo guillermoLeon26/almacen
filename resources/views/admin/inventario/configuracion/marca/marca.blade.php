@@ -19,7 +19,6 @@
 @endsection
 
 @section('contenido')
-	@include('admin.inventario.configuracion.marca.include.mostrar')
 	@include('admin.inventario.configuracion.marca.include.eliminar')
 	@include('admin.inventario.configuracion.marca.include.ingresar')
 	
