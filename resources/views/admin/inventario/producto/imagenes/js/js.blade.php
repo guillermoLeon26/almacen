@@ -18,6 +18,34 @@ function ingresarImagenProducto() {
   $('#modalIngresarImagen').modal('show');
 }
 
+//----------------------GENERAR TABLA-------------------------
+  $(document).on('click', '.pagination a', function (e) {
+    e.preventDefault();
+    var page = $(this).attr('href').split('page=')[1];
+    
+    generarTabla(page);
+  });
+
+  function generarTabla(page) {
+    $.ajax({
+      headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
+      url: '{{ url('admin/inventario/productos/imagenes') }}/{{ $producto->id }}',
+      type: 'GET',
+      data: {'page':page},
+      dataType: 'json',
+      beforeSend: function () {
+        $('.box').append('<div class="overlay">'+
+                            '<i class="fa fa-refresh fa-spin"></i>'+
+                         '</div>');
+      },
+      success: function (data) {
+        $('#tbodyTablaImagenes').html(data);
+        $('.overlay').detach();
+      }
+    });
+  }
+//--------------------------------------------------------------
+
 $('#formImgresarImagen').submit(function (e) {
   e.preventDefault();
 
@@ -30,86 +58,70 @@ $('#formImgresarImagen').submit(function (e) {
     contentType: false,
     processData: false,
     beforeSend: function () {
-      $('#formImgresarImagen .form-control').prop('disabled', true);
-      $('#imagenIngresar').fileinput('disable');
-      $('#btnIngresaImagen').prop('disabled', true);
-      $('#btnIngresaImagen').html('<i class="fa fa-refresh fa-spin"></i>');
-      $('#modalIngresarImagen .cerrar').removeAttr('data-dismiss');
+      $('.box').append('<div class="overlay">'+
+                        '<i class="fa fa-refresh fa-spin"></i>'+
+                      '</div>');
 
       $('#modalIngresarImagen').modal('hide');
     },
     success: function(data){
-      $('#formImgresarImagen .form-control').prop('disabled', false);
-      $('#imagenIngresar').fileinput('enable');
-      $('#imagenIngresar').fileinput('clear');
-      $('#btnIngresaImagen').prop('disabled', false);
-      $('#btnIngresaImagen').html('Ingresar');
-      $('#modalIngresarImagen .cerrar').attr('data-dismiss','modal');
-      $('#modalIngresarImagen').modal('hide');
+      $('.overlay').detach();
+      var page = $('.pagination .active span').html();
+      toastr.success('Se ingresó la imagen correctamente.');
 
-      actualizarTablaImagenes($('#idProducto').val());
+      generarTabla(page);
     },
     error: function (data) {
-      $('#formImgresarImagen .form-control').prop('disabled', false);
-      $('#btnIngresaImagen').prop('disabled', false);
-      $('#imagenIngresar').fileinput('enable');
-      $('#btnIngresaImagen').html('Ingresar');
-      $('#modalIngresarImagen .cerrar').attr('data-dismiss','modal');
+      $('.overlay').detach();
 
-      mensaje('error', data, '#mensajeModalColor');
+      mensaje('error', data, '#mensaje');
     }
   });
 });
 
-function actualizarTablaImagenes(idProducto) {
-  $.ajax({
-    headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('inventario/producto/imagen') }}/' + idProducto,
-    type: 'GET',
-    dataType: 'json',
-    beforeSend: function () {
-      $('.box').append('<div class="overlay">'+
-                        '<i class="fa fa-refresh fa-spin"></i>'+
-                     '</div>');
-    },
-    success: function (data) {
-      $('.overlay').detach();
-      $('#tbodyTablaImagenes').html(data);
-    },
-    error: function () {
-      $('.overlay').detach();
-      mensaje2('error', 'Ocurrio un error con la conexión', '#mensaje');
-    }
-  });
+function eliminar(id) {
+  $('#eliminarId').val(id);
+  $('#modalEliminar').modal('show');
 }
 
-function eliminarImagen(idImagen, idProducto) {
+$('#formEliminar').submit(function (e) {
+  e.preventDefault();
+  var id = $('#eliminarId').val();
+
   $.ajax({
     headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('inventario/producto/imagen') }}/' + idImagen,
+    url: '{{ url('admin/inventario/productos/imagenes') }}/' + id,
     type: 'DELETE',
     dataType: 'json',
     beforeSend: function () {
+      $('#modalEliminar').modal('hide');
       $('.box').append('<div class="overlay">'+
                         '<i class="fa fa-refresh fa-spin"></i>'+
-                     '</div>');
+                       '</div>');
     },
     success: function () {
-      actualizarTablaImagenes(idProducto);
+      $('.overlay').detach();
+      var page = $('.pagination .active span').html();
+      
+      toastr.success('Se eliminó la imagen correctamente.');
+      generarTabla(page);
     },
     error: function (data) {
       $('.overlay').detach();
       mensaje2('error', 'Ocurrio un error con la conexión', '#mensaje');
     }
   });
-}
+});
 
 function bajarNumeroOrden(idImagen) {
   $.ajax({
     headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('inventario/producto/imagen') }}/' + idImagen,
-    type: 'PUT',
-    data: {'mover':'abajo'},
+    url: '{{ url('admin/inventario/productos/imagenes') }}/' + idImagen,
+    type: 'POST',
+    data: {
+      '_method':'PUT',
+      'mover':'abajo'
+    },
     dataType: 'json',
     beforeSend: function () {
       $('.box').append('<div class="overlay">'+
@@ -117,7 +129,11 @@ function bajarNumeroOrden(idImagen) {
                      '</div>');
     },
     success: function (data) {
-      actualizarTablaImagenes($('#idProducto').val());
+      $('.overlay').detach();
+      var page = $('.pagination .active span').html();
+      
+      toastr.success('Se actualizó el orden de la imagen correctamente.');
+      generarTabla(page);
     },
     error: function (data) {
       $('.overlay').detach();
@@ -129,17 +145,24 @@ function bajarNumeroOrden(idImagen) {
 function subirNumeroOrden(idImagen) {
   $.ajax({
     headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('inventario/producto/imagen') }}/' + idImagen,
-    type: 'PUT',
-    data: {'mover':'arriba'},
+    url: '{{ url('admin/inventario/productos/imagenes') }}/' + idImagen,
+    type: 'POST',
+    data: {
+      '_method':'PUT',
+      'mover':'arriba'
+    },
     dataType: 'json',
     beforeSend: function () {
       $('.box').append('<div class="overlay">'+
                         '<i class="fa fa-refresh fa-spin"></i>'+
                      '</div>');
     },
-    success: function (data) {
-      actualizarTablaImagenes($('#idProducto').val());
+    success: function () {
+      $('.overlay').detach();
+      var page = $('.pagination .active span').html();
+      
+      toastr.success('Se actualizó el orden de la imagen correctamente.');
+      generarTabla(page);
     },
     error: function (data) {
       $('.overlay').detach();

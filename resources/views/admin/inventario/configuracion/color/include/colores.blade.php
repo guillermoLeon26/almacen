@@ -11,9 +11,6 @@
         <tr>
           <td>{{$color->color}}</td>
           <td>
-            <button class="btn btn-info" data-toggle="modal" onclick="mostrar({{$color->id}})">
-              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-            </button>
             <button class="btn btn-danger" data-toggle="modal" onclick="eliminar({{$color->id}})">
               <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
