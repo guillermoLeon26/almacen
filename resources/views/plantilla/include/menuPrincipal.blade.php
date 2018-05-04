@@ -96,7 +96,7 @@
               </ul>
             </li>
 
-            <li><a href="{{ url('contabilidad/configuracion') }}"><i class="fa fa fa-gear"></i>Configuración</a></li>
+            <li><a href="{{ url('admin/cont/config') }}"><i class="fa fa fa-gear"></i>Configuración</a></li>
           </ul>
         </li>
         
