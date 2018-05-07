@@ -47,4 +47,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/inventario'], function 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin/cont'], function (){
   //---------------------------CONFIGURACION------------------------------------
   Route::resource('config', 'contabilidad\configController', ['only' => ['index', 'update']]);
+  //-------------------------------PRECIO---------------------------------------
+  Route::group(['prefix' => 'precio'], function (){
+    Route::get('menor', 'contabilidad\precioProductoController@precioPorMenor');
+  });
+  Route::resource('precio', 'contabilidad\precioProductoController');
 });

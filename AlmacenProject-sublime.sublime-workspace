@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"con",
+				"config"
+			],
+			[
+				"pre",
+				"precio"
+			],
+			[
+				"prec",
+				"precioProductoController"
+			],
+			[
 				"n",
 				"n_ordenImagenAnterior"
 			],
@@ -142,10 +154,6 @@
 			[
 				"cate",
 				"categorias"
-			],
-			[
-				"con",
-				"contDescripcion"
 			],
 			[
 				"prod",
@@ -506,14 +514,6 @@
 			[
 				"font-",
 				"font-size"
-			],
-			[
-				"P",
-				"Panel"
-			],
-			[
-				"compo",
-				"components"
 			]
 		]
 	},
@@ -523,49 +523,51 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 1924,
+				"buffer_size": 2493,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Models/DescripcionProducto.php",
+			"settings":
+			{
+				"buffer_size": 241,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Models/Imagen.php",
+			"file": "app/Http/Controllers/contabilidad/precioProductoController.php",
 			"settings":
 			{
-				"buffer_size": 3089,
+				"buffer_size": 1952,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Http/Controllers/Inventario/ImagenController.php",
+			"file": "resources/views/admin/contabilidad/precio/menor/menor.blade.php",
 			"settings":
 			{
-				"buffer_size": 2277,
+				"buffer_size": 2149,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/Inventario/ProductosController.php",
-			"settings":
-			{
-				"buffer_size": 4978,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/views/admin/inventario/producto/imagenes/include/imagenes.blade.php",
+			"file": "resources/views/admin/contabilidad/precio/menor/js/js.blade.php",
 			"settings":
 			{
-				"buffer_size": 1431,
+				"buffer_size": 5950,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/views/admin/inventario/producto/imagenes/js/js.blade.php",
+			"file": "resources/views/admin/contabilidad/precio/menor/js/jsPrecioPorMenor.blade.php",
 			"settings":
 			{
-				"buffer_size": 6228,
+				"buffer_size": 3795,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -617,29 +619,38 @@
 	"expanded_folders":
 	[
 		"/D/XAMPP/htdocs/almacen",
+		"/D/XAMPP/htdocs/almacen/app",
 		"/D/XAMPP/htdocs/almacen/resources",
 		"/D/XAMPP/htdocs/almacen/resources/views",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/menor",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/menor/js",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/include"
+		"/D/XAMPP/htdocs/almacen/resources/views/plantilla"
 	],
 	"file_history":
 	[
-		"/D/XAMPP/htdocs/almacen/app/Models/Producto.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/plantilla/include/menuPrincipal.blade.php",
+		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/contabilidad/precioProductoController.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/menor/menor.blade.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/index.blade.php",
+		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/contabilidad/configController.php",
+		"/D/XAMPP/htdocs/almacen/app/Models/Imagen.php",
+		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ImagenController.php",
+		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ProductosController.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/js/js.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/include/imagenes.blade.php",
+		"/D/XAMPP/htdocs/almacen/app/Models/Producto.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/include/marcas.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/js/js.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/funciones.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/show.blade.php",
-		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ProductosController.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/include/modalIngresarImagen.blade.php",
 		"/D/XAMPP/htdocs/geogis/sublime.sublime-project",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/include/btnImagen.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/include/productos.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/index.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/color/color.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/color/include/colores.blade.php",
 		"/D/NODE/OTROS/prueba-eletron/package.json",
@@ -663,10 +674,8 @@
 		"/D/NODE/OTROS/comida/src/renderer/components/LandingPage.vue",
 		"/D/XAMPP/htdocs/contabilidad/app/Product.php",
 		"/D/XAMPP/htdocs/contabilidad/composer.json",
-		"/D/XAMPP/htdocs/almacen/app/Models/Imagen.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/edit/edit.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/css/css.blade.php",
-		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ImagenController.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Requests/ProductoRequest.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/include/eliminar.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/js/jsEliminar.blade.php",
@@ -745,16 +754,12 @@
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/CategoriaController.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/js/js.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/librerias/js/mensajes.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/plantilla/include/menuPrincipal.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/marca.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Requests/MarcaRequest.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/include/ingresar.blade.php",
 		"/D/XAMPP/htdocs/contabilidad/readme.md",
 		"/D/XAMPP/htdocs/almacen/readme.md",
-		"/D/XAMPP/htdocs/almacen/app/Models/Unidad.php",
-		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/UnidadesController.php",
-		"/D/XAMPP/htdocs/almacen/app/Http/Requests/UnidadRequest.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/unidad/funciones.blade.php"
+		"/D/XAMPP/htdocs/almacen/app/Models/Unidad.php"
 	],
 	"find":
 	{
@@ -852,7 +857,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -861,7 +866,40 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1924,
+						"buffer_size": 2493,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2409,
+								2409
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 589.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/Models/DescripcionProducto.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 241,
 						"regions":
 						{
 						},
@@ -877,65 +915,30 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 247.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/Models/Imagen.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3089,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1928,
-								1928
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1197.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/Http/Controllers/Inventario/ImagenController.php",
+					"file": "app/Http/Controllers/contabilidad/precioProductoController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2277,
+						"buffer_size": 1952,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1989,
-								1989
+								1715,
+								1715
 							]
 						],
 						"settings":
@@ -948,7 +951,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 855.0,
+						"translation.y": 1362.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -956,19 +959,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "app/Http/Controllers/Inventario/ProductosController.php",
+					"file": "resources/views/admin/contabilidad/precio/menor/menor.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4978,
+						"buffer_size": 2149,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2017,
-								2017
+								2093,
+								2093
 							]
 						],
 						"settings":
@@ -976,32 +979,65 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1140.0,
+						"translation.y": 1026.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "resources/views/admin/contabilidad/precio/menor/js/js.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5950,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3211,
+								3211
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1932.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "resources/views/admin/inventario/producto/imagenes/include/imagenes.blade.php",
+					"buffer": 5,
+					"file": "resources/views/admin/contabilidad/precio/menor/js/jsPrecioPorMenor.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1431,
+						"buffer_size": 3795,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								277,
-								277
+								1895,
+								1895
 							]
 						],
 						"settings":
@@ -1010,47 +1046,13 @@
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 57.0,
+						"translation.y": 1083.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "resources/views/admin/inventario/producto/imagenes/js/js.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6228,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3538,
-								3538
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1140.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]
