@@ -5,6 +5,7 @@ namespace App\Http\Controllers\contabilidad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Config_Cont;
+use App\Models\Producto;
 
 class precioProductoController extends Controller
 {
@@ -13,8 +14,14 @@ class precioProductoController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index(){
-    dd('fsd');
+  public function index(Request $request){
+    $producto = Producto::findOrFail($request->id);
+    $dimensiones = $producto->listaDescripciones();
+
+    return response()->json([
+      'producto_id' =>  $producto->id,
+      'dimensiones'  =>  $dimensiones
+    ]);
   }
 
   /**

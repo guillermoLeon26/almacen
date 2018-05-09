@@ -2,12 +2,11 @@
 
 //-------------------------------------SELECCION DE PRODUCTO------------------------
 $('#selectProductos').select2({
-  
   ajax: {
     id: function (e) {
       return producto.id;
     },
-    url: '{{ url('inventario/producto') }}',
+    url: '{{ url('admin/inventario/productos') }}',
     type: 'GET',
     dataType: 'json',
     delay: 250,
@@ -42,7 +41,7 @@ function formatProducto (producto) {
           '<tbody>'+
             '<tr>'+
               '<td rowspan="3">'+
-                '<img class="img-responsive img-thumbnail" src="'+producto.imagenes[0].imagen+'" height="100px" width="50px"/>'+
+                '<img class="img-responsive img-thumbnail" src="'+producto.imagen+'" height="100px" width="50px"/>'+
               '</td>'+
               '<td>'+
                 producto.categoria +
@@ -93,17 +92,20 @@ function buscarDimensiones() {
 
   $.ajax({
     headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('inventario/producto') }}/' + idProducto,
+    url: '{{ url('admin/cont/precio') }}',
     type: 'GET',
+    data: {
+      'id':idProducto
+    },
     dataType: 'json',
     beforeSend: function () {
       $('.box').append('<div class="overlay">'+
                         '<i class="fa fa-refresh fa-spin"></i>'+
-                    '</div>');
+                       '</div>');
     },
     success: function (data) {
       $('.overlay').detach();
-      imprimirTablaPrecios(data.producto.dimensiones);
+      imprimirTablaPrecios(data.dimensiones);
     },
     error: function (data) {
       $('.overlay').detach();

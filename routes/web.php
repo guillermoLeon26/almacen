@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/inventario'], function 
     Route::post('cbBoxMarca', 'Inventario\ProductosController@cbBoxMarca');
     Route::post('cbBoxUnidad', 'Inventario\ProductosController@cbBoxUnidad');
     Route::post('cbBoxColor', 'Inventario\ProductosController@cbBoxColor');
+    Route::get('cbProductos', 'Inventario\ProductosController@cbProductos');
   });
   //-----------------------------CATEGORIA-------------------------------------
   Route::resource('categoria', 'Inventario\CategoriaController');
