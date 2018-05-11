@@ -129,7 +129,7 @@ function imprimirTablaPrecios(dimensiones) {
               '<td><input class="idDimensiones" type="checkbox" value="'+dimension.id+'"></td>'+
               '<td>'+dimension.dimension+'</td>'+
               '<td>'+dimension.costo+'</td>'+
-              '<td>'+dimension.pocentaje_ganancia_por_menor+'</td>'+
+              '<td>'+dimension.porcentaje_descuento_por_menor+'</td>'+
               '<td>'+dimension.ganancia_por_menor+'</td>'+
               '<td>'+dimension.porcentaje_descuento_por_menor+'</td>'+
               '<td>'+dimension.descuento_por_menor+'</td>'+

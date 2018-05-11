@@ -30,7 +30,7 @@
                 <span class="input-group-addon"><strong>$</strong></span>
                 <input id="ganancia" type="number" step="0.01" name="ganancia_por_menor" class="form-control ingreso-numero">
                 <span class="input-group-addon"><strong>%</strong></span>
-                <input id="porGanancia" type="number" step="0.01" name="pocentaje_ganancia_por_menor" class="form-control">
+                <input id="porGanancia" type="number" step="0.01" name="porcentaje_ganancia_por_menor" class="form-control">
               </div>
             </div>
 

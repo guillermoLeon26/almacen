@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Config_Cont;
 use App\Models\Producto;
+use App\Models\DescripcionProducto;
+use Illuminate\Support\Facades\DB;
 
 class precioProductoController extends Controller
 {
@@ -40,9 +42,18 @@ class precioProductoController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-      //
+  public function store(Request $request){
+    DB::beginTransaction();
+    try {
+      DescripcionProducto::actualizarPrecios($request);
+      DB::commit();
+
+      return response()->json([]);
+    } catch (\Exception $e) {
+      DB::rollBack();
+
+      return response()->json([], 500);
+    }
   }
 
   /**
