@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/cont'], function (){
   //-------------------------------PRECIO---------------------------------------
   Route::group(['prefix' => 'precio'], function (){
     Route::get('menor', 'contabilidad\precioProductoController@precioPorMenor');
+    Route::get('mayor', 'contabilidad\precioProductoController@precioPorMayor');
   });
   Route::resource('precio', 'contabilidad\precioProductoController');
 });

@@ -15,7 +15,7 @@ $('#formPrecioPorMayor .ingreso-numero').focusout(function () {
 	var ganancia = parseFloat($('#ganancia').val());
 	var descuento = parseFloat($('#descuento').val());
 	var subtotal = costo + ganancia;
-	var iva = subtotal * parseFloat('{{ $empresa->iva }}') / 100;
+	var iva = subtotal * parseFloat('{{ $config->IVA }}') / 100;
 	var precio = subtotal + iva + descuento;
 	var porsentajeGanancia = ganancia * 100 / costo;
 	var porsentajeDescuento = descuento * 100 / precio;
@@ -35,7 +35,7 @@ $('#porGanancia').focusout(function () {
 	var descuento = parseFloat($('#descuento').val());
 	var ganancia = costo * porGanancia / 100;
 	var subtotal = costo + ganancia;
-	var iva = subtotal * parseFloat('{{ $empresa->iva }}') / 100;
+	var iva = subtotal * parseFloat('{{ $config->IVA }}') / 100;
 	var precio = subtotal + iva + descuento;
 
 	$('#porGanancia').val(porGanancia.toFixed(2));
@@ -48,9 +48,9 @@ $('#porDescuento').focusout(function () {
 	var costo = parseFloat($('#costo').val());
 	var ganancia = parseFloat($('#ganancia').val());
 	var porDescuento = parseFloat($('#porDescuento').val());
-	var porIVA = parseFloat('{{ $empresa->iva }}');
+	var porIVA = parseFloat('{{ $config->IVA }}');
 	var subtotal = costo + ganancia;
-	var iva = subtotal * parseFloat('{{ $empresa->iva }}') / 100;
+	var iva = subtotal * parseFloat('{{ $config->IVA }}') / 100;
 	var descuento = (costo + ganancia + iva) / ((100/porDescuento)-1);
 	var precio = subtotal + iva + descuento;
 

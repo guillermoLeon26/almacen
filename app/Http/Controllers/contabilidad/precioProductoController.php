@@ -118,6 +118,8 @@ class precioProductoController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function precioPorMayor(){
-      return view('contabilidad.precio.mayor.mayor', ['empresa' => Empresa::get()]);
+    $config = Config_Cont::findOrFail(1);
+    
+    return view('admin.contabilidad.precio.mayor.mayor', ['config' => $config]);
   }
 }

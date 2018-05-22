@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"sort",
+				"sortBy"
+			],
+			[
 				"con",
 				"config"
 			],
@@ -510,10 +514,6 @@
 			[
 				"song",
 				"songId"
-			],
-			[
-				"font-",
-				"font-size"
 			]
 		]
 	},
@@ -523,30 +523,39 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 2493,
+				"buffer_size": 2651,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/Models/DescripcionProducto.php",
+			"file": "app/Models/Producto.php",
 			"settings":
 			{
-				"buffer_size": 241,
-				"line_ending": "Unix"
+				"buffer_size": 10351,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Inventario/ProductosController.php",
+			"settings":
+			{
+				"buffer_size": 5268,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "app/Http/Controllers/contabilidad/precioProductoController.php",
 			"settings":
 			{
-				"buffer_size": 1952,
+				"buffer_size": 2549,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/views/admin/contabilidad/precio/menor/menor.blade.php",
+			"file": "resources/views/admin/contabilidad/precio/mayor/mayor.blade.php",
 			"settings":
 			{
 				"buffer_size": 2149,
@@ -555,20 +564,19 @@
 			}
 		},
 		{
-			"file": "resources/views/admin/contabilidad/precio/menor/js/js.blade.php",
+			"file": "resources/views/admin/contabilidad/precio/mayor/js/js.blade.php",
 			"settings":
 			{
-				"buffer_size": 5950,
+				"buffer_size": 5889,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/views/admin/contabilidad/precio/menor/js/jsPrecioPorMenor.blade.php",
+			"file": "resources/views/admin/contabilidad/precio/mayor/js/jsPrecioPorMayor.blade.php",
 			"settings":
 			{
 				"buffer_size": 3795,
-				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -619,27 +627,33 @@
 	"expanded_folders":
 	[
 		"/D/XAMPP/htdocs/almacen",
-		"/D/XAMPP/htdocs/almacen/app",
 		"/D/XAMPP/htdocs/almacen/resources",
 		"/D/XAMPP/htdocs/almacen/resources/views",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/mayor",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/mayor/js",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/menor",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/menor/js",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario",
-		"/D/XAMPP/htdocs/almacen/resources/views/plantilla"
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/menor/js"
 	],
 	"file_history":
 	[
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/mayor/js/jsPrecioPorMayor.blade.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/mayor/js/js.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/plantilla/include/menuPrincipal.blade.php",
-		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/contabilidad/precioProductoController.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/menor/js/js.blade.php",
+		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ProductosController.php",
+		"/D/XAMPP/htdocs/almacen/vendor/laravel/framework/src/Illuminate/Support/Collection.php",
+		"/D/XAMPP/htdocs/almacen/app/Models/DescripcionProducto.php",
+		"/D/XAMPP/htdocs/almacen/.env",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/menor/js/jsPrecioPorMenor.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/contabilidad/precio/menor/menor.blade.php",
+		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/contabilidad/precioProductoController.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/index/index.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/contabilidad/configController.php",
 		"/D/XAMPP/htdocs/almacen/app/Models/Imagen.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ImagenController.php",
-		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ProductosController.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/js/js.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/imagenes/include/imagenes.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Models/Producto.php",
@@ -729,7 +743,6 @@
 		"/D/XAMPP/htdocs/contabilidad/resources/views/inventario/producto/imagenes/js/js.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/plantilla/include/js.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Models/ColorProducto.php",
-		"/D/XAMPP/htdocs/almacen/app/Models/DescripcionProducto.php",
 		"/D/XAMPP/htdocs/almacen/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php",
 		"/D/XAMPP/htdocs/geogis/app/Models/BibliotecaApus.php",
 		"/D/XAMPP/htdocs/geogis/app/Models/Proyecto.php",
@@ -753,17 +766,11 @@
 		"/D/XAMPP/htdocs/almacen/app/Http/Requests/CategoriaRequest.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/CategoriaController.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/js/js.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/librerias/js/mensajes.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/marca.blade.php",
-		"/D/XAMPP/htdocs/almacen/app/Http/Requests/MarcaRequest.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/include/ingresar.blade.php",
-		"/D/XAMPP/htdocs/contabilidad/readme.md",
-		"/D/XAMPP/htdocs/almacen/readme.md",
-		"/D/XAMPP/htdocs/almacen/app/Models/Unidad.php"
+		"/D/XAMPP/htdocs/almacen/resources/views/librerias/js/mensajes.blade.php"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 28.0
 	},
 	"find_in_files":
 	{
@@ -779,6 +786,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$empresa->iva",
 			"idColor",
 			">\n",
 			"contDescripcion",
@@ -839,6 +847,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"$config->IVA",
 			"transporte",
 			"mano",
 			"estiloEncabezado",
@@ -857,7 +866,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -866,15 +875,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2493,
+						"buffer_size": 2651,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2409,
-								2409
+								2567,
+								2567
 							]
 						],
 						"settings":
@@ -887,7 +896,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 589.0,
+						"translation.y": 342.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
@@ -895,11 +904,44 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/Models/DescripcionProducto.php",
+					"file": "app/Models/Producto.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 241,
+						"buffer_size": 10351,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1753,
+								1753
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 611.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/Inventario/ProductosController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5268,
 						"regions":
 						{
 						},
@@ -915,30 +957,32 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 361.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "app/Http/Controllers/contabilidad/precioProductoController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1952,
+						"buffer_size": 2549,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1715,
-								1715
+								608,
+								608
 							]
 						],
 						"settings":
@@ -951,15 +995,15 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1362.0,
+						"translation.y": 48.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "resources/views/admin/contabilidad/precio/menor/menor.blade.php",
+					"buffer": 4,
+					"file": "resources/views/admin/contabilidad/precio/mayor/mayor.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
@@ -970,8 +1014,8 @@
 						"selection":
 						[
 							[
-								2093,
-								2093
+								1888,
+								1888
 							]
 						],
 						"settings":
@@ -979,32 +1023,32 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1026.0,
+						"translation.y": 839.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "resources/views/admin/contabilidad/precio/menor/js/js.blade.php",
+					"buffer": 5,
+					"file": "resources/views/admin/contabilidad/precio/mayor/js/js.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5950,
+						"buffer_size": 5889,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3211,
-								3211
+								3519,
+								3519
 							]
 						],
 						"settings":
@@ -1012,20 +1056,20 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1932.0,
+						"translation.y": 1615.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "resources/views/admin/contabilidad/precio/menor/js/jsPrecioPorMenor.blade.php",
+					"buffer": 6,
+					"file": "resources/views/admin/contabilidad/precio/mayor/js/jsPrecioPorMayor.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
@@ -1036,8 +1080,8 @@
 						"selection":
 						[
 							[
-								1895,
-								1895
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1045,11 +1089,11 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1083.0,
+						"translation.y": 1159.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1060,7 +1104,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 28.0
 	},
 	"input":
 	{
@@ -1101,7 +1145,7 @@
 	"project": "AlmacenProject-sublime.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1111,15 +1155,23 @@
 		"selected_items":
 		[
 			[
-				"produ",
+				"pro",
 				"app\\Http\\Controllers\\Inventario\\ProductosController.php"
 			],
 			[
+				"coll",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php"
+			],
+			[
 				"produc",
+				"app\\Http\\Controllers\\Inventario\\ProductosController.php"
+			],
+			[
+				"prod",
 				"app\\Models\\Producto.php"
 			],
 			[
-				"pro",
+				"produ",
 				"app\\Http\\Controllers\\Inventario\\ProductosController.php"
 			],
 			[

@@ -49,7 +49,11 @@ class Producto extends Model
     * @out imagen
     *********************************************************************************/
   public function imagen(){
-    return $this->imagenes->sortBy('n_orden')->first()->imagen;
+    $imagenes = $this->imagenes;
+
+    if ($imagenes->isNotEmpty()) {
+      return $imagenes->sortBy('n_orden')->first()->imagen;
+    }
   }
 
   /*******************************************************************************

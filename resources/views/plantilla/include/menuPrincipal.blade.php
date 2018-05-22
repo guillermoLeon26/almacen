@@ -92,7 +92,7 @@
                       
               <ul class="treeview-menu">
                 <li><a href="{{ url('admin/cont/precio/menor') }}"><i class="fa fa-circle-o"></i>Menor</a></li>
-                <li><a href="{{ url('contabilidad/precios/mayor') }}"><i class="fa fa-circle-o"></i> Mayor</a></li>
+                <li><a href="{{ url('admin/cont/precio/mayor') }}"><i class="fa fa-circle-o"></i> Mayor</a></li>
               </ul>
             </li>
 
