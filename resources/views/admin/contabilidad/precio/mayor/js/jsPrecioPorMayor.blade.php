@@ -71,7 +71,7 @@ $('#formPrecioPorMayor').submit(function (e) {
 	
 	$.ajax({
 		headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-		url: '{{ url('contabilidad/precio') }}',
+		url: '{{ url('admin/cont/precio') }}',
 		type: 'POST',
 		data: {'precio':precio, 'dimensiones':dimensiones},
 		dataType: 'json',
@@ -90,7 +90,7 @@ $('#formPrecioPorMayor').submit(function (e) {
 			$("#checkSeleccionarTodo").prop("checked", false);
 
 			buscarDimensiones();
-			mensaje('ok', data, '#mensaje')
+			toastr.success('Se ingresaron los precios correctamente.');
 		},
 		error: function (data) {
 			$('#formPrecioPorMayor input').prop('disabled', false);

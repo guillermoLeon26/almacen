@@ -30,7 +30,7 @@
                 <span class="input-group-addon"><strong>$</strong></span>
                 <input id="ganancia" type="number" step="0.01" name="ganancia_por_mayor" class="form-control ingreso-numero">
                 <span class="input-group-addon"><strong>%</strong></span>
-                <input id="porGanancia" type="number" step="0.01" name="pocentaje_ganancia_por_mayor" class="form-control">
+                <input id="porGanancia" type="number" step="0.01" name="porcentaje_ganancia_por_mayor" class="form-control">
               </div>
             </div>
 
@@ -48,7 +48,7 @@
                 <span class="input-group-addon"><strong>$</strong></span>
                 <input id="descuento" type="number" step="0.01" name="descuento_por_mayor" class="form-control ingreso-numero">
                 <span class="input-group-addon"><strong>%</strong></span>
-                <input id="porDescuento" type="number" step="0.01" name="porcentaje_descuento_por_mayor" class="form-control">
+                <input id="porDescuento" type="number" step="0.01" name="porcenaje_descuento_por_mayor" class="form-control">
               </div>
             </div>
 

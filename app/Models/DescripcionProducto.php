@@ -16,7 +16,12 @@ class DescripcionProducto extends Model
                           'porcentaje_ganancia_por_menor',
                           'descuento_por_menor',
                           'porcentaje_descuento_por_menor',
-                          'precio_por_menor_inc_iva'
+                          'precio_por_menor_inc_iva',
+                          'ganancia_por_mayor',
+                          'porcentaje_ganancia_por_mayor',
+                          'descuento_por_mayor',
+                          'porcenaje_descuento_por_mayor',
+                          'precio_por_mayor_inc_iva'
                         ];
 
   //-------------------------------METODOS------------------------------

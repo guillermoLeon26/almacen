@@ -90,7 +90,7 @@ $('#formPrecioPorMenor').submit(function (e) {
 			$("#checkSeleccionarTodo").prop("checked", false);
 
 			buscarDimensiones();
-			toastr.success('Se ingresó la imagen correctamente.');
+			toastr.success('Se ingresaron los precios correctamente.');
 		},
 		error: function (data) {
 			$('#formPrecioPorMenor input').prop('disabled', false);
