@@ -44,6 +44,19 @@ class Producto extends Model
 
   //--------------------------------------METODOS-----------------------------------
   /*******************************************************************************
+    * Primera imagen del producto
+    * @in 
+    * @out imagen
+    *********************************************************************************/
+  public function imagen(){
+    $imagenes = $this->imagenes;
+
+    if ($imagenes->isNotEmpty()) {
+      return $imagenes->sortBy('n_orden')->first()->imagen;
+    }
+  }
+
+  /*******************************************************************************
     * Lista de descripciones 
     * @in 
     * @out Collection[descripcipon]

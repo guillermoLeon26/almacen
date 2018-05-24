@@ -28,8 +28,18 @@ class ProductosController extends Controller
    */
   public function index(Request $request){
     $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
-    $page = $request->page;
 
+    if (isset($request->todos)) {
+      $productos = Producto::buscar($filtro)->get()->take(20);
+      
+      $productos->each(function ($producto, $key){
+        return $producto->imagen = $producto->imagen();
+      });
+
+      return response()->json(['productos' => $productos]);
+    }
+
+    $page = $request->page;
     $productos = Producto::buscar($filtro)->paginate(5);
 
     if ($request->ajax()) {
@@ -192,4 +202,5 @@ class ProductosController extends Controller
       ->json(view('admin.inventario.producto.create.include.cbColor', ['colores' => $colores])
       ->render());
   }
+
 }

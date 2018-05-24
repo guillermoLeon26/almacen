@@ -91,12 +91,12 @@
               </a>
                       
               <ul class="treeview-menu">
-                <li><a href="{{ url('contabilidad/precios/menor') }}"><i class="fa fa-circle-o"></i>Menor</a></li>
-                <li><a href="{{ url('contabilidad/precios/mayor') }}"><i class="fa fa-circle-o"></i> Mayor</a></li>
+                <li><a href="{{ url('admin/cont/precio/menor') }}"><i class="fa fa-circle-o"></i>Menor</a></li>
+                <li><a href="{{ url('admin/cont/precio/mayor') }}"><i class="fa fa-circle-o"></i> Mayor</a></li>
               </ul>
             </li>
 
-            <li><a href="{{ url('contabilidad/configuracion') }}"><i class="fa fa fa-gear"></i>Configuración</a></li>
+            <li><a href="{{ url('admin/cont/config') }}"><i class="fa fa fa-gear"></i>Configuración</a></li>
           </ul>
         </li>
         
