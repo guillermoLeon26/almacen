@@ -109,7 +109,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('configuracion/sucursal') }}"><i class="fa fa-building-o"></i> Sucursales</a></li>
+            <li><a href="{{ url('admin/config/ciudades') }}"><i class="fa fa-circle-o"></i>Ciudades</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>

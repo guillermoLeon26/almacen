@@ -55,3 +55,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/cont'], function (){
   });
   Route::resource('precio', 'contabilidad\precioProductoController', ['only' => ['index', 'store']]);
 });
+
+//-------------------------------CONFIGURACION----------------------------------
+Route::group(['middleware' => 'auth', 'prefix' => 'admin/config'], function (){
+  //--------------------------------CIUDADES------------------------------------
+  Route::resource('ciudades', 'configuracion\ciudadesController');
+});
