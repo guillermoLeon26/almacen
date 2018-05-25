@@ -25,9 +25,9 @@ Route::group(['prefix' => 'admin'], function (){
 //Rutas de Inventario
 Route::group(['middleware' => 'auth', 'prefix' => 'admin/inventario'], function (){
   //-----------------------------PRODUCTOS------------------------------------
-  Route::resource('productos', 'Inventario\ProductosController');
+  Route::resource('productos', 'Inventario\ProductosController', ['except' => ['show']]);
   Route::group(['prefix' => 'productos'], function (){
-    Route::resource('imagenes', 'Inventario\ImagenController');
+    Route::resource('imagenes', 'Inventario\ImagenController', ['except' => ['index', 'create', 'edit']]);
     Route::post('cbBoxCategoria', 'Inventario\ProductosController@cbBoxCategoria');
     Route::post('cbBoxMarca', 'Inventario\ProductosController@cbBoxMarca');
     Route::post('cbBoxUnidad', 'Inventario\ProductosController@cbBoxUnidad');
@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/inventario'], function 
     Route::get('cbProductos', 'Inventario\ProductosController@cbProductos');
   });
   //-----------------------------CATEGORIA-------------------------------------
-  Route::resource('categoria', 'Inventario\CategoriaController');
+  Route::resource('categoria', 'Inventario\CategoriaController', ['only' => ['store']]);
   //---------------------------CONFIGURACION------------------------------------
   Route::group(['prefix' => 'configuracion'], function (){
     Route::resource('Color', 'Inventario\ColorController', ['except'=>['create', 'show']]);
@@ -53,5 +53,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/cont'], function (){
     Route::get('menor', 'contabilidad\precioProductoController@precioPorMenor');
     Route::get('mayor', 'contabilidad\precioProductoController@precioPorMayor');
   });
-  Route::resource('precio', 'contabilidad\precioProductoController');
+  Route::resource('precio', 'contabilidad\precioProductoController', ['only' => ['index', 'store']]);
 });
