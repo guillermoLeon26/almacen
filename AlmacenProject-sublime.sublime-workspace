@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"modal",
+				"modalNuevo"
+			],
+			[
+				"incl",
+				"include"
+			],
+			[
+				"co",
+				"cont"
+			],
+			[
+				"pre",
+				"prefix"
+			],
+			[
 				"re",
 				"required"
 			],
@@ -18,10 +34,6 @@
 			[
 				"con",
 				"config"
-			],
-			[
-				"pre",
-				"precio"
 			],
 			[
 				"prec",
@@ -106,10 +118,6 @@
 			[
 				"dim",
 				"dimensiones"
-			],
-			[
-				"co",
-				"coloresEliminar"
 			],
 			[
 				"has",
@@ -506,19 +514,47 @@
 			[
 				"o",
 				"overflow"
-			],
-			[
-				"border-s",
-				"border-style"
-			],
-			[
-				"son",
-				"songs"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "routes/web.php",
+			"settings":
+			{
+				"buffer_size": 3087,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/configuracion/ciudadesController.php",
+			"settings":
+			{
+				"buffer_size": 1473,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/plantilla/include/menuPrincipal.blade.php",
+			"settings":
+			{
+				"buffer_size": 4922,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/admin/configuracion/ciudades/index/index.blade.php",
+			"settings":
+			{
+				"buffer_size": 1241,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -565,10 +601,31 @@
 	},
 	"expanded_folders":
 	[
-		"/D/xampp/htdocs/almacen"
+		"/D/xampp/htdocs/almacen",
+		"/D/xampp/htdocs/almacen/resources",
+		"/D/xampp/htdocs/almacen/resources/views",
+		"/D/xampp/htdocs/almacen/resources/views/admin",
+		"/D/xampp/htdocs/almacen/resources/views/admin/configuracion",
+		"/D/xampp/htdocs/almacen/resources/views/admin/configuracion/ciudades",
+		"/D/xampp/htdocs/almacen/resources/views/admin/configuracion/ciudades/index",
+		"/D/xampp/htdocs/almacen/resources/views/admin/configuracion/ciudades/index/include",
+		"/D/xampp/htdocs/almacen/resources/views/admin/inventario",
+		"/D/xampp/htdocs/almacen/resources/views/admin/inventario/configuracion",
+		"/D/xampp/htdocs/almacen/resources/views/admin/inventario/configuracion/marca",
+		"/D/xampp/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/include"
 	],
 	"file_history":
 	[
+		"/D/xampp/htdocs/almacen/resources/views/admin/configuracion/ciudades/index/include/modalNuevo.blade.php",
+		"/D/xampp/htdocs/almacen/resources/views/admin/configuracion/ciudades/index/include/tCiudades.blade.php",
+		"/D/xampp/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/marca.blade.php",
+		"/D/xampp/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/include/marcas.blade.php",
+		"/D/xampp/htdocs/almacen/routes/web.php",
+		"/D/xampp/htdocs/almacen/app/Http/Controllers/contabilidad/precioProductoController.php",
+		"/D/xampp/htdocs/almacen/app/Http/Controllers/Inventario/CategoriaController.php",
+		"/D/xampp/htdocs/almacen/app/Http/Controllers/Inventario/ImagenController.php",
+		"/D/xampp/htdocs/almacen/app/Http/Controllers/Inventario/ProductosController.php",
+		"/D/xampp/htdocs/almacen/.env",
 		"/D/XAMPP/htdocs/almacen/routes/web.php",
 		"/D/XAMPP/htdocs/almacen/app/Models/DescripcionProducto.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/contabilidad/precioProductoController.php",
@@ -686,17 +743,7 @@
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/cbCategoria.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/funciones.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/tabDimensiones.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/tabColores.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/cbColor.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/modalIngresarColor.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/js/jsTabDatos.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/modalIngresarUnidad.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/js/jsModalDatos.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/modalIngresarMarca.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/modalIngresarCategoria.blade.php",
-		"/D/XAMPP/htdocs/almacen/app/Models/Categoria.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/cbMarca.blade.php",
-		"/D/XAMPP/htdocs/almacen/app/Http/Requests/CategoriaRequest.php"
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/tabColores.blade.php"
 	],
 	"find":
 	{
@@ -798,8 +845,129 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "routes/web.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3082,
+								3082
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 397.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/Http/Controllers/configuracion/ciudadesController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1473,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								347,
+								347
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "resources/views/plantilla/include/menuPrincipal.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4922,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4569,
+								4569
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1379.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "resources/views/admin/configuracion/ciudades/index/index.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1241,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1206,
+								1206
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 150.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -856,6 +1024,26 @@
 		"selected_items":
 		[
 			[
+				"web",
+				"routes\\web.php"
+			],
+			[
+				"precio",
+				"app\\Http\\Controllers\\contabilidad\\precioProductoController.php"
+			],
+			[
+				"catego",
+				"app\\Http\\Controllers\\Inventario\\CategoriaController.php"
+			],
+			[
+				"imagen",
+				"app\\Http\\Controllers\\Inventario\\ImagenController.php"
+			],
+			[
+				"produ",
+				"app\\Http\\Controllers\\Inventario\\ProductosController.php"
+			],
+			[
 				"des",
 				"app\\Models\\DescripcionProducto.php"
 			],
@@ -876,10 +1064,6 @@
 				"app\\Models\\Producto.php"
 			],
 			[
-				"produ",
-				"app\\Http\\Controllers\\Inventario\\ProductosController.php"
-			],
-			[
 				"filesystem",
 				"geogis\\vendor\\league\\flysystem\\src\\Filesystem.php"
 			],
@@ -898,10 +1082,6 @@
 			[
 				"illuminate/support/facades/password",
 				"geogis\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Password.php"
-			],
-			[
-				"web",
-				"geogis\\routes\\web.php"
 			]
 		],
 		"width": 0.0
