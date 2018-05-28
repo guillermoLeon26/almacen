@@ -4,6 +4,7 @@ namespace App\Http\Controllers\configuracion;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Ciudad;
 
 class ciudadesController extends Controller
 {
@@ -12,8 +13,17 @@ class ciudadesController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index(){
-    return view('admin.configuracion.ciudades.index.index');
+  public function index(Request $request){
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+    $ciudades = Ciudad::buscar($filtro)->paginate(5);
+
+    if ($request->ajax()) {
+        return response()->json(view('admin.configuracion.ciudades.index.include.tCiudades', ['ciudades'=>$ciudades])
+          ->render());
+    }
+
+    return view('admin.configuracion.ciudades.index.index', ['ciudades' => $ciudades]);
   }
 
   /**

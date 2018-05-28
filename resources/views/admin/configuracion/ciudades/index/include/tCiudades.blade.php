@@ -7,22 +7,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Zaruma</td>
-        <td>
-          <button class="btn btn-danger" data-toggle="modal" onclick="eliminar()">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>Guayaquil</td>
-        <td>
-          <button class="btn btn-danger" data-toggle="modal" onclick="eliminar()">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-          </button>
-        </td>
-      </tr>
+      @foreach($ciudades as $ciudad)
+        <tr>
+          <td>{{ $ciudad->ciudad }}</td>
+          <td>
+            <button class="btn btn-danger" data-toggle="modal" onclick="eliminar({{ $ciudad->id }})">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>  
+          </td>
+        </tr>
+      @endforeach
     </tbody>
   </table>
+</div>
+
+<div class="box-footer">
+  {{ $ciudades->links('vendor.pagination.custom',['maxPages'=>5, 'offset'=>2]) }}
 </div>

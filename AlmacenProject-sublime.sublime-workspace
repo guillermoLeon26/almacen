@@ -532,18 +532,18 @@
 			"file": "app/Http/Controllers/configuracion/ciudadesController.php",
 			"settings":
 			{
-				"buffer_size": 1473,
+				"buffer_size": 1887,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "resources/views/plantilla/include/menuPrincipal.blade.php",
+			"file": "app/Models/Ciudad.php",
 			"settings":
 			{
-				"buffer_size": 4922,
+				"buffer_size": 315,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -616,8 +616,10 @@
 	],
 	"file_history":
 	[
-		"/D/xampp/htdocs/almacen/resources/views/admin/configuracion/ciudades/index/include/modalNuevo.blade.php",
 		"/D/xampp/htdocs/almacen/resources/views/admin/configuracion/ciudades/index/include/tCiudades.blade.php",
+		"/D/xampp/htdocs/almacen/app/Http/Controllers/Inventario/MarcaController.php",
+		"/D/xampp/htdocs/almacen/resources/views/plantilla/include/menuPrincipal.blade.php",
+		"/D/xampp/htdocs/almacen/resources/views/admin/configuracion/ciudades/index/include/modalNuevo.blade.php",
 		"/D/xampp/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/marca.blade.php",
 		"/D/xampp/htdocs/almacen/resources/views/admin/inventario/configuracion/marca/include/marcas.blade.php",
 		"/D/xampp/htdocs/almacen/routes/web.php",
@@ -741,9 +743,7 @@
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/tabDatos.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/cbUnidad.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/cbCategoria.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/funciones.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/tabDimensiones.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/include/tabColores.blade.php"
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/producto/create/funciones.blade.php"
 	],
 	"find":
 	{
@@ -884,15 +884,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1473,
+						"buffer_size": 1887,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								347,
-								347
+								676,
+								676
 							]
 						],
 						"settings":
@@ -910,29 +910,29 @@
 				},
 				{
 					"buffer": 2,
-					"file": "resources/views/plantilla/include/menuPrincipal.blade.php",
+					"file": "app/Models/Ciudad.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4922,
+						"buffer_size": 315,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4569,
-								4569
+								308,
+								308
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1379.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -962,7 +962,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 150.0,
+						"translation.y": 45.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
