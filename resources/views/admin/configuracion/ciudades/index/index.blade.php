@@ -14,7 +14,7 @@
   <div class="row">
     <div id="mensaje"></div>
 
-    <div class="col-xs-5">
+    <div class="col-xs-10 col-sm-5">
       <div class="box box-primary">
         <div class="box-header">
           <h3 class="box-title"></h3>
@@ -24,7 +24,7 @@
 
           <div class="box-tools">
             <div class="input-group input-group-sm" style="width: 200px;">
-              <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
+              <input type="text" id="buscar" class="form-control pull-right" placeholder="Buscar">
 
               <div class="input-group-addon">
                 <i class="fa fa-search"></i>
@@ -44,5 +44,7 @@
 @endsection
 
 @push('js')
-
+  @include('librerias.js.mensajes')
+  @include('admin.configuracion.ciudades.index.js.js')
+  @include('admin.configuracion.ciudades.index.js.jsModalNuevo')
 @endpush

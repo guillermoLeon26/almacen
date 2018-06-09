@@ -5,6 +5,7 @@ namespace App\Http\Controllers\configuracion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Ciudad;
+use App\Rules\SePuedeEliminarCiudad;
 
 class ciudadesController extends Controller
 {
@@ -42,9 +43,14 @@ class ciudadesController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-      //
+  public function store(Request $request){
+    $request->validate([
+      'ciudad'  =>  'required|string|max:45'
+    ]);
+
+    Ciudad::create($request->all());
+
+    return response()->json([]);
   }
 
   /**
@@ -87,8 +93,16 @@ class ciudadesController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
-      //
+  public function destroy(Request $request, $id){
+    $request->validate([
+      'ciudad_id' =>  [
+        'required',
+        new SePuedeEliminarCiudad
+      ]
+    ]);
+
+    Ciudad::destroy($id);
+
+    return response()->json([]);
   }
 }
