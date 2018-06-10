@@ -17,10 +17,9 @@
           
           <ul class="treeview-menu">
             
-            <li>
-              <a href="{{ url('admin/inventario/productos') }}">
-              <i class="glyphicon glyphicon-apple"></i>Productos</a>
-            </li>            
+            <li><a href="{{ url('admin/inventario/productos') }}"><i class="glyphicon glyphicon-apple"></i>Productos</a></li>
+
+            <li><a href="{{ url('admin/inventario/bodegas') }}"><i class="fa fa-bank"></i>Bodegas</a></li>
 
             <li><a href="{{ url('inventario/ingreso') }}"><i class="fa fa-archive"></i> Ingreso</a></li>
 
@@ -53,8 +52,7 @@
               </ul>
             </li>
           </ul>
-
-        </li>
+        </li> 
 
         <li class="treeview">
           <a href="#">

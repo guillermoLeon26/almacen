@@ -1,20 +1,16 @@
 @extends('plantilla.principal')
 
-@section('css')
-
-@endsection
-
 @section('encabezadoContenido')
   <div class="box-header">
-    <h2 class="box-title" style="font-size: 30px">Ciudades</h2>
+    <h2 class="box-title" style="font-size: 30px">Bodegas</h2>
   </div>
 @endsection
 
 @section('contenido')
   <div class="row">
-    <div id="mensaje"></div>
+    <div id="mensaje" class="col-xs-10"></div>
 
-    <div class="col-xs-10 col-sm-5">
+    <div class="col-xs-10 col-sm-8">
       <div class="box box-primary">
         <div class="box-header">
           <h3 class="box-title"></h3>
@@ -33,20 +29,18 @@
           </div>
         </div>
         
-        <div id="tCiudades">
-          @include('admin.configuracion.ciudades.index.include.tCiudades')
+        <div id="tBodegas">
+          @include('admin.inventario.bodegas.index.include.tbodegas')
         </div>
       </div>
     </div>
   </div>
 
-  @include('admin.configuracion.ciudades.index.include.modalNuevo')
-  @include('admin.configuracion.ciudades.index.include.modalEliminar')
+  @include('admin.inventario.bodegas.index.include.modalNuevo')
 @endsection
 
 @push('js')
+  @include('admin.inventario.bodegas.index.js.js')
   @include('librerias.js.mensajes')
-  @include('admin.configuracion.ciudades.index.js.js')
-  @include('admin.configuracion.ciudades.index.js.jsModalNuevo')
-  @include('admin.configuracion.ciudades.index.js.jsModalEliminar')
+  @include('admin.inventario.bodegas.index.js.jsModalNuevo')
 @endpush

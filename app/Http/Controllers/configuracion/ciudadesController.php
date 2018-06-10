@@ -105,4 +105,18 @@ class ciudadesController extends Controller
 
     return response()->json([]);
   }
+
+  /**
+   * Retorna una lista de ciudades en formato json.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return json
+   */
+  public function ciudades(Request $request){
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    
+    $ciudades = Ciudad::buscar($filtro)->get()->take(20);
+
+    return response()->json(['ciudades' => $ciudades]);
+  }
 }
