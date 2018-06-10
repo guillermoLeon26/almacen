@@ -34,6 +34,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/inventario'], function 
     Route::post('cbBoxColor', 'Inventario\ProductosController@cbBoxColor');
     Route::get('cbProductos', 'Inventario\ProductosController@cbProductos');
   });
+  //------------------------------BODEGAS-------------------------------------
+  Route::get('bodegas/tBodegas', 'Inventario\bodegaController@tablaBodegas');
+  Route::resource('bodegas', 'Inventario\bodegaController');
   //-----------------------------CATEGORIA-------------------------------------
   Route::resource('categoria', 'Inventario\CategoriaController', ['only' => ['store']]);
   //---------------------------CONFIGURACION------------------------------------
@@ -54,4 +57,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/cont'], function (){
     Route::get('mayor', 'contabilidad\precioProductoController@precioPorMayor');
   });
   Route::resource('precio', 'contabilidad\precioProductoController', ['only' => ['index', 'store']]);
+});
+
+//-------------------------------CONFIGURACION----------------------------------
+Route::group(['middleware' => 'auth', 'prefix' => 'admin/config'], function (){
+  //--------------------------------CIUDADES------------------------------------
+  Route::group(['prefix' => 'ciudades'], function (){
+    Route::get('ciudades', 'configuracion\ciudadesController@ciudades');
+  });
+  Route::resource('ciudades', 'configuracion\ciudadesController', ['only' => ['index', 'store', 'destroy']]);
 });

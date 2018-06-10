@@ -11,7 +11,6 @@
 					<tr>
 						<td>{{$marca->marca}}</td>
 						<td>
-							</button>
 							<button class="btn btn-danger" data-toggle="modal" onclick="eliminar({{$marca->id}})">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 							</button>
