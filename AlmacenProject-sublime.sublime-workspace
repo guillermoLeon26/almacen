@@ -4,24 +4,28 @@
 		"selected_items":
 		[
 			[
+				"ciu",
+				"ciudad"
+			],
+			[
+				"bo",
+				"bodega"
+			],
+			[
+				"bod",
+				"bodegas"
+			],
+			[
+				"bodega",
+				"bodegas"
+			],
+			[
 				"in",
 				"index"
 			],
 			[
 				"vi",
 				"view"
-			],
-			[
-				"bo",
-				"bodegas"
-			],
-			[
-				"bod",
-				"bodegaController"
-			],
-			[
-				"ciu",
-				"ciudad"
 			],
 			[
 				"D",
@@ -510,10 +514,6 @@
 			[
 				"B",
 				"BookmarksService"
-			],
-			[
-				"Boo",
-				"Bookmark"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "app/Models/Bodega.php",
 			"settings":
 			{
-				"buffer_size": 1087,
+				"buffer_size": 1262,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,7 +532,7 @@
 			"file": "app/Http/Controllers/Inventario/bodegaController.php",
 			"settings":
 			{
-				"buffer_size": 2454,
+				"buffer_size": 2458,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -542,15 +542,6 @@
 			"settings":
 			{
 				"buffer_size": 1367,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/admin/inventario/bodegas/index/js/js.blade.php",
-			"settings":
-			{
-				"buffer_size": 2183,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -605,10 +596,6 @@
 		"/D/XAMPP/htdocs/almacen/resources",
 		"/D/XAMPP/htdocs/almacen/resources/views",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/configuracion",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/configuracion/ciudades",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/configuracion/ciudades/index",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/configuracion/ciudades/index/js",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/bodegas",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/bodegas/index",
@@ -617,15 +604,15 @@
 	],
 	"file_history":
 	[
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/bodegas/index/js/js.blade.php",
+		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/bodegas/index/js/jsModalNuevo.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Models/Ciudad.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/configuracion/ciudadesController.php",
 		"/D/XAMPP/htdocs/almacen/routes/web.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/bodegas/index/include/tbodegas.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/configuracion/ciudades/index/include/tCiudades.blade.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/bodegas/index/include/modalNuevo.blade.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/bodegas/index/js/jsModalNuevo.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/Inventario/ProductosController.php",
-		"/D/XAMPP/htdocs/almacen/resources/views/admin/inventario/bodegas/index/js/js.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Models/Bodega.php",
 		"/D/XAMPP/htdocs/almacen/resources/views/plantilla/include/menuPrincipal.blade.php",
 		"/D/XAMPP/htdocs/almacen/app/Http/Controllers/bodegaController.php",
@@ -855,15 +842,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1087,
+						"buffer_size": 1262,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								396,
-								396
+								389,
+								389
 							]
 						],
 						"settings":
@@ -876,7 +863,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 76.0,
+						"translation.y": 95.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -888,15 +875,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2454,
+						"buffer_size": 2458,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2440,
-								2440
+								2311,
+								2311
 							]
 						],
 						"settings":
@@ -909,10 +896,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1694.0,
+						"translation.y": 1843.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -928,8 +915,8 @@
 						"selection":
 						[
 							[
-								992,
-								1000
+								974,
+								974
 							]
 						],
 						"settings":
@@ -945,40 +932,7 @@
 						"translation.y": 190.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "resources/views/admin/inventario/bodegas/index/js/js.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2183,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1945,
-								1945
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1086.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

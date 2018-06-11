@@ -112,7 +112,7 @@ class bodegaController extends Controller
     $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
     $page = $request->page;
     $bodegas = Bodega::buscar($filtro)->paginate(5);
-
+    
     return response()->json(
       view('admin.inventario.bodegas.index.include.tbodegas', ['bodegas' => $bodegas])
       ->render()

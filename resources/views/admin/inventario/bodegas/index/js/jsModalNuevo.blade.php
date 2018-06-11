@@ -24,7 +24,7 @@ $('#formIngresar').submit(function (e) {
       var page = $('.pagination .active span').html();
       var filtro = $('#buscar').val();
 
-      //generarTabla(page, filtro);
+      generarTabla(page, filtro);
     },
     error: function (data) {
       $('.overlay').detach();

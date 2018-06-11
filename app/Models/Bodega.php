@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Ciudad;
 
 class Bodega extends Model
 {
@@ -12,7 +13,7 @@ class Bodega extends Model
 
   //------------------------------ALCANCES---------------------------------
   public function scopeBuscar($query, $buscar){
-    return $query->where('ciudad', 'like', '%'.$buscar.'%');
+    return $query->where('slug', 'like', '%'.$buscar.'%');
   }
 
   //-----------------------------RELACIONES---------------------------------
@@ -28,7 +29,10 @@ class Bodega extends Model
    * @return 
    */
   public static function guardar($request){
-    $bodega = Bodega::create($request->all());
+    $ciudad = Ciudad::findOrFail($request->ciudad_id)->ciudad;
+    $bodega = new Bodega($request->all());
+    $bodega->slug = $request->nombre.' '.$request->direccion.' '.$ciudad;
+    $bodega->save();
     $bodega->ciudades()->attach($request->ciudad_id);
   }
 
