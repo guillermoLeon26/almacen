@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/inventario'], function 
   });
   //------------------------------BODEGAS-------------------------------------
   Route::get('bodegas/tBodegas', 'Inventario\bodegaController@tablaBodegas');
-  Route::resource('bodegas', 'Inventario\bodegaController');
+  Route::resource('bodegas', 'Inventario\bodegaController', ['only' => ['index', 'store', 'destroy']]);
   //-----------------------------CATEGORIA-------------------------------------
   Route::resource('categoria', 'Inventario\CategoriaController', ['only' => ['store']]);
   //---------------------------CONFIGURACION------------------------------------

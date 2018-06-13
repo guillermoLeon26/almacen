@@ -5,7 +5,7 @@ namespace App\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
-class SePuedeEliminarCiudad implements Rule
+class SePuedeEliminarBodega implements Rule
 {
   /**
    * Create a new rule instance.
@@ -23,8 +23,8 @@ class SePuedeEliminarCiudad implements Rule
    * @param  mixed  $value
    * @return bool
    */
-  public function passes($attribute, $ciudad_id){
-    return DB::table('bodega_ciudad')->where('ciudad_id', $ciudad_id)->get()->isEmpty();
+  public function passes($attribute, $bodega_id){
+    return DB::table('bodega_artidulo')->where('bodega_id', $bodega_id)->get()->isEmpty();
   }
 
   /**
@@ -33,6 +33,6 @@ class SePuedeEliminarCiudad implements Rule
    * @return string
    */
   public function message(){
-    return 'No se puede eliminar la ciudad porque se encuentra asignada a una bodega.';
+      return 'No se puede eliminar la bodega porque contiene articulos.';
   }
 }

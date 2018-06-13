@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Bodega;
 use Illuminate\Support\Facades\DB;
+use App\Rules\SePuedeEliminarBodega;
 
 class bodegaController extends Controller
 {
@@ -97,9 +98,26 @@ class bodegaController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
-      //
+  public function destroy(Request $request, Bodega $bodega){
+    $request->validate([
+      'bodega_id' =>  [
+        'required',
+        new sePuedeEliminarBodega
+      ]
+    ]);
+
+    DB::beginTransaction();
+
+    try{
+      $bodega->eliminar();
+      DB::commit();
+
+      return response()->json([]);
+    }catch(\Exception $e){
+      DB::rollBack();
+
+      return response()->json([], 500);
+    }
   }
 
   /**

@@ -27,7 +27,7 @@ class PrecioRequest extends FormRequest
       
       'precio'                                =>  'required|array',
       'precio.costo'                          =>  'required|numeric',
-      'precio.ganancia_por_menor'             =>  'required_with:ganancia_por_menor|numeric'
+      'precio.ganancia_por_menor'             =>  'required_with:ganancia_por_menor|numeric',
       'precio.porcentaje_ganancia_por_menor'  =>  'required_with:ganancia_por_menor|numeric',
       'precio.descuento_por_menor'            =>  'required_with:ganancia_por_menor|numeric',
       'precio.porcentaje_descuento_por_menor' =>  'required_with:ganancia_por_menor|numeric',

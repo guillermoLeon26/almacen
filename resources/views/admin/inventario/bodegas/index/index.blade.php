@@ -37,10 +37,12 @@
   </div>
 
   @include('admin.inventario.bodegas.index.include.modalNuevo')
+  @include('admin.inventario.bodegas.index.include.modalEliminar')
 @endsection
 
 @push('js')
   @include('admin.inventario.bodegas.index.js.js')
   @include('librerias.js.mensajes')
   @include('admin.inventario.bodegas.index.js.jsModalNuevo')
+  @include('admin.inventario.bodegas.index.js.jsModalEliminar')
 @endpush

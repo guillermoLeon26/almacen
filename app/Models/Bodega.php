@@ -45,4 +45,15 @@ class Bodega extends Model
   public function ciudad(){
     return $this->ciudades->first()->ciudad;
   }
+
+  /**
+   * Elimina un registro de bodega.
+   *
+   * @param   \Illuminate\Http\Request  $request
+   * @return 
+   */
+  public function eliminar(){
+    $this->ciudades()->detach();
+    $this->delete();
+  }
 }
