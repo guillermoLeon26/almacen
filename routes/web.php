@@ -67,3 +67,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/config'], function (){
   });
   Route::resource('ciudades', 'configuracion\ciudadesController', ['only' => ['index', 'store', 'destroy']]);
 });
+
+//----------------------------------COMPRAS----------------------------------
+Route::group(['middleware' => 'auth', 'prefix' => 'admin/compras'], function (){
+  Route::resource('proveedores', 'compras\proveedoresController');
+});
