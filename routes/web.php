@@ -70,5 +70,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/config'], function (){
 
 //----------------------------------COMPRAS----------------------------------
 Route::group(['middleware' => 'auth', 'prefix' => 'admin/compras'], function (){
+  Route::get('proveedores/tabla', 'compras\proveedoresController@tablaProveedores');
   Route::resource('proveedores', 'compras\proveedoresController');
 });

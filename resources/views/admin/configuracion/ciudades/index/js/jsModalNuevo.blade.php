@@ -2,13 +2,12 @@
 
 $('#formIngresar').submit(function (e) {
 	e.preventDefault();
-	var datos = $(this).serialize();
 
 	$.ajax({
 		headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
     url: '{{ url('admin/config/ciudades') }}',
     type: 'POST',
-    data: datos,
+    data: datosGuardar(),
     dataType: 'json',
     beforeSend: function () {
       $('#modalNuevo').modal('hide');
@@ -16,14 +15,11 @@ $('#formIngresar').submit(function (e) {
                         '<i class="fa fa-refresh fa-spin"></i>'+
                        '</div>');
     },
-    success: function () {
-    	$('.overlay').detach();
+    success: function (data) {
       toastr.success('Se ingresó la ciudad correctamente.');
 
-      var page = $('.pagination .active span').html();
-      var filtro = $('#buscar').val();
-
-      generarTabla(page, filtro);
+      $('#tabla').html(data);
+      $('.overlay').detach();
     },
     error: function (data) {
       $('.overlay').detach();
@@ -31,5 +27,18 @@ $('#formIngresar').submit(function (e) {
     }
 	});
 });
+
+function datosGuardar() {
+  var datos = {};
+
+  $('#formIngresar input').each(function (i, input) {
+    datos[input.name] = input.value;
+  });
+
+  datos['page'] = $(this).attr('href').split('page=')[1];
+  datos['filtro'] = $('#buscar').val();
+
+  return datos;
+}
 
 </script>

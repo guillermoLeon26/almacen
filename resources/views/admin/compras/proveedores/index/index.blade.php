@@ -36,9 +36,12 @@
   </div>
 
   @include('admin.compras.proveedores.index.include.modalNuevo')
+  @include('admin.compras.proveedores.index.include.modalEditar')
 @endsection
 
 @push('js')
   @include('librerias.js.mensajes')
+  @include('admin.compras.proveedores.index.js.js')
   @include('admin.compras.proveedores.index.js.jsModalNuevo')
+  @include('admin.compras.proveedores.index.js.jsModalEditar')
 @endpush

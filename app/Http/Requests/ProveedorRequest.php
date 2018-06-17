@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\unico;
 
 class ProveedorRequest extends FormRequest
 {
@@ -21,14 +22,21 @@ class ProveedorRequest extends FormRequest
    * @return array
    */
   public function rules(){
+    $id = isset($this->id)?$this->id:null;
+    
     return [
-      'empresa'   =>  'required|string|max:45',
-      'telefono'  =>  'string|max:45',
-      'correo'    =>  'email',
-      'direccion' =>  'string',
-      'ciudad'    =>  'string|max:45',
-      'provincia' =>  'string|max:45',
-      'pais'      =>  'string|max:45'
+      'empresa'   =>  [
+                        'required',
+                        'string',
+                        'max:45',
+                        new unico('proveedor', 'empresa', $id)
+                      ],
+      'telefono'  =>  'string|max:45|nullable',
+      'correo'    =>  'email|nullable',
+      'direccion' =>  'string|nullable',
+      'ciudad'    =>  'string|max:45|nullable',
+      'provincia' =>  'string|max:45|nullable',
+      'pais'      =>  'string|max:45|nullable'
     ];
   }
 }

@@ -64,9 +64,10 @@ class proveedoresController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
-  {
-      //
+  public function edit($id){
+    $proveedor = Proveedor::findOrFail($id);
+
+    return response()->json(['proveedor' => $proveedor]);
   }
 
   /**
@@ -76,9 +77,17 @@ class proveedoresController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
-  {
-      //
+  public function update(ProveedorRequest $request, $id){
+    $proveedor = Proveedor::findOrFail($id);
+    $proveedor->fill($request->all());
+    $proveedor->save();
+
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+    $proveedores = Proveedor::buscar($filtro)->paginate(5);
+
+    return response()->json(view('admin.compras.proveedores.index.include.tProveedores', 
+      ['proveedores' => $proveedores])->render());
   }
 
   /**
@@ -90,5 +99,20 @@ class proveedoresController extends Controller
   public function destroy($id)
   {
       //
+  }
+
+  /**
+   * Devuelve una tabla HTML de proveedores
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function tablaProveedores(Request $request){
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+    $proveedores = Proveedor::buscar($filtro)->paginate(5);
+
+    return response()->json(view('admin.compras.proveedores.index.include.tProveedores', 
+      ['proveedores' => $proveedores])->render());
   }
 }
