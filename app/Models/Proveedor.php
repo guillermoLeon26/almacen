@@ -12,9 +12,14 @@ class Proveedor extends Model
                           'empresa',
                           'telefono',
                           'correo',
-                          'descripcion',
+                          'direccion',
                           'ciudad',
                           'provincia',
                           'pais'
                         ];
+
+  //-------------------------------ALCANCES---------------------------------
+  public function scopeBuscar($query, $buscar){
+    return $query->where('empresa', 'like', '%'.$buscar.'%');
+  }
 }

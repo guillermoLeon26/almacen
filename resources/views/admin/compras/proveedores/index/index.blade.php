@@ -39,5 +39,6 @@
 @endsection
 
 @push('js')
-  
+  @include('librerias.js.mensajes')
+  @include('admin.compras.proveedores.index.js.jsModalNuevo')
 @endpush

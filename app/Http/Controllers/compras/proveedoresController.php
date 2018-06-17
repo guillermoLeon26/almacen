@@ -5,6 +5,7 @@ namespace App\Http\Controllers\compras;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Proveedor;
+use App\Http\Requests\ProveedorRequest;
 
 class proveedoresController extends Controller
 {
@@ -35,9 +36,15 @@ class proveedoresController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-      //
+  public function store(ProveedorRequest $request){
+    Proveedor::create($request->all());
+
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+    $proveedores = Proveedor::buscar($filtro)->paginate(5);
+
+    return response()->json(view('admin.compras.proveedores.index.include.tProveedores', 
+      ['proveedores' => $proveedores])->render());
   }
 
   /**

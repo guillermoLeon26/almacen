@@ -17,14 +17,14 @@
             <div class="form-group col-sm-12">
               <label class="col-sm-2 control-label">Nombre</label>
               <div class="col-sm-10">
-                <input type="text" name="nombre_empresa" class="form-control">
+                <input type="text" name="empresa" class="form-control">
               </div>
             </div>
 
             <div class="form-group col-sm-12">
               <label class="col-sm-2 control-label">Telefono</label>
               <div class="col-sm-10">
-                <input type="text" name="telefono_convencional" class="form-control">
+                <input type="text" name="telefono" class="form-control">
               </div>
             </div>
 

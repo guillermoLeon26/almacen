@@ -33,6 +33,9 @@
 						<a class="btn btn-warning" href="{{ url('contabilidad/proveedores/producto').'/'. $proveedor->id }}">
 							<span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
 						</a>
+						<button class="btn btn-danger" data-toggle="modal" onclick="eliminar()">
+			              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+			            </button> 
 					</td>
 				</tr>
 			@endforeach				
