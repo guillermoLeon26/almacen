@@ -22,4 +22,24 @@ class Proveedor extends Model
   public function scopeBuscar($query, $buscar){
     return $query->where('empresa', 'like', '%'.$buscar.'%');
   }
+
+  //------------------------------RELACIONES--------------------------------
+  public function contactos(){
+    return $this->hasMany('App\Models\Contacto');
+  }
+
+  public function productos(){
+    return $this->hasMany('App\Models\ProductosProveedor');
+  }
+
+  public function compras(){
+    return $this->hasMany('App\Models\Compra');
+  }
+
+  //--------------------------------METODOS----------------------------------
+  public function eliminar(){
+    $this->contactos()->delete();
+    $this->productos()->delete();
+    $this->delete();
+  }
 }

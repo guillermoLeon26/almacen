@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Proveedor;
 use App\Http\Requests\ProveedorRequest;
+use Illuminate\Support\Facades\DB;
+use App\Rules\SePuedeEliminarProveedor;
 
 class proveedoresController extends Controller
 {
@@ -96,9 +98,30 @@ class proveedoresController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
-      //
+  public function destroy(Request $request, $id){
+    $proveedor = Proveedor::findOrFail($id);
+
+    $request->validate([
+      'proveedor_id'  =>  ['required', new SePuedeEliminarProveedor($proveedor)]
+    ]);
+
+    DB::beginTransaction();
+    try {
+      $proveedor->eliminar();
+      DB::commit();
+
+      $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+      $page = $request->page;
+      $proveedores = Proveedor::buscar($filtro)->paginate(5);
+
+      return response()->json(view('admin.compras.proveedores.index.include.tProveedores', 
+        ['proveedores' => $proveedores])->render());
+
+    } catch (\Exception $e) {
+      DB::rollBack();
+
+      return response()->json([], 500);
+    }
   }
 
   /**

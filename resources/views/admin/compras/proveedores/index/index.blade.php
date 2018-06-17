@@ -37,6 +37,7 @@
 
   @include('admin.compras.proveedores.index.include.modalNuevo')
   @include('admin.compras.proveedores.index.include.modalEditar')
+  @include('admin.compras.proveedores.index.include.modalEliminar')
 @endsection
 
 @push('js')
@@ -44,4 +45,5 @@
   @include('admin.compras.proveedores.index.js.js')
   @include('admin.compras.proveedores.index.js.jsModalNuevo')
   @include('admin.compras.proveedores.index.js.jsModalEditar')
+  @include('admin.compras.proveedores.index.js.jsModalEliminar')
 @endpush
