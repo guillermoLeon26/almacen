@@ -27,7 +27,7 @@
             <button class="btn btn-info" onclick="editar({{ $proveedor->id }})">
               <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             </button>
-            <a class="btn btn-primary" href="{{ url('contabilidad/proveedores/contacto').'/'. $proveedor->id }}">
+            <a class="btn btn-primary" href="{{ url('admin/compras/contactos/lista').'/'.$proveedor->id }}">
               <span class="fa fa-users" aria-hidden="true"></span>
             </a>
             <a class="btn btn-warning" href="{{ url('contabilidad/proveedores/producto').'/'. $proveedor->id }}">
