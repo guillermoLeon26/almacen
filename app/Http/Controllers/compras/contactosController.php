@@ -93,8 +93,15 @@ class contactosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Request $request, Contacto $contacto){
-    dd($contacto);
+  public function destroy(Request $request, $id){
+    Contacto::destroy($id);
+
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+    $contactos = Contacto::buscar($filtro)->paginate(5);
+
+    return response()->json(view('admin.compras.proveedores.contactos.index.include.tContactos', 
+      ['contactos' => $contactos])->render());
   }
 
   /**

@@ -16,8 +16,8 @@ $('#formEliminar').submit(function (e) {
     type: 'DELETE',
     data: {
       contacto_id: id,
-      page: $('#buscar').val(),
-      filtro: $('.pagination .active span').html()
+      page: $('.pagination .active span').html(),
+      filtro: $('#buscar').val()
     },
     dataType: 'json',
     beforeSend: function () {
