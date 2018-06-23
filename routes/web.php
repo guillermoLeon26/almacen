@@ -67,3 +67,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/config'], function (){
   });
   Route::resource('ciudades', 'configuracion\ciudadesController', ['only' => ['index', 'store', 'destroy']]);
 });
+
+//----------------------------------COMPRAS----------------------------------
+Route::group(['middleware' => 'auth', 'prefix' => 'admin/compras'], function (){
+  Route::get('proveedores/tabla', 'compras\proveedoresController@tablaProveedores');
+  Route::resource('proveedores', 'compras\proveedoresController', ['except' => ['create', 'show']]);
+  //-------------------------------CONTACTOS-----------------------------------
+  Route::get('contactos/tabla/{id_proveedor}', 'compras\contactosController@tabla');
+  Route::get('contactos/lista/{id_proveedor}', 'compras\contactosController@lista');
+  Route::resource('contactos', 'compras\contactosController', ['except' => ['index', 'create', 'show']]);
+});

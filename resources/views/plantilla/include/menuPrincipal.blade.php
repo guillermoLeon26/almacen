@@ -64,22 +64,6 @@
           </a>
           
           <ul class="treeview-menu">
-
-            <li class="treeview">
-              <a href="#">
-                <i class="glyphicon glyphicon-briefcase"></i> <span>Costos</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-                      
-              <ul class="treeview-menu">
-                <li><a href="{{ url('contabilidad/compras') }}"><i class="glyphicon glyphicon-shopping-cart"></i>Compras</a></li>
-                <li><a href="#"><i class="glyphicon glyphicon-list"></i>Listado</a></li>
-                <li><a href="{{ url('contabilidad/proveedores') }}"><i class="fa fa-industry"></i>Proveedores</a></li>
-              </ul>
-            </li>
-            
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-dollar"></i> <span>Precio del Producto</span>
@@ -98,6 +82,21 @@
           </ul>
         </li>
         
+        <li class="treeview">
+          <a href="#">
+            <i class="glyphicon glyphicon-shopping-cart"></i>
+            <span>Compras</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="glyphicon glyphicon-list"></i>Listado</a></li>
+            <li><a href="{{ url('admin/compras/proveedores') }}"><i class="fa fa-industry"></i>Proveedores</a></li>
+          </ul>
+        </li>
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa fa-gear"></i>

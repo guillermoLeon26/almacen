@@ -28,7 +28,7 @@ $('#formIngresar').submit(function (e) {
     },
     error: function (data) {
       $('.overlay').detach();
-      mensaje2('error', 'Ocurrio un error al guardar la bodega', '#mensaje');
+      mensaje2('error', 'Ocurrio un error al guardar la ciudad', '#mensaje');
     }
 	});
 });

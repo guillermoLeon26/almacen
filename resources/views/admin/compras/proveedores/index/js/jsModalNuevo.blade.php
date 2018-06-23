@@ -1,42 +1,43 @@
-<script>
-
-$('#formIngresar').submit(function (e) {
-	e.preventDefault();
-
-	$.ajax({
-		headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('admin/config/ciudades') }}',
+<script type="text/javascript">
+  
+$('#formNuevo').submit(function (e) {
+  e.preventDefault();
+  
+  $.ajax({
+    headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
+    url: '{{ url('admin/compras/proveedores') }}',
     type: 'POST',
     data: datosGuardar(),
     dataType: 'json',
     beforeSend: function () {
-      $('#modalNuevo').modal('hide');
       $('.box').append('<div class="overlay">'+
                         '<i class="fa fa-refresh fa-spin"></i>'+
                        '</div>');
+      $('#modalNuevo').modal('hide');
     },
     success: function (data) {
-      toastr.success('Se ingresó la ciudad correctamente.');
-
       $('#tabla').html(data);
       $('.overlay').detach();
+      toastr.success('Se ingresó el proveedor correctamente.');
+      $('#formNuevo input').val('');
     },
     error: function (data) {
       $('.overlay').detach();
-      mensaje('error', data, '#mensaje');
+
+      mensaje('error', data, '#mensaje')
     }
-	});
+  });
 });
 
 function datosGuardar() {
   var datos = {};
 
-  $('#formIngresar input').each(function (i, input) {
+  $('#formNuevo input').each(function (i, input) {
     datos[input.name] = input.value;
   });
 
-  datos['page'] = $(this).attr('href').split('page=')[1];
   datos['filtro'] = $('#buscar').val();
+  datos['page'] = $('.pagination .active span').html();
 
   return datos;
 }
