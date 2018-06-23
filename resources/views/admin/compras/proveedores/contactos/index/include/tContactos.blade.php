@@ -17,8 +17,8 @@
           <td>{{ $contacto->nombre }}</td>
           <td>{{ $contacto->telefono }}</td>
           <td>{{ $contacto->celular }}</td>
-          <td>{{ $proveedor->correo }}</td>
-          <td>{{ $proveedor->cargo }}</td>
+          <td>{{ $contacto->correo }}</td>
+          <td>{{ $contacto->cargo }}</td>
           <td>
             <button class="btn btn-info" onclick="editar({{ $contacto->id }})">
               <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

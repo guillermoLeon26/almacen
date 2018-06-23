@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Proveedor;
 use Illuminate\Support\Facades\DB;
+use App\Models\Contacto;
 
 class contactosController extends Controller
 {
@@ -35,9 +36,15 @@ class contactosController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-      //
+  public function store(Request $request){
+    Contacto::create($request->all());
+
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+    $contactos = Contacto::buscar($filtro)->paginate(5);
+
+    return response()->json(view('admin.compras.proveedores.contactos.index.include.tContactos', 
+      ['contactos' => $contactos])->render());
   }
 
   /**
@@ -57,9 +64,8 @@ class contactosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
-  {
-      //
+  public function edit(Contacto $contacto){
+    return response()->json(['contacto' => $contacto]);
   }
 
   /**
@@ -69,9 +75,16 @@ class contactosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
-  {
-      //
+  public function update(Request $request, Contacto $contacto){
+    $contacto->fill($request->all());
+    $contacto->save();
+
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+    $contactos = Contacto::buscar($filtro)->paginate(5);
+
+    return response()->json(view('admin.compras.proveedores.contactos.index.include.tContactos', 
+      ['contactos' => $contactos])->render());
   }
 
   /**
@@ -80,9 +93,8 @@ class contactosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
-      //
+  public function destroy(Request $request, Contacto $contacto){
+    dd($contacto);
   }
 
   /**
@@ -96,8 +108,26 @@ class contactosController extends Controller
     $contactos = DB::table('contactos')->where('proveedor_id', $proveedor_id)->paginate(5);
 
     return view('admin.compras.proveedores.contactos.index.index', [
-      'empresa'   =>  $proveedor->empresa,
-      'contactos' =>  $contactos
+      'empresa'       =>  $proveedor->empresa,
+      'proveedor_id'  =>  $proveedor->id,
+      'contactos'     =>  $contactos
     ]);
+  }
+
+  /**
+   * Retorna una tabla html con los contactos de los proveedores.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function tabla(Request $request, $proveedor_id){
+    $proveedor = Proveedor::findOrFail($proveedor_id);
+    
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+    $contactos = $proveedor->contactos()->buscar($filtro)->paginate(5);
+
+    return response()->json(view('admin.compras.proveedores.contactos.index.include.tContactos', 
+      ['contactos' => $contactos])->render());
   }
 }
