@@ -30,7 +30,7 @@
             <a class="btn btn-primary" href="{{ url('admin/compras/contactos/lista').'/'.$proveedor->id }}">
               <span class="fa fa-users" aria-hidden="true"></span>
             </a>
-            <a class="btn btn-warning" href="{{ url('contabilidad/proveedores/producto').'/'. $proveedor->id }}">
+            <a class="btn btn-warning" href="{{ url('admin/compras/productos/lista').'/'. $proveedor->id }}">
               <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
             </a>
             <button class="btn btn-danger" data-toggle="modal" onclick="eliminar({{$proveedor->id}})">

@@ -38,14 +38,15 @@
         </div>
 
         <div id="tabla">
-          @include('admin.compras.proveedores.contactos.index.include.tContactos')
+          @include('admin.compras.proveedores.productos.index.include.tProductos')
         </div>
       </div>
     </div>
   </div>
-
+  
+  @include('admin.compras.proveedores.productos.index.include.modalNuevo')
 @endsection
 
 @push('js')
-  
+  @include('admin.compras.proveedores.productos.index.js.jsModalNuevo')
 @endpush

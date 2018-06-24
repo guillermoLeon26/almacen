@@ -76,4 +76,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/compras'], function (){
   Route::get('contactos/tabla/{id_proveedor}', 'compras\contactosController@tabla');
   Route::get('contactos/lista/{id_proveedor}', 'compras\contactosController@lista');
   Route::resource('contactos', 'compras\contactosController', ['except' => ['index', 'create', 'show']]);
+  //-------------------------------PRODUCTOS-----------------------------------
+  Route::get('productos/lista/{id_proveedor}', 'compras\ProductosController@lista');
+  Route::resource('productos', 'compras\productosController');
 });
