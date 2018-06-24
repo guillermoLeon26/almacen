@@ -86,9 +86,15 @@ class productosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
-      //
+  public function destroy(Request $request, $id){
+    ProductosProveedor::destroy($id);
+
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+    $productos = ProductosProveedor::buscar($filtro)->paginate(5);
+
+    return response()->json(view('admin.compras.proveedores.productos.index.include.tProductos', 
+      ['productos' => $productos])->render());
   }
 
   /**
@@ -106,5 +112,22 @@ class productosController extends Controller
       'proveedor_id'  =>  $proveedor->id,
       'productos'     =>  $productos
     ]);
+  }
+
+  /**
+   * Retorna una tabla html con los productos de los proveedores.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function tabla(Request $request, $proveedor_id){
+    $proveedor = Proveedor::findOrFail($proveedor_id);
+    
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $page = $request->page;
+    $productos = $proveedor->productos()->buscar($filtro)->paginate(5);
+
+    return response()->json(view('admin.compras.proveedores.productos.index.include.tProductos', 
+      ['productos' => $productos])->render());
   }
 }

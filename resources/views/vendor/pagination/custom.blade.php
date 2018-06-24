@@ -23,7 +23,7 @@
         @endif
 
         <!-- Mostrar la numeración de las páginas, partiendo de la página actual hasta el maximo definido en $maxPages -->
-        @if($paginator->currentPage() < $maxPages - $offset)
+        @if($paginator->currentPage() <= $maxPages - $offset)
         	@for($i = $firstPage; $i<=$maxPages; $i++)
         		@if($i == $paginator->currentPage())
         			<li class="active"><span>{{ $i }}</span></li>
@@ -33,7 +33,7 @@
         	@endfor
         @endif
 
-        @if(($paginator->currentPage() >= $maxPages - $offset) && ($paginator->currentPage() <= $paginator->lastPage() - $offset))
+        @if(($paginator->currentPage() > $maxPages - $offset) && ($paginator->currentPage() <= $paginator->lastPage() - $offset))
             @php
                 if ($maxPages == $paginator->lastPage()) 
                     $offset = $paginator->lastPage()-1;

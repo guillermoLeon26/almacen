@@ -34,8 +34,12 @@ class unico implements Rule
 
       return $cont <= 0;
     } else {
-      $id = DB::table($this->tabla)->where($this->campo, '=', $value)->get()->first()->id;
-
+      $registros = DB::table($this->tabla)->where($this->campo, '=', $value)->get();
+      
+      if ($registros->isEmpty()) return true;
+      
+      $id = $registros->first()->id;
+      
       return $id == $this->id;
     }
   }
