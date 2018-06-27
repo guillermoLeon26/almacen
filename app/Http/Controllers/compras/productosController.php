@@ -35,12 +35,19 @@ class productosController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request){    
+  public function store(Request $request){
+    $request->validate([
+      'proveedor_id'  =>  'required|numeric',
+      'marca'         =>  'required|string|max:45',
+      'descripcion'   =>  'required|string|max:200'
+    ]);
+
     ProductosProveedor::create($request->all());
 
     $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
     $page = $request->page;
-    $productos = ProductosProveedor::buscar($filtro)->paginate(5);
+    $productos = ProductosProveedor::where('proveedor_id', $request->proveedor_id)
+      ->buscar($filtro)->paginate(5);
 
     return response()->json(view('admin.compras.proveedores.productos.index.include.tProductos', 
       ['productos' => $productos])->render());
@@ -91,7 +98,8 @@ class productosController extends Controller
 
     $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
     $page = $request->page;
-    $productos = ProductosProveedor::buscar($filtro)->paginate(5);
+    $productos = ProductosProveedor::where('proveedor_id', $request->proveedor_id)
+      ->buscar($filtro)->paginate(5);
 
     return response()->json(view('admin.compras.proveedores.productos.index.include.tProductos', 
       ['productos' => $productos])->render());

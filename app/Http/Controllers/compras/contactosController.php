@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Proveedor;
 use Illuminate\Support\Facades\DB;
 use App\Models\Contacto;
+use App\Http\Requests\ContactosRequest;
 
 class contactosController extends Controller
 {
@@ -36,12 +37,13 @@ class contactosController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request){
+  public function store(ContactosRequest $request){
     Contacto::create($request->all());
 
     $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
     $page = $request->page;
-    $contactos = Contacto::buscar($filtro)->paginate(5);
+    $contactos = Contacto::where('proveedor_id', $request->proveedor_id)
+      ->buscar($filtro)->paginate(5);
 
     return response()->json(view('admin.compras.proveedores.contactos.index.include.tContactos', 
       ['contactos' => $contactos])->render());
@@ -75,13 +77,14 @@ class contactosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, Contacto $contacto){
+  public function update(ContactosRequest $request, Contacto $contacto){
     $contacto->fill($request->all());
     $contacto->save();
 
     $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
     $page = $request->page;
-    $contactos = Contacto::buscar($filtro)->paginate(5);
+    $contactos = Contacto::where('proveedor_id', $request->proveedor_id)
+      ->buscar($filtro)->paginate(5);
 
     return response()->json(view('admin.compras.proveedores.contactos.index.include.tContactos', 
       ['contactos' => $contactos])->render());
@@ -98,7 +101,8 @@ class contactosController extends Controller
 
     $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
     $page = $request->page;
-    $contactos = Contacto::buscar($filtro)->paginate(5);
+    $contactos = Contacto::where('proveedor_id', $request->proveedor_id)
+      ->buscar($filtro)->paginate(5);
 
     return response()->json(view('admin.compras.proveedores.contactos.index.include.tContactos', 
       ['contactos' => $contactos])->render());

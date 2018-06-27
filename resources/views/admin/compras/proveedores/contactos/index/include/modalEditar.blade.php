@@ -15,6 +15,7 @@
               <label class="col-sm-2 control-label">Nombre</label>
               <div class="col-sm-10">
                 <input type="text" name="nombre" class="form-control" id="nombre">
+                <input type="hidden" name="proveedor_id" value="{{ $proveedor_id }}">
                 <input type="hidden" id="id" name="id">
               </div>
             </div>

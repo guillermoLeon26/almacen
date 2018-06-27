@@ -16,7 +16,8 @@ $('#formEliminar').submit(function (e) {
     type: 'DELETE',
     data: {
       page: $('.pagination .active span').html(),
-      filtro: $('#buscar').val()
+      filtro: $('#buscar').val(),
+      proveedor_id: {{ $proveedor_id }}
     },
     dataType: 'json',
     beforeSend: function () {
@@ -28,7 +29,7 @@ $('#formEliminar').submit(function (e) {
     success: function (data) {
       $('#tabla').html(data);
       $('.overlay').detach();
-      toastr.success('Se eliminó la ciudad correctamente.');
+      toastr.success('Se eliminó el contacto correctamente.');
     },
     error: function (data) {
       $('.overlay').detach();

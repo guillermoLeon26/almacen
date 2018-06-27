@@ -79,5 +79,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/compras'], function (){
   //-------------------------------PRODUCTOS-----------------------------------
   Route::get('productos/tabla/{id_proveedor}', 'compras\ProductosController@tabla');
   Route::get('productos/lista/{id_proveedor}', 'compras\ProductosController@lista');
-  Route::resource('productos', 'compras\productosController');
+  Route::resource('productos', 'compras\productosController', ['only' => ['store', 'destroy']]);
 });
