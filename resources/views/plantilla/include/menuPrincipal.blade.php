@@ -92,7 +92,7 @@
           </a>
           
           <ul class="treeview-menu">
-            <li><a href="#"><i class="glyphicon glyphicon-list"></i>Listado</a></li>
+            <li><a href="{{ url('admin/compras/listado') }}"><i class="glyphicon glyphicon-list"></i>Listado</a></li>
             <li><a href="{{ url('admin/compras/proveedores') }}"><i class="fa fa-industry"></i>Proveedores</a></li>
           </ul>
         </li>

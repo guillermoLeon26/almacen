@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/config'], function (){
 
 //----------------------------------COMPRAS----------------------------------
 Route::group(['middleware' => 'auth', 'prefix' => 'admin/compras'], function (){
+  //------------------------------PROVEEDORES-----------------------------------
   Route::get('proveedores/tabla', 'compras\proveedoresController@tablaProveedores');
   Route::resource('proveedores', 'compras\proveedoresController', ['except' => ['create', 'show']]);
   //-------------------------------CONTACTOS-----------------------------------
@@ -80,4 +81,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/compras'], function (){
   Route::get('productos/tabla/{id_proveedor}', 'compras\ProductosController@tabla');
   Route::get('productos/lista/{id_proveedor}', 'compras\ProductosController@lista');
   Route::resource('productos', 'compras\productosController', ['only' => ['store', 'destroy']]);
+  //-----------------------------LISTADO-COMPRAS-----------------------------------
+  Route::resource('listado', 'compras\listadoController');
 });
