@@ -16,12 +16,12 @@
 
       <div class="box box-primary">
         <div class="box-header with-border">
-          <a href="{{ url('contabilidad/compras/create') }}" class="btn btn-success">
+          <a href="{{ url('admin/compras/listado/create') }}" class="btn btn-success">
             <i class="glyphicon glyphicon-plus"></i>
             Nuevo
           </a>
           
-                <button class="btn btn-info pull-right" data-toggle="modal" data-target="#modalBuscar">
+          <button class="btn btn-info pull-right" data-toggle="modal" data-target="#modalBuscar">
             <i class="glyphicon glyphicon-search"></i>
             Buscar
           </button>
