@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/inventario'], function 
     Route::post('cbBoxUnidad', 'Inventario\ProductosController@cbBoxUnidad');
     Route::post('cbBoxColor', 'Inventario\ProductosController@cbBoxColor');
     Route::get('cbProductos', 'Inventario\ProductosController@cbProductos');
+    Route::get('lista', 'Inventario\ProductosController@lista');
   });
   //------------------------------BODEGAS-------------------------------------
   Route::get('bodegas/tBodegas', 'Inventario\bodegaController@tablaBodegas');
@@ -71,6 +72,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin/config'], function (){
 //----------------------------------COMPRAS----------------------------------
 Route::group(['middleware' => 'auth', 'prefix' => 'admin/compras'], function (){
   //------------------------------PROVEEDORES-----------------------------------
+  Route::get('proveedores/lista', 'compras\proveedoresController@lista');
   Route::get('proveedores/tabla', 'compras\proveedoresController@tablaProveedores');
   Route::resource('proveedores', 'compras\proveedoresController', ['except' => ['create', 'show']]);
   //-------------------------------CONTACTOS-----------------------------------

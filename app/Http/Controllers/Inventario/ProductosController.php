@@ -203,4 +203,22 @@ class ProductosController extends Controller
       ->render());
   }
 
+  /**
+   * Devuelve una lista en formato json HTML de todos los productos
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function lista(Request $request){
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+
+    $productos = Producto::join('imagenes', function ($join){
+      $join->on('imagenes.producto_id', '=', 'productos.id')
+           ->where('imagenes.n_orden', 1);
+    })->buscar($filtro)->limit(20)->get();
+    
+    return response()->json(['productos' => $productos]);
+    
+  }
+
 }

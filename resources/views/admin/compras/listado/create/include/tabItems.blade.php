@@ -49,38 +49,6 @@
           <td></td>
           <td></td>
           <td></td>
-          <th>Monto No Facturado</th>
-          <td>
-            <div class="input-group">
-              <span class="input-group-addon"><strong>$</strong></span>
-              <input id="montoSinIva" name="monto_no_facturado" class="form-control" value="0">
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <th>Monto Facturado</th>
-          <td>
-            <div class="input-group">
-              <span class="input-group-addon"><strong>$</strong></span>
-              <input id="montoConIva" name="monto_facturado" class="form-control" value="0" disabled>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
           <th>IVA</th>
           <td>
             <div class="input-group">

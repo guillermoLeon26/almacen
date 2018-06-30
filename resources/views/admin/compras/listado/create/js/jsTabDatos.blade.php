@@ -5,14 +5,13 @@ $('#selProveedores').select2({
     id: function (e) {
       return proveedor.id;
     },
-    url: '{{ url('contabilidad/proveedores') }}',
+    url: '{{ url('admin/compras/proveedores/lista') }}',
     type: 'GET',
     dataType: 'json',
     delay: 250,
     data: function (params) {
       return {
         filtro: params.term,
-        todos: 'todos',
         page: params.page
       };
     },
@@ -36,22 +35,8 @@ $('#selProveedores').select2({
 function formatProveedor (proveedor) {
   if (!proveedor.id) { return proveedor.text; }
   var $proveedor = $(
-      '<span>'+
-      '<table>'+
-        '<tbody>'+
-          '<tr>'+
-            '<td>'+
-              '<strong>Proveedor: </strong> '+ proveedor.nombre_empresa +
-            '</td>'+
-          '</tr>'+
-
-          '<tr>'+
-            '<td>'+
-              '<strong>Tipo: </strong> '+ tipo(proveedor.tipo) +
-            '</td>'+
-          '</tr>'+
-        '</thead>'+
-      '</tbody>'+
+    '<span>'+
+      proveedor.empresa +
     '</span>'
   );
   return $proveedor;
@@ -60,10 +45,10 @@ function formatProveedor (proveedor) {
 function formatRepoProveedor(proveedor) {
   if (!proveedor.id) { return proveedor.text; }
   var $proveedor = $(
-        '<span>'+
-        proveedor.nombre_empresa+
-        ' (' + tipo(proveedor.tipo) + ')'+
-      '</span>'
+    '<span>'+
+      proveedor.nombre_empresa+
+        
+    '</span>'
   );
 
   return $proveedor;

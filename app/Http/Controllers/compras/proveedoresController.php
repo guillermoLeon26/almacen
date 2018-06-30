@@ -138,4 +138,17 @@ class proveedoresController extends Controller
     return response()->json(view('admin.compras.proveedores.index.include.tProveedores', 
       ['proveedores' => $proveedores])->render());
   }
+
+  /**
+   * Devuelve una lista en formato json HTML de todos los proveedores
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function lista(Request $request){
+    $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
+    $proveedores = Proveedor::buscar($filtro)->get()->take(20);
+
+    return response()->json(['proveedores' => $proveedores]);
+  }
 }

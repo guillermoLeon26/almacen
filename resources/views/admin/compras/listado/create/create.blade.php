@@ -65,4 +65,5 @@
   @include('librerias.js.mensajes')
   @include('admin.compras.listado.create.js.js')
   @include('admin.compras.listado.create.js.jsTabDatos')
+  @include('admin.compras.listado.create.js.jsTabItems')
 @endpush
