@@ -204,7 +204,7 @@ class ProductosController extends Controller
   }
 
   /**
-   * Devuelve una lista en formato json HTML de todos los productos
+   * Devuelve una lista en formato json de todos los productos
    *
    * @param  int  $id
    * @return \Illuminate\Http\Response
@@ -212,13 +212,33 @@ class ProductosController extends Controller
   public function lista(Request $request){
     $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
 
-    $productos = Producto::join('imagenes', function ($join){
-      $join->on('imagenes.producto_id', '=', 'productos.id')
-           ->where('imagenes.n_orden', 1);
+    $productos = Producto::select(
+      'productos.id', 
+      'productos.codigo', 
+      'productos.marca', 
+      'productos.descripcion', 
+      'productos.categoria', 
+      'imagenes.imagen')
+      ->join('imagenes', function ($join){
+        $join->on('imagenes.producto_id', '=', 'productos.id')
+             ->where('imagenes.n_orden', 1);
     })->buscar($filtro)->limit(20)->get();
     
     return response()->json(['productos' => $productos]);
-    
+  }
+
+  /**
+   * Devuelve una lista en formato json de las dimensiones de un producto
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function dimensiones(Producto $producto){
+    $dimensiones = $producto;
+
+    dd($dimensiones);
+
+    return response()->json(['dimensiones' => $dimensiones]);
   }
 
 }

@@ -13,7 +13,6 @@ $('#selectProducto').select2({
     data: function (params) {
       return {
         filtro: params.term,
-        todos: 'todos',
         page: params.page
       };
     },
@@ -85,6 +84,35 @@ $('#selectDimension').select2({
   dropdownParent: $('#modalIngresarItems')
 });
 
+$('#selectProducto').on('select2:select', function (evt) {
+  var idProducto = $('#selectProducto').val();
+  console.log(idProducto);
 
+  $.ajax({
+    headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
+    url: '{{ url('admin/inventario/productos/dimensiones') }}/' + idProducto,
+    type: 'GET',
+    dataType: 'json',
+    beforeSend: function () {
+      $('#selectDimension').prop("disabled", true);
+      $('#selectColor').prop("disabled", true);
+    },
+    success: function (data) {
+      $('#selectDimension').prop("disabled", false);
+      $('#selectColor').prop("disabled", false);
+      categoria = data.producto.categoria;
+      marca = data.producto.marca;
+      imagen = data.producto.imagenes['0'].imagen;
+      imprimirDimensiones(data.producto.dimensiones);
+      imprimirColores(data.producto.colores);
+    },
+    error: function () {
+      $('#selectDimension').prop("disabled", false);
+      $('#selectColor').prop("disabled", false);
+
+      mensaje2('error', 'Se produjo un error en la conexión.', '#mensaje');
+    }
+  });
+});
 
 </script>
