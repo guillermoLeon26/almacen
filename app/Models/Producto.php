@@ -73,6 +73,34 @@ class Producto extends Model
   public function listaColores(){
     return $this->colores()->distinct()->get();
   }
+  /*******************************************************************************
+    * Lista de dimensiones 
+    * @in 
+    * @out Collection[dimensiones]
+    *********************************************************************************/
+  public function listaDimensiones(){
+    return $this->descripciones()->distinct()
+                ->select('productos_descripcion.id', 'productos_descripcion.dimension')
+                ->get()
+                ->sortBy('n_orden');
+  }
+  /*******************************************************************************
+    * Lista de productos con imagen
+    * @in 
+    * @out Collection[dimensiones]
+    *********************************************************************************/
+  public static function listaProductosConImagen($filtro){
+    return Producto::select(
+      'productos.id', 
+      'productos.codigo', 
+      'productos.marca', 
+      'productos.descripcion', 
+      'productos.categoria', 
+      'imagenes.imagen')->join('imagenes', function ($join){
+        $join->on('imagenes.producto_id', '=', 'productos.id')
+             ->where('imagenes.n_orden', 1);
+    })->buscar($filtro)->limit(20)->get();
+  }
   //***********************************************************************************
   //-------------------------------FUNCIONES GUARDAR PRODUCTO--------------------------
   //***********************************************************************************

@@ -1,4 +1,5 @@
 <script>
+
 //---------------------------------SELECT PRODUCTOS-------------------------------------
 $('#selectProducto').select2({
   dropdownParent: $('#modalIngresarItems'),
@@ -17,7 +18,6 @@ $('#selectProducto').select2({
       };
     },
     processResults: function (data, params) {
-      console.log(data);
       params.page = params.page || 1;
 
       return {
@@ -74,23 +74,26 @@ function formatRepoProducto(producto) {
         producto.categoria+
         '<b>Codigo: </b>' + producto.codigo +
         '<b> Marca: </b>' + producto.marca +
+        '<input id="ImagenProducto" type="hidden" value="'+producto.imagen+'">'+
+        '<input id="CodigoProducto" type="hidden" value="'+producto.codigo+'">'+
+        '<input id="MarcaProducto" type="hidden" value="'+producto.marca+'">'+
+        '<input id="CategoriaProducto" type="hidden" value="'+producto.categoria+'">'+
       '</span>'
   );
 
   return $producto;
 }
-//---------------------------------DIMENIONES----------------------------------------
+//---------------------------------MODAL ITEM----------------------------------------
 $('#selectDimension').select2({
   dropdownParent: $('#modalIngresarItems')
 });
 
 $('#selectProducto').on('select2:select', function (evt) {
   var idProducto = $('#selectProducto').val();
-  console.log(idProducto);
 
   $.ajax({
     headers: {'X-CSRF-TOKEN':'{{ csrf_token() }}'},
-    url: '{{ url('admin/inventario/productos/dimensiones') }}/' + idProducto,
+    url: '{{ url('admin/inventario/productos/producto') }}/' + idProducto,
     type: 'GET',
     dataType: 'json',
     beforeSend: function () {
@@ -100,13 +103,10 @@ $('#selectProducto').on('select2:select', function (evt) {
     success: function (data) {
       $('#selectDimension').prop("disabled", false);
       $('#selectColor').prop("disabled", false);
-      categoria = data.producto.categoria;
-      marca = data.producto.marca;
-      imagen = data.producto.imagenes['0'].imagen;
-      imprimirDimensiones(data.producto.dimensiones);
-      imprimirColores(data.producto.colores);
+      imprimirDimensiones(data.dimensiones);
+      imprimirColores(data.colores);
     },
-    error: function () {
+    error: function (data) {
       $('#selectDimension').prop("disabled", false);
       $('#selectColor').prop("disabled", false);
 
@@ -114,5 +114,74 @@ $('#selectProducto').on('select2:select', function (evt) {
     }
   });
 });
+
+function imprimirDimensiones(dimensiones) {
+  var opciones = '';
+
+  $.each(dimensiones, function (i, dimension) {
+    opciones += '<option value="'+dimension.id+'">'+dimension.dimension+'</option>';
+  });
+
+  $('#selectDimension').html(opciones);
+}
+
+function imprimirColores(colores) {
+  var opciones = '';
+
+  $.each(colores, function (i, color) {
+    opciones += '<option value="'+color.id+'">'+color.color+'</option>';
+  });
+
+  $('#selectColor').html(opciones);
+}
+//--------------------------------------------------------------------------------
+var contItems = 0;
+
+$('#btnGuardarItems').click(function () {
+  if (esValidoIngresarItem()) {
+    var producto_id = $('#selectProducto').val();
+    var dimension_id = $('#selectDimension').val();
+    var color_id = $('#selectColor').val();
+    var precio = $('#precioProducto').val();
+    var cantProducto = $('#cantProducto').val();
+    var imagen = $('#ImagenProducto').val();
+    var categoria = $('#CategoriaProducto').val();
+    var marca = $('#MarcaProducto').val();
+    var dimension = $('#selectDimension option:selected').html();
+    var color = $('#selectColor option:selected').html();
+    var precio = $('#precioProducto').val();
+    var cantProducto = $('#cantProducto').val();
+    var subtotalCompra = precio * cantProducto;
+
+    var fila = '<tr id="filaItem'+contItems+'">'+
+                  '<td>'+
+                    '<button class="btn btn-danger" onclick="eliminarItem('+contItems+')">'+
+                      '<i class="glyphicon glyphicon-trash"></i>'+
+                    '</button>'+
+                  '</td>'+
+                  '<td><img class="img-responsive img-thumbnail" width="50px" src="'+imagen+'"></td>'+
+                  '<td>'+categoria+'</td>'+
+                  '<td>'+marca+'</td>'+
+                  '<td>'+dimension+'</td>'+
+                  '<td>'+color+'</td>'+
+                  '<td>$'+precio+'</td>'+
+                  '<td>'+cantProducto+'</td>'+
+                  '<td>$'+subtotalCompra.toFixed(2)+'</td>'+
+                '</tr>';
+    $('#tablaItems').append(fila);
+    $('#modalIngresarItems').modal('hide');
+    contItems++;
+  }
+});
+
+function esValidoIngresarItem() {
+  var producto_id = $('#selectProducto').val();
+  var dimension_id = $('#selectDimension').val();
+  var color_id = $('#selectColor').val();
+  var precio = $('#precioProducto').val();
+  var cantProducto = $('#cantProducto').val();
+
+  return !(!producto_id || !dimension_id || !color_id || precio <= 0 || cantProducto <= 0);
+}
 
 </script>

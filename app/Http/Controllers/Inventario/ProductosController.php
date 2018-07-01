@@ -212,17 +212,7 @@ class ProductosController extends Controller
   public function lista(Request $request){
     $filtro = (isset($request->filtro) && !empty($request->filtro))?$request->filtro:'';
 
-    $productos = Producto::select(
-      'productos.id', 
-      'productos.codigo', 
-      'productos.marca', 
-      'productos.descripcion', 
-      'productos.categoria', 
-      'imagenes.imagen')
-      ->join('imagenes', function ($join){
-        $join->on('imagenes.producto_id', '=', 'productos.id')
-             ->where('imagenes.n_orden', 1);
-    })->buscar($filtro)->limit(20)->get();
+    $productos = Producto::listaProductosConImagen($filtro);
     
     return response()->json(['productos' => $productos]);
   }
@@ -233,12 +223,15 @@ class ProductosController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function dimensiones(Producto $producto){
-    $dimensiones = $producto;
+  public function productoInfo(Producto $producto){
+    $dimensiones = $producto->listaDimensiones();
+    $colores = $producto->listaColores();
 
-    dd($dimensiones);
-
-    return response()->json(['dimensiones' => $dimensiones]);
+    return response()->json([
+      'producto' => $producto,
+      'dimensiones' => $dimensiones,
+      'colores' => $colores
+    ]);
   }
 
 }
