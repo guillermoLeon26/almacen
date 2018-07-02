@@ -167,12 +167,24 @@ $('#btnGuardarItems').click(function () {
                   '<td>$'+precio+'</td>'+
                   '<td>'+cantProducto+'</td>'+
                   '<td>$'+subtotalCompra.toFixed(2)+'</td>'+
+                  '<input class="filaSubtotal" type="hidden" value="'+subtotalCompra+'">'+
                 '</tr>';
     $('#tablaItems').append(fila);
     $('#modalIngresarItems').modal('hide');
     contItems++;
+    subtotal();
   }
 });
+
+function subtotal() {
+  var subtotal = 0;
+
+  $('.filaSubtotal').each(function (i, subtotalTab) {
+    subtotal = subtotal + parseFloat(subtotalTab.value);
+  });
+
+  $('#subTotalCompra').val(subtotal.toFixed(2));
+}
 
 function esValidoIngresarItem() {
   var producto_id = $('#selectProducto').val();
