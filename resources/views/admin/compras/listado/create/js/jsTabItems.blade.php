@@ -168,22 +168,23 @@ $('#btnGuardarItems').click(function () {
                   '<td>'+cantProducto+'</td>'+
                   '<td>$'+subtotalCompra.toFixed(2)+'</td>'+
                   '<input class="filaSubtotal" type="hidden" value="'+subtotalCompra+'">'+
+                  '<input class="filas" type="hidden" value="'+contItems+'">'+
+                  '<input class="fila'+contItems+'" type="hidden" name="producto_id" value="'+producto_id+'">'+
+                  '<input class="fila'+contItems+'" type="hidden" name="dimension_id" value="'+dimension_id+'">'+
+                  '<input class="fila'+contItems+'" type="hidden" name="color_id" value="'+color_id+'">'+
+                  '<input class="fila'+contItems+'" type="hidden" name="precio" value="'+precio+'">'+
+                  '<input class="fila'+contItems+'" type="hidden" name="cantidad" value="'+cantProducto+'">'+
                 '</tr>';
     $('#tablaItems').append(fila);
     $('#modalIngresarItems').modal('hide');
     contItems++;
-    subtotal();
+    totalCompra();
   }
 });
 
-function subtotal() {
-  var subtotal = 0;
-
-  $('.filaSubtotal').each(function (i, subtotalTab) {
-    subtotal = subtotal + parseFloat(subtotalTab.value);
-  });
-
-  $('#subTotalCompra').val(subtotal.toFixed(2));
+function eliminarItem(item) {
+  $('#filaItem'+item).remove();
+  totalCompra();
 }
 
 function esValidoIngresarItem() {
@@ -192,8 +193,47 @@ function esValidoIngresarItem() {
   var color_id = $('#selectColor').val();
   var precio = $('#precioProducto').val();
   var cantProducto = $('#cantProducto').val();
+  var arrItems = items();
 
-  return !(!producto_id || !dimension_id || !color_id || precio <= 0 || cantProducto <= 0);
+  if (!producto_id || !dimension_id || !color_id || precio <= 0 || cantProducto <= 0) return false;
+
+  for (var i = 0; i < arrItems.length; i++) {
+    if (arrItems[i].producto_id == producto_id && arrItems[i].dimension_id == dimension_id && items[i].color_id == color_id) return false;
+  }
+
+  return true;
+}
+
+function totalCompra() {
+  var subtotal = 0;
+  var iva = 0;
+
+  $('.filaSubtotal').each(function (i, subtotalTab) {
+    subtotal = subtotal + parseFloat(subtotalTab.value);
+  });
+
+  iva = subtotal * '{{ $iva }}' / 100;
+  var total = subtotal + iva;
+
+  $('#subTotalCompra').val(subtotal.toFixed(2));
+  $('#iva').val(iva.toFixed(2));
+  $('#totalCompra').val(total.toFixed(2));
+  $('#total').val(total.toFixed(2));
+}
+
+function items() {
+  var items = [];
+  var item = {};
+
+  $('.filas').each(function (i, fila) {
+    $('.fila'+fila.value).each(function (i, nodo) {
+      item[nodo.name] = nodo.value;
+    });
+    items.push(item);
+    item = {};
+  });
+
+  return items;
 }
 
 </script>

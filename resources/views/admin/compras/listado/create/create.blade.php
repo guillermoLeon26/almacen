@@ -19,7 +19,7 @@
     <div class="col-sm-9" id="mensaje"></div>
 
       <form id="formCrearCompra">
-        <div class="col-sm-9 nav-tabs-custom">
+        <div class="col-sm-10 nav-tabs-custom">
           <ul class="nav nav-tabs pull-right" role="tablist">
             <li class="pull-left header">
               <button type="submit" id="btnGuardar" class="btn btn-success">

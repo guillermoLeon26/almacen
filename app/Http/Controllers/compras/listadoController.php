@@ -4,6 +4,7 @@ namespace App\Http\Controllers\compras;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Config_Cont;
 
 class listadoController extends Controller
 {
@@ -22,7 +23,9 @@ class listadoController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function create(){
-    return view('admin.compras.listado.create.create');
+    $iva = Config_Cont::findOrfail(1)->IVA;
+
+    return view('admin.compras.listado.create.create', ['iva' => $iva]);
   }
 
   /**
