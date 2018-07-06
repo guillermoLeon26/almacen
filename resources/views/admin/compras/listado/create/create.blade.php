@@ -35,7 +35,7 @@
             </li>
               
             </li>
-            <li role="presentation">
+            <li role="presentation" class="cuentaXPagar" style="visibility: hidden;">
               <a href="#tabPagos" aria-controls="tabPagos" role="tab" data-toggle="tab">Pagos</a>
             </li>
           </ul>
@@ -49,7 +49,7 @@
               @include('admin.compras.listado.create.include.tabItems')
             </div>
 
-            <div class="tab-pane cuentaXPagar" role="tabpanel" id="tabPagos">
+            <div class="tab-pane cuentaXPagar" role="tabpanel" id="tabPagos" style="visibility: hidden;">
               @include('admin.compras.listado.create.include.tabPagos')
             </div>
           </div>

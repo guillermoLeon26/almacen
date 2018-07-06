@@ -1,5 +1,41 @@
 <script>
 
+//-------------------------------FUNCIONES GENERALES------------------------------------
+$('#tipoCompra').change(function () {
+  var tipo = $('#tipoCompra').val();
+
+  if (tipo == 2)
+    $('.cuentaXPagar').css('visibility', 'visible');
+  else
+    $('.cuentaXPagar').css('visibility', 'hidden');
+});
+
+$('#abono').blur(function () {
+  totalCompra();
+});
+
+$('#plazo').blur(function () {
+  var dias = parseInt($('#plazo').val());
+  var hoy = new Date();
+
+  hoy.setDate(hoy.getDate() + dias);
+
+  $('#fechaVencimiento').val(hoy.getDate() + "/" + (hoy.getMonth()+1) + "/" + hoy.getFullYear());
+});
+
+$('#plazo').on('keydown', function (e) {
+  if (e.keyCode == 9) {
+    $('#abono').focus();
+  }
+});
+
+$('#fechaVencimiento').change(function () {
+  var hoy = new Date().split('/');
+  var fecha = ($('#fechaVencimiento').val().split('/');
+
+
+});
+
 //---------------------------------SELECT PRODUCTOS-------------------------------------
 $('#selectProducto').select2({
   dropdownParent: $('#modalIngresarItems'),
@@ -207,18 +243,25 @@ function esValidoIngresarItem() {
 function totalCompra() {
   var subtotal = 0;
   var iva = 0;
+  var abono = $('#abono').val();
 
   $('.filaSubtotal').each(function (i, subtotalTab) {
     subtotal = subtotal + parseFloat(subtotalTab.value);
   });
 
   iva = subtotal * '{{ $iva }}' / 100;
-  var total = subtotal + iva;
+  var total1 = subtotal + iva;
+  var total2 = total1 - abono;
+  if (total2 < 0){
+    abono = 0;
+    $('#abono').val(0);
+    total2 = total1 - abono;
+  }
 
   $('#subTotalCompra').val(subtotal.toFixed(2));
   $('#iva').val(iva.toFixed(2));
-  $('#totalCompra').val(total.toFixed(2));
-  $('#total').val(total.toFixed(2));
+  $('#subtotal2').val(total1.toFixed(2));
+  $('#totalCompra').val(total2.toFixed(2));
 }
 
 function items() {
