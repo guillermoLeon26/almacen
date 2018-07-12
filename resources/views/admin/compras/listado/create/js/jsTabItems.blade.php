@@ -15,12 +15,17 @@ $('#abono').blur(function () {
 });
 
 $('#plazo').blur(function () {
-  var dias = parseInt($('#plazo').val());
-  var hoy = new Date();
+  var dias = parseFloat($('#plazo').val());
+  
+  if (dias > 0 && (dias % 1) == 0) {
+    var hoy = new Date();
 
-  hoy.setDate(hoy.getDate() + dias);
-
-  $('#fechaVencimiento').val(hoy.getDate() + "/" + (hoy.getMonth()+1) + "/" + hoy.getFullYear());
+    hoy.setDate(hoy.getDate() + dias);
+    $('#fechaVencimiento').val(hoy.getDate() + "/" + (hoy.getMonth()+1) + "/" + hoy.getFullYear());
+  }else{
+    $('#plazo').val('');
+    $('#fechaVencimiento').val('');
+  }
 });
 
 $('#plazo').on('keydown', function (e) {
@@ -30,10 +35,17 @@ $('#plazo').on('keydown', function (e) {
 });
 
 $('#fechaVencimiento').change(function () {
-  var hoy = new Date().split('/');
-  var fecha = ($('#fechaVencimiento').val().split('/');
+  var hoy = new Date().getTime();
+  var fecha = $('#fechaVencimiento').val().split('/')
+  var vencimiento = new Date().setFullYear(fecha[2], (fecha[1]-1), fecha[0]);
+  var dif = (vencimiento-hoy)/86400000;
 
-
+  if (dif > 0) {
+    $('#plazo').val(dif);
+  } else {
+    $('#plazo').val('0');
+    $('#fechaVencimiento').val('');
+  }
 });
 
 //---------------------------------SELECT PRODUCTOS-------------------------------------
@@ -145,6 +157,7 @@ $('#selectProducto').on('select2:select', function (evt) {
     error: function (data) {
       $('#selectDimension').prop("disabled", false);
       $('#selectColor').prop("disabled", false);
+      $('#modalIngresarItems').modal('hide');
 
       mensaje2('error', 'Se produjo un error en la conexión.', '#mensaje');
     }

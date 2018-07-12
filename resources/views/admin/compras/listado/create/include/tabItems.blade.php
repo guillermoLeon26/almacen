@@ -53,7 +53,7 @@
           </td>
           <td>
             <div class="input-group cuentaXPagar" style="visibility: hidden;">
-              <input id="plazo" name="plazo" class="form-control" value="0" style="width: 100%">
+              <input type="number" id="plazo" name="plazo" class="form-control" value="0" style="width: 100%" min="0" step="1">
               <span class="input-group-addon"><strong>Dias</strong></span>
             </div>
           </td>
