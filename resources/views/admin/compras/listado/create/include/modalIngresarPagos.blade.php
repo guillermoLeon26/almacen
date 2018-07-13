@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalIngresarPagos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="modalIngresarPagos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -24,9 +24,7 @@
           <div class="form-group col-sm-12">
             <label class="col-sm-4 control-label">Tipo de Pago</label>
             <div class="col-sm-8">
-              <select id="tipoPago" class="form-control select2" style="width: 100%">
-                
-              </select>
+              <input type="text" class="form-control" id="tipoPago">
             </div>
           </div>
 
