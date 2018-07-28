@@ -275,6 +275,7 @@ function totalCompra() {
   $('#iva').val(iva.toFixed(2));
   $('#subtotal2').val(total1.toFixed(2));
   $('#totalCompra').val(total2.toFixed(2));
+  $('#totalApagar').val('$ ' + total2.toFixed(2));
 }
 
 function items() {

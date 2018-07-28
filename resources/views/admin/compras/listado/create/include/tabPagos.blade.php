@@ -6,7 +6,7 @@
 
     <div class="box-tools">
       <div class="input-group input-group" style="width: 250px;">
-        <span class="input-group-addon">Total a pagar</span>
+        <span class="input-group-addon">Total a pagar:</span>
         <input type="text" id="totalApagar" class="form-control pull-right" disabled="disabled">
       </div>
     </div>
@@ -25,6 +25,8 @@
       </thead>
 
       <tbody id="tablaPagos"></tbody>
+
+      <tfoot></tfoot>
     </table>
 
   </div>
